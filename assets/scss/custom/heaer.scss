@@ -1,0 +1,10 @@
+.navUser {
+    .navUser-action {
+        // display: flex;
+        // align-items: center;
+    }
+
+    .navUser-icon {
+        @include square(16px);
+    }
+}

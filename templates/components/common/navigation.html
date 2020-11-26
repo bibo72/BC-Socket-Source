@@ -42,6 +42,9 @@
                aria-controls="quickSearch"
                aria-label="{{lang 'common.search'}}"
             >
+                <span class="icon navUser-icon">
+                    <svg><use xlink:href="#icon-search" /></svg>
+                </span>
                 {{lang 'common.search'}}
             </button>
         </li>
@@ -61,6 +64,9 @@
                    href="{{urls.account.index}}"
                    aria-label="{{lang 'common.account'}}"
                 >
+                    <span class="icon navUser-icon">
+                        <svg><use xlink:href="#icon-user" /></svg>
+                    </span>
                     {{lang 'common.account'}}
                 </a>
                 <a class="navUser-action"
@@ -74,6 +80,9 @@
                    href="{{urls.auth.login}}"
                    aria-label="{{lang 'common.login'}}"
                 >
+                    <span class="icon navUser-icon">
+                        <svg><use xlink:href="#icon-user" /></svg>
+                    </span>
                     {{lang 'common.login'}}
                 </a>
                 {{#if settings.account_creation_enabled}}

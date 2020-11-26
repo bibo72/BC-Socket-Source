@@ -8,11 +8,11 @@
            aria-expanded="false"
         >
             {{lang 'common.currency' code=currency_selector.active_currency_code}}
-            <i class="icon" aria-hidden="true">
+            <span class="icon" aria-hidden="true">
                 <svg>
                     <use xlink:href="#icon-chevron-down" />
                 </svg>
-            </i>
+            </span>
         </a>
         <ul class="dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
             {{#each currency_selector.currencies}}
