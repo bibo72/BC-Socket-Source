@@ -4,7 +4,40 @@
         // align-items: center;
     }
 
-    .navUser-icon {
-        @include square(16px);
+    .navUser-item--account {
+        .navUser-icon {
+            @include square(16px);
+            margin-top: -5px;
+        }
+    }
+}
+
+header.header {
+    .header-top {
+        color: stencilColor("color-white");
+        background: stencilColor("color-greyDarkest");
+
+        a, button {
+            color: stencilColor("color-white");
+            text-decoration: none;
+        }
+
+        svg {
+            fill: stencilColor("color-white");
+        }
+
+        .header-contact {
+        }
+    }
+
+    .navUser {
+        .navUser-action--quickSearch {
+            font-size: 0;
+            color: stencilColor("color-blue");
+
+            svg {
+                fill: stencilColor("color-blue");
+            }
+        }
     }
 }

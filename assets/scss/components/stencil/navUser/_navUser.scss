@@ -92,7 +92,7 @@
     }
 
     .icon {
-        @include square(8px);
+        @include square(20px);
         margin: -1px 0 0 spacing("eighth");
     }
 

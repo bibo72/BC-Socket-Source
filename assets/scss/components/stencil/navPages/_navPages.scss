@@ -155,7 +155,7 @@
 
     .navPages-action-moreIcon {
         border: solid 1px $navPages-action-moreIcon-borderColor;
-        border-radius: 4px;
+        border-radius: 0;
         float: left;
         height: 35px;
         margin-top: -10px;
@@ -268,7 +268,7 @@
         @include breakpoint("medium") {
             @include square(8px);
             margin: 0 0 0 spacing("half");
-        }    
+        }
     }
 }
 
@@ -290,7 +290,7 @@
     }
 
     .navPage-subMenu-action:not(.navPages-action-depth-max) + & {
-        margin-left: spacing("double"); // 
+        margin-left: spacing("double"); //
 
         @include breakpoint("medium") {
             margin-left: 0;
@@ -338,7 +338,7 @@
 
             @include breakpoint("medium") {
                 margin-right: auto;
-            }    
+            }
         }
     }
 }

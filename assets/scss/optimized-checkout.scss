@@ -14,6 +14,9 @@
 // Header Section
 // Background, Logo Position
 // -----------------------------------------------------------------------------
+@import url(../scss/fonts/_Poppins.scss);
+@import url(../scss/fonts/_Lato.scss);
+
 
 *:focus {
     outline-color: stencilColor("optimizedCheckout-colorFocus");
