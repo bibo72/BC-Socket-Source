@@ -43,19 +43,19 @@ export default class Global extends PageManager {
         el.setAttribute('src', url);
         document.querySelector('body').append(el);
 
-        window.b3themeConfig = {}
+        window.b3themeConfig = {};
         window.b3themeConfig.useJavaScript = {
             orderdetail: {
                 callback(instance) {
                     (async () => {
                         const {
                             id: orderID,
-                        } = instance.state
-                        await instance.api.getOrderDetail(orderID)
-                        window.B3Spinner.hide()
-                    })()
-                }
-            }
-        }
+                        } = instance.state;
+                        await instance.api.getOrderDetail(orderID);
+                        window.B3Spinner.hide();
+                    })();
+                },
+            },
+        };
     }
 }
