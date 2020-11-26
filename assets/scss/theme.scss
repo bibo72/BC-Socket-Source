@@ -85,19 +85,3 @@
 @import "vendor/jstree/style";
 
 @import "custom/custom";
-
-.swal2-icon .swal2-icon-content {
-  font-size: 76px;
-}
-.modal-close:focus{
-  outline: none;
-}
-.navPages-list:not(.navPages-list-depth-max) .navPage-subMenu-action {
-  padding: 0;
-}
-header .header-logo {
-  height: 55px !important;
-}
-body.hasAdminBar .header {
-  padding-top: 0 !important;
-}

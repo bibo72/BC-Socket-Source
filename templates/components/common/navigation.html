@@ -1,22 +1,7 @@
 <nav class="navUser">
     {{> components/common/currency-selector}}
     <div class="navUser-flex">
-        <ul class="navUser-section navUser-section--alt">
-            <li class="navUser-item">
-                <a class="navUser-action navUser-action--quickSearch"
-                   href="#" data-search="quickSearch"
-                   aria-controls="quickSearch"
-                   aria-expanded="false"
-                   aria-label="{{lang 'common.search'}}"
-                >
-                <span class="icon navUser-icon">
-                    <svg><use xlink:href="#icon-search" /></svg>
-                </span>
-                    {{lang 'common.search'}}
-                </a>
-            </li>
-        </ul>
-        <ul class="navUser-section navUser-section--alt">
+        <ul class="navUser-section navUser-section--alt navUser-section--top">
             {{#if customer.store_credit.value '>' 0}}
                 <li class="navUser-item">
                     <a class="navUser-action navUser-action--storeCredit"
@@ -99,11 +84,29 @@
                    href="{{urls.cart}}"
                    aria-label="{{lang 'common.cart'}}"
                 >
-                    <span class="navUser-item-cartLabel">{{lang 'common.cart'}}</span>
-                    <span class="countPill cart-quantity"></span>
+                    <span class="icon navUser-icon">
+                        <svg><use xlink:href="#icon-cart" /></svg>
+                    </span>
+                    (<span class="countPill cart-quantity"></span>)
+                    <span class="navUser-item-cartLabel">Items</span>
                 </a>
 
                 <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+            </li>
+        </ul>
+        <ul class="navUser-section navUser-section--alt navUser-section--bottom">
+            <li class="navUser-item navUser-item--quickSearch">
+                <a class="navUser-action navUser-action--quickSearch"
+                   href="#" data-search="quickSearch"
+                   aria-controls="quickSearch"
+                   aria-expanded="false"
+                   aria-label="{{lang 'common.search'}}"
+                >
+                <span class="icon navUser-icon">
+                    <svg><use xlink:href="#icon-search" /></svg>
+                </span>
+                    {{lang 'common.search'}}
+                </a>
             </li>
         </ul>
     </div>

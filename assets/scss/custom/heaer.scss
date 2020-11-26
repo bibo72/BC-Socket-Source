@@ -1,25 +1,21 @@
-.navUser {
-    .navUser-action {
-        // display: flex;
-        // align-items: center;
-    }
-
-    .navUser-item--account {
-        .navUser-icon {
-            @include square(16px);
-            margin-top: -5px;
-        }
-    }
-}
-
 header.header {
     .header-top {
+        height: 55px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        line-height: normal;
         color: stencilColor("color-white");
         background: stencilColor("color-greyDarkest");
 
-        a, button {
+        @include breakpoint("medium") {
+            height: 40px;
+        }
+
+        a, p {
             color: stencilColor("color-white");
             text-decoration: none;
+            margin: 0;
         }
 
         svg {
@@ -27,16 +23,170 @@ header.header {
         }
 
         .header-contact {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+
+            .contact-phone {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-right: 20px;
+
+                .navUser-icon {
+                    @include square(14px);
+                    margin-right: 9px;
+                }
+
+                &::after {
+                    display: inline-block;
+                    width: 1px;
+                    height: 100%;
+                    content: attr(data-separate);
+                    border-right: 1px solid stencilColor("color-greyLightest");
+                    padding-left: 20px;
+                    font-size: 0;
+                }
+            }
+
+            .header-tips {
+                flex: 1;
+            }
+        }
+    }
+
+    .header-bottom {
+        position: relative;
+
+        >.container {
+            position: static;
+            padding: 0;
+
+            @include breakpoint("medium") {
+                padding: 0 $container-padding;
+            }
+
+            @include breakpoint("large") {
+                padding: 0 ($container-padding * 4);
+            }
         }
     }
 
     .navUser {
-        .navUser-action--quickSearch {
-            font-size: 0;
-            color: stencilColor("color-blue");
+        padding: 0 8px;
 
-            svg {
-                fill: stencilColor("color-blue");
+        .navUser-section {
+            margin: 0;
+        }
+
+        .navUser-icon {
+            margin-right: 8px;
+        }
+
+        .navUser-item--quickSearch {
+            display: block;
+            .navUser-action--quickSearch {
+                font-size: 0;
+                color: stencilColor("color-blue");
+
+                svg {
+                    fill: stencilColor("color-blue");
+                }
+            }
+        }
+
+        .navUser-item--account {
+            .navUser-icon {
+                @include square(17px);
+                margin-top: -5.5px;
+            }
+        }
+
+        .navUser-item--cart {
+            font-size: 0;
+            @include breakpoint("medium") {
+                font-size: fontSize("smallest");
+                background: stencilColor("color-blue");
+                .navUser-action {
+                    text-transform: capitalize;
+                }
+            }
+
+            .navUser-icon {
+                @include square(22px);
+
+                svg {
+                    fill: stencilColor("color-blue");
+                }
+
+                @include breakpoint("medium") {
+                    @include square(19px);
+
+                    svg {
+                        fill: stencilColor("navUser-color");
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include breakpoint("medium") {
+        .header-bottom {
+            >.container {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                .navUser {
+                    position: static;
+
+                    .navUser-flex {
+                        .navUser-section--top {
+                            position: absolute;
+                            top: -40px;
+                            right: $container-padding;
+
+                            @include breakpoint("large") {
+                                right: ($container-padding * 4);
+                            }
+
+                            .navUser-or {
+                                color: stencilColor("color-white");
+                            }
+
+                            .navUser-action {
+                                height: 40px;
+                                color: stencilColor("color-white");
+                                font-size: fontSize("smallest");
+                                font-weight: normal;
+                                padding: 9px 17px;
+
+                                svg {
+                                    fill: stencilColor("color-white");
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                .navPages-container {
+                    flex: 1;
+                    // display: flex;
+                    // align-items: center;
+                    // justify-content: flex-end;
+
+                    .navPages {
+                        >.navPages-list {
+
+                        }
+
+                        .navPages-action-moreIcon {
+                            display: none;
+                        }
+                    }
+                }
             }
         }
     }

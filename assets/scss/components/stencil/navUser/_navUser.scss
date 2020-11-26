@@ -20,11 +20,12 @@
     @include nav($style: "navBar", $wrapper: "nav");
     @include verticalPositionMiddle("absolute");
     right: 0;
-    top: 26px; // 2
+    top: 30px; // 2
     width: 100%; // 4
     z-index: zIndex("lowest"); // 5.
 
     @include breakpoint("medium") {
+        width: auto;
         padding: 0 spacing("single");
         position: relative;
         right: auto;
@@ -75,7 +76,7 @@
 .navUser-action {
     color: stencilColor("navUser-color");
     font-weight: fontWeight("bold");
-    padding: spacing("base") spacing("half");
+    padding: spacing("base") 10px;
     text-decoration: none;
     text-transform: uppercase;
 
@@ -92,7 +93,7 @@
     }
 
     .icon {
-        @include square(8px);
+        @include square(20px);
         margin: -1px 0 0 spacing("eighth");
     }
 
@@ -209,7 +210,7 @@
 .navUser-item-cartLabel {
     display: none;
 
-    @include breakpoint("small") {
+    @include breakpoint("medium") {
         display: inline;
     }
 }
@@ -224,13 +225,13 @@
 
 .navUser-item--account {
 
-    .navUser-or {
+    // .navUser-or {
 
-        // scss-lint:disable NestingDepth
-        + .navUser-action {
-            margin-right: -0.5rem; // 1
-        }
-    }
+    //     // scss-lint:disable NestingDepth
+    //     + .navUser-action {
+    //         margin-right: -0.5rem; // 1
+    //     }
+    // }
 
     .navUser-action {
         display: inline-block;
@@ -324,19 +325,19 @@
 //
 // -----------------------------------------------------------------------------
 
-.countPill {
-    background-color: stencilColor("navUser-indicator-backgroundColor");
-    border-radius: 50%;
-    color: color("whites", "bright");
-    display: none;
-    font-size: fontSize("tiny");
-    font-weight: fontWeight("bold");
-    height: 20px; // 1
-    line-height: 20px; // 1
-    margin-left: spacing("eighth");
-    text-align: center;
-    width: 20px; // 1
-}
+// .countPill {
+//     background-color: stencilColor("navUser-indicator-backgroundColor");
+//     border-radius: 50%;
+//     color: color("whites", "bright");
+//     display: none;
+//     font-size: fontSize("tiny");
+//     font-weight: fontWeight("bold");
+//     height: 20px; // 1
+//     line-height: 20px; // 1
+//     margin-left: spacing("eighth");
+//     text-align: center;
+//     width: 20px; // 1
+// }
 
 .countPill--positive {
     display: inline-block;

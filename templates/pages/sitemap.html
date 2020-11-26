@@ -7,16 +7,24 @@
         <h3>{{label}}</h3>
         <ul>
             {{#each body}}
-            <li>
-                <a href="{{url}}">{{label}}</a>
-                {{#if children}}
-                    <ul>
-                    {{#each children}}
-                        {{> components/sitemap/links}}
-                    {{/each}}
-                    </ul>
-                {{/if}}
-            </li>
+                {{#or (if (lowercase name) '===' 'header top') (if (lowercase name) '===' 'products menu static page')}}
+                    {{#if children}}
+                        {{#each children}}
+                            {{> components/sitemap/links}}
+                        {{/each}}
+                    {{/if}}
+                {{else}}
+                    <li>
+                        <a href="{{url}}">{{label}}</a>
+                        {{#if children}}
+                            <ul>
+                            {{#each children}}
+                                {{> components/sitemap/links}}
+                            {{/each}}
+                            </ul>
+                        {{/if}}
+                    </li>
+                {{/or}}
             {{/each}}
             {{#if show_all_link}}
             <li>

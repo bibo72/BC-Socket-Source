@@ -86,8 +86,8 @@
     "show_product_weight": true,
     "show_product_dimensions": false,
     "product_list_display_mode": "grid",
-    "logo-position": "center",
-    "logo_size": "250x100",
+    "logo-position": "left",
+    "logo_size": "234x56",
     "logo_fontSize": 28,
     "brand_size": "190x250",
     "gallery_size": "300x300",
@@ -109,7 +109,7 @@
     "fontSize-h3": 24,
     "fontSize-h4": 20,
     "fontSize-h5": 16,
-    "fontSize-h6": 13,
+    "fontSize-h6": 14,
     "applePay-button": "black",
     "color-textBase": "#333333",
     "color-textBase--hover": "#757575",
@@ -146,7 +146,7 @@
     "color-greyMedium": "#757575",
     "color-greyLight": "#999999",
     "color-greyLighter": "#cccccc",
-    "color-greyLightest": "#e5e5e5",
+    "color-greyLightest": "#ededed",
     "color-blue": "004f91",
     "button--default-color": "#004f91",
     "button--default-colorHover": "#003b6d",
@@ -215,7 +215,7 @@
     "navUser-dropdown-borderColor": "#cccccc",
     "navUser-indicator-backgroundColor": "#333333",
     "navPages-color": "#333333",
-    "navPages-color-hover": "#757575",
+    "navPages-color-hover": "#333333",
     "navPages-subMenu-backgroundColor": "#e5e5e5",
     "navPages-subMenu-separatorColor": "#cccccc",
     "dropdown--quickSearch-backgroundColor": "#e5e5e5",
@@ -381,7 +381,9 @@
         ]
       },
       "images": {},
-      "settings": {}
+      "settings": {
+        "header_tips": "The Socket Source sells only through distribution"
+      }
     }
   ]
 }
