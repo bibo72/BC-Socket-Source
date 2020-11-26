@@ -119,17 +119,9 @@
 
 // Details
 // -----------------------------------------------------------------------------
-//
-// 1. for Androind Chrome and IE with zoom horizontal scroll fix
-//
-// -----------------------------------------------------------------------------
 
 .productView-details {
-    padding-bottom: spacing("single") + spacing("third");
-
-    &.product-options {
-        overflow: hidden; // 1
-    }
+    margin-bottom: spacing("single") + spacing("third");
 }
 
 
@@ -203,24 +195,22 @@
     }
 }
 
-.productView-ratingWrapper {
-    display: inline-flex;
-    line-height: 1;
-}
-
 .productView-reviewLink {
     display: inline-block;
-    margin-left: spacing("quarter");
+    margin-left: spacing("half");
     vertical-align: middle;
-    color: stencilColor("color-textSecondary");
-
-    // scss-lint:disable NestingDepth
-    &:hover {
-        color: stencilColor("color-textSecondary--hover");
-    }
 
     &--new {
         padding: 0;
+    }
+
+    > a {
+        color: stencilColor("color-textSecondary");
+
+        // scss-lint:disable NestingDepth
+        &:hover {
+            color: stencilColor("color-textSecondary--hover");
+        }
     }
 }
 

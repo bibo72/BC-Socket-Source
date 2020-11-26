@@ -1,5 +1,3 @@
-import { createTranslationDictionary } from './utils/translations-utils';
-
 /**
  * Validate that the given date for the day/month/year select inputs is within potential range
  * @param $formField
@@ -37,9 +35,8 @@ function buildDateValidation($formField, validation) {
  * from many different inputs
  * @param $formField
  * @param validation
- * @param errorText provides error validation message
  */
-function buildRequiredCheckboxValidation(validation, $formField, errorText) {
+function buildRequiredCheckboxValidation($formField, validation) {
     const formFieldId = $formField.attr('id');
     const primarySelector = `#${formFieldId} input:first-of-type`;
     const secondarySelector = `#${formFieldId} input`;
@@ -60,17 +57,17 @@ function buildRequiredCheckboxValidation(validation, $formField, errorText) {
 
             cb(result);
         },
-        errorMessage: errorText,
+        errorMessage: `The '${validation.label}' field cannot be blank.`,
     };
 }
 
-function buildRequiredValidation(validation, selector, errorText) {
+function buildRequiredValidation(validation, selector) {
     return {
         selector,
         validate(cb, val) {
             cb(val.length > 0);
         },
-        errorMessage: errorText,
+        errorMessage: `The '${validation.label}' field cannot be blank.`,
     };
 }
 
@@ -91,7 +88,7 @@ function buildNumberRangeValidation(validation, formFieldSelector) {
 }
 
 
-function buildValidation($validateableElement, errorMessage) {
+function buildValidation($validateableElement) {
     const validation = $validateableElement.data('validation');
     const fieldValidations = [];
     const formFieldSelector = `#${$validateableElement.attr('id')}`;
@@ -103,7 +100,7 @@ function buildValidation($validateableElement, errorMessage) {
             fieldValidations.push(dateValidation);
         }
     } else if (validation.required && (validation.type === 'checkboxselect' || validation.type === 'radioselect')) {
-        fieldValidations.push(buildRequiredCheckboxValidation(validation, $validateableElement, errorMessage));
+        fieldValidations.push(buildRequiredCheckboxValidation($validateableElement, validation));
     } else {
         $validateableElement.find('input, select, textarea').each((index, element) => {
             const $inputElement = $(element);
@@ -115,7 +112,7 @@ function buildValidation($validateableElement, errorMessage) {
                 fieldValidations.push(buildNumberRangeValidation(validation, formFieldSelector));
             }
             if (validation.required) {
-                fieldValidations.push(buildRequiredValidation(validation, elementSelector, errorMessage));
+                fieldValidations.push(buildRequiredValidation(validation, elementSelector));
             }
         });
     }
@@ -126,18 +123,13 @@ function buildValidation($validateableElement, errorMessage) {
 /**
  * Builds the validation model for dynamic forms
  * @param $form
- * @param context provides access for error messages on required fields validation
  * @returns {Array}
  */
-export default function ($form, context) {
+export default function ($form) {
     let validationsToPerform = [];
-    const { field_not_blank: requiredFieldValidationText } = createTranslationDictionary(context);
 
     $form.find('[data-validation]').each((index, input) => {
-        const getLabel = $el => $el.first().data('validation').label;
-        const requiredValidationMessage = getLabel($(input)) + requiredFieldValidationText;
-
-        validationsToPerform = validationsToPerform.concat(buildValidation($(input), requiredValidationMessage));
+        validationsToPerform = validationsToPerform.concat(buildValidation($(input)));
     });
 
     return validationsToPerform;

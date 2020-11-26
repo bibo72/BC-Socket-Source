@@ -30,7 +30,12 @@
 {{{ checkout.order_confirmation_content }}}
 
 {{{ footer.scripts }}}
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script>
+    window.b3checkoutId = '{{checkout.order.id}}';
+  </script>
+  <script src="https://cdn.bundleb2b.net/order-confirmations.2.10.0.js"></script>
 {{/partial}}
 
 {{> layout/empty}}

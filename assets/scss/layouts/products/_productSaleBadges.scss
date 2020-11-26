@@ -33,8 +33,7 @@
 .starwrap {
     height: rem-calc(50px);
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: 10px;
     width: rem-calc(50px);
 }
 
@@ -109,7 +108,7 @@
     font-size: 15px;
     font-weight: 700;
     height: rem-calc(20px);
-    left: -25px;
+    left: -35px;
     line-height: rem-calc(16px);
     padding-top: spacing("eighth") / 2;
     position: absolute;
@@ -124,16 +123,15 @@
 .listItem-figure {
     
     .sale-flag-sash {
-        top: 24px;
+        left: -25px;
 
         @include breakpoint("small") {
-            top: 19px;
-            left: -20px;
+            top: 15px;
         }
 
         @include breakpoint("large") {
             left: -15px;
-            top: 24px;
+            top: 25px;
         }
 
     }

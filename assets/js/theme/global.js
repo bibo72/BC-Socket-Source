@@ -15,6 +15,7 @@ import adminBar from './global/adminBar';
 import carousel from './common/carousel';
 import loadingProgressBar from './global/loading-progress-bar';
 import svgInjector from './global/svg-injector';
+import objectFitImages from './global/object-fit-polyfill';
 
 export default class Global extends PageManager {
     onReady() {
@@ -35,5 +36,26 @@ export default class Global extends PageManager {
         }
         loadingProgressBar();
         svgInjector();
+        objectFitImages();
+
+        const url = 'https://cdn.bundleb2b.net/bundleb2b.2.10.0.js';
+        const el = document.createElement('script');
+        el.setAttribute('src', url);
+        document.querySelector('body').append(el);
+
+        window.b3themeConfig = {}
+        window.b3themeConfig.useJavaScript = {
+            orderdetail: {
+                callback(instance) {
+                    (async () => {
+                        const {
+                            id: orderID,
+                        } = instance.state
+                        await instance.api.getOrderDetail(orderID)
+                        window.B3Spinner.hide()
+                    })()
+                }
+            }
+        }
     }
 }

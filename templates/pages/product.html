@@ -9,14 +9,16 @@ product:
     similar_by_views:
         limit: {{theme_settings.productpage_similar_by_views_count}}
 ---
-{{inject 'productId' product.id}}
+{{inject "productId" product.id}}
+{{inject "zoomSize" theme_settings.zoom_size}}
+{{inject "productSize" theme_settings.product_size}}
 
 {{#partial "page"}}
 
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
     {{#each product.shipping_messages}}
-        {{> components/common/alert/alert-info message}}
+        {{> components/common/alert-info message}}
     {{/each}}
 
     <div itemscope itemtype="http://schema.org/Product">

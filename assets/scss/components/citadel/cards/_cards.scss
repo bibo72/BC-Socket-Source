@@ -28,20 +28,12 @@
 .card-figure {
     margin-top: $card-figure-marginTop;
     position: relative;
-    padding: 3px;
-    overflow: hidden;
-
     &:hover {
 
         // scss-lint:disable NestingDepth
         .card-figcaption {
             opacity: 1;
         }
-    }
-
-    &__link {
-        display: block;
-        position: relative;
     }
 }
 
@@ -84,7 +76,6 @@
     > a {
         color: $card-title-color;
         text-decoration: $card-title-textDecoration;
-        display: block;
 
         // scss-lint:disable NestingDepth
         &:hover {
@@ -111,13 +102,6 @@
     &:active {
         background-color: $card-figcaption-button-backgroundHover;
         border: $card-figcaption-button-border;
-    }
-
-    .card-figcaption-body & {
-        &:focus {
-            background-color: $card-figcaption-button-backgroundHover;
-            outline: revert;
-        }
     }
 
     + .card-figcaption-button {

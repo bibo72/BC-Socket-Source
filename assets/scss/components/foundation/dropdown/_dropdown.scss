@@ -10,8 +10,6 @@
 }
 
 .dropdown-menu {
-    z-index: $zIndex-lowest;
-
     &.is-loading .loadingOverlay {
         background: none;
         padding: (spacing("double") + spacing("single")) 0;
@@ -20,12 +18,6 @@
 
     &.is-open {
         display: block;
-    }
-
-    .button {
-        &:focus {
-            z-index: $zIndex-lowest;
-        }
     }
 }
 
@@ -70,10 +62,6 @@
     .icon {
         float: right;
         margin-left: 10px;
-    }
-
-    &:focus {
-        z-index: $zIndex-lower;
     }
 }
 

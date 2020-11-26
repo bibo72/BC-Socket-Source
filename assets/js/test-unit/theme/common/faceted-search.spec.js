@@ -1,8 +1,8 @@
 import FacetedSearch from '../../../theme/common/faceted-search';
-import { Validators } from '../../../theme/common/utils/form-utils';
+import { Validators } from '../../../theme/common/form-utils';
 import $ from 'jquery';
 import { hooks, api } from '@bigcommerce/stencil-utils';
-import urlUtils from '../../../theme/common/utils/url-utils';
+import urlUtils from '../../../theme/common/url-utils';
 
 describe('FacetedSearch', () => {
     let facetedSearch;
@@ -10,7 +10,6 @@ describe('FacetedSearch', () => {
     let onSearchSuccess;
     let html;
     let $element;
-    let options;
 
     beforeEach(() => {
         onSearchSuccess = jest.fn();
@@ -24,16 +23,6 @@ describe('FacetedSearch', () => {
             template: {
                 productListing: 'category/product-listing',
                 sidebar: 'category/sidebar',
-            },
-        };
-
-        options = {
-            validationErrorMessages: {
-                onMinPriceError: jasmine.any(String),
-                onMaxPriceError: jasmine.any(String),
-                minPriceNotEntered: jasmine.any(String),
-                maxPriceNotEntered: jasmine.any(String),
-                onInvalidPrice: jasmine.any(String),
             },
         };
 
@@ -68,7 +57,8 @@ describe('FacetedSearch', () => {
 
         $element = $(html);
         $element.appendTo(document.body);
-        facetedSearch = new FacetedSearch(requestOptions, onSearchSuccess, options);
+
+        facetedSearch = new FacetedSearch(requestOptions, onSearchSuccess);
     });
 
     afterEach(() => {
@@ -109,7 +99,7 @@ describe('FacetedSearch', () => {
         it('should re-init price range validator', function() {
             facetedSearch.refreshView(content);
 
-            expect(Validators.setMinMaxPriceValidation).toHaveBeenCalledWith(facetedSearch.priceRangeValidator, jasmine.any(Object), options.validationErrorMessages);
+            expect(Validators.setMinMaxPriceValidation).toHaveBeenCalledWith(facetedSearch.priceRangeValidator, jasmine.any(Object));
         });
     });
 
@@ -207,11 +197,11 @@ describe('FacetedSearch', () => {
     describe('when price range form is submitted', () => {
         let event;
         let eventName;
-        let currentTarget = '#facet-range-form';
 
         beforeEach(() => {
             eventName = 'facetedSearch-range-submitted';
             event = {
+                currentTarget: '#facet-range-form',
                 preventDefault: jest.fn(),
             };
 
@@ -220,7 +210,7 @@ describe('FacetedSearch', () => {
         });
 
         it('should set `min_price` and `max_price` query param to corresponding form values if form is valid', () => {
-            hooks.emit(eventName, event, currentTarget);
+            hooks.emit(eventName, event);
 
             expect(urlUtils.goToUrl).toHaveBeenCalledWith('/?min_price=0&max_price=100');
         });
@@ -242,21 +232,20 @@ describe('FacetedSearch', () => {
     describe('when price range form is submitted with other facets selected', () => {
         let event;
         let eventName;
-        let currentTarget;
 
         beforeEach(() => {
             eventName = 'facetedSearch-range-submitted';
             event = {
+                currentTarget: '#facet-range-form-with-other-facets',
                 preventDefault: jest.fn(),
             };
-            currentTarget = '#facet-range-form-with-other-facets';
 
             jest.spyOn(urlUtils, 'goToUrl').mockImplementation(() => {});
             jest.spyOn(facetedSearch.priceRangeValidator, 'areAll').mockImplementation(() => true);
         });
 
         it('send `min_price` and `max_price` query params if form is valid', () => {
-            hooks.emit(eventName, event, currentTarget);
+            hooks.emit(eventName, event);
 
             expect(urlUtils.goToUrl).toHaveBeenCalledWith('/?brand[]=item1&brand[]=item2&min_price=0&max_price=50');
         });
@@ -265,26 +254,25 @@ describe('FacetedSearch', () => {
     describe('when sort filter is submitted', () => {
         let event;
         let eventName;
-        let currentTarget;
 
         beforeEach(() => {
             eventName = 'sortBy-submitted';
             event = {
+                currentTarget: '#facet-sort',
                 preventDefault: jest.fn(),
             };
-            currentTarget = '#facet-sort';
 
             jest.spyOn(urlUtils, 'goToUrl').mockImplementation(() => {});
         });
 
         it('should set `sort` query param to the value of selected option', () => {
-            hooks.emit(eventName, event, currentTarget);
+            hooks.emit(eventName, event);
 
             expect(urlUtils.goToUrl).toHaveBeenCalledWith('/?sort=featured');
         });
 
         it('should prevent default event', function() {
-            hooks.emit(eventName, event, currentTarget);
+            hooks.emit(eventName, event);
 
             expect(event.preventDefault).toHaveBeenCalled();
         });
@@ -293,26 +281,25 @@ describe('FacetedSearch', () => {
     describe('when a facet is clicked', () => {
         let event;
         let eventName;
-        let currentTarget;
 
         beforeEach(() => {
             eventName = 'facetedSearch-facet-clicked';
             event = {
+                currentTarget: '[href="?brand=item1"]',
                 preventDefault: jest.fn(),
             };
-            currentTarget = '[href="?brand=item1"]';
 
             jest.spyOn(urlUtils, 'goToUrl').mockImplementation(() => {});
         });
 
         it('should change the URL of window to the URL of facet item', () => {
-            hooks.emit(eventName, event, currentTarget);
+            hooks.emit(eventName, event);
 
             expect(urlUtils.goToUrl).toHaveBeenCalledWith('?brand=item1');
         });
 
         it('should prevent default event', function() {
-            hooks.emit(eventName, event, currentTarget);
+            hooks.emit(eventName, event);
 
             expect(event.preventDefault).toHaveBeenCalled();
         });

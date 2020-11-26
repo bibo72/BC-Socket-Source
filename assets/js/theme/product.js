@@ -6,10 +6,7 @@ import Review from './product/reviews';
 import collapsibleFactory from './common/collapsible';
 import ProductDetails from './common/product-details';
 import videoGallery from './product/video-gallery';
-import { classifyForm } from './common/utils/form-utils';
-import modalFactory, { modalTypes } from './global/modal';
-
-const { WRITE_REVIEW } = modalTypes;
+import { classifyForm } from './common/form-utils';
 
 export default class Product extends PageManager {
     constructor(context) {
@@ -17,7 +14,6 @@ export default class Product extends PageManager {
         this.url = window.location.href;
         this.$reviewLink = $('[data-reveal-id="modal-review-form"]');
         this.$bulkPricingLink = $('[data-reveal-id="modal-bulk-pricing"]');
-        this.reviewModal = modalFactory('#modal-review-form')[0];
     }
 
     onReady() {
@@ -38,19 +34,11 @@ export default class Product extends PageManager {
 
         videoGallery();
 
-        this.bulkPricingHandler();
-
         const $reviewForm = classifyForm('.writeReview-form');
-
-        if ($reviewForm.length === 0) return;
-
         const review = new Review($reviewForm);
-
-        $(document).on('opened.fndtn.reveal', '#modal-review-form', () => this.reviewModal.setupFocusableElements(WRITE_REVIEW));
 
         $('body').on('click', '[data-reveal-id="modal-review-form"]', () => {
             validator = review.registerValidation(this.context);
-            this.ariaDescribeReviewInputs($reviewForm);
         });
 
         $reviewForm.on('submit', () => {
@@ -63,16 +51,7 @@ export default class Product extends PageManager {
         });
 
         this.productReviewHandler();
-    }
-
-    ariaDescribeReviewInputs($form) {
-        $form.find('[data-input]').each((_, input) => {
-            const $input = $(input);
-            const msgSpanId = `${$input.attr('name')}-msg`;
-
-            $input.siblings('span').attr('id', msgSpanId);
-            $input.attr('aria-describedby', msgSpanId);
-        });
+        this.bulkPricingHandler();
     }
 
     productReviewHandler() {

@@ -1,7 +1,7 @@
 <div class="modal-header">
-    <h1 class="modal-header-title">
+    <h2 class="modal-header-title">
         {{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}
-    </h1>
+    </h2>
 </div>
 
 <div class="modal-body">
@@ -66,9 +66,9 @@
                 </figure>
 
                 <div class="productView-details">
-                    <h2 class="productView-title">
+                    <h4 class="productView-title">
                         {{name}}
-                    </h2>
+                    </h4>
 
                     <div class="productView-brand">
                         {{brand.name}}
@@ -99,9 +99,9 @@
 
     {{#if cart.suggested_products}}
         <section class="suggestiveCart">
-            <h2>
+            <h4>
                 {{lang 'cart.added_to_cart.you_might_also_like'}}&hellip;
-            </h2>
+            </h4>
 
             <ul class="productGrid">
                 {{#each cart.suggested_products}}

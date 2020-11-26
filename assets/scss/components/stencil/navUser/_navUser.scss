@@ -92,7 +92,7 @@
     }
 
     .icon {
-        @include square(20px);
+        @include square(8px);
         margin: -1px 0 0 spacing("eighth");
     }
 
@@ -161,13 +161,6 @@
 
 .navUser-item--cart {
     display: block;
-
-    // removing cart link for small screens when quantity is 0
-    &__hidden-s {
-        @media (max-width: $screen-small) {
-            display: none;
-        }
-    }
 
     .navUser-action {
         color: stencilColor("navUser-color");

@@ -3,7 +3,7 @@ import _ from 'lodash';
 import giftCertCheck from './common/gift-certificate-validator';
 import utils from '@bigcommerce/stencil-utils';
 import ShippingEstimator from './cart/shipping-estimator';
-import { defaultModal, modalTypes } from './global/modal';
+import { defaultModal } from './global/modal';
 import swal from './global/sweet-alert';
 
 export default class Cart extends PageManager {
@@ -137,12 +137,10 @@ export default class Cart extends PageManager {
             modal.updateContent(response.content);
 
             this.bindGiftWrappingForm();
-
-            modal.setupFocusableElements(modalTypes.CART_CHANGE_PRODUCT);
         });
 
-        utils.hooks.on('product-option-change', (event, currentTarget) => {
-            const $changedOption = $(currentTarget);
+        utils.hooks.on('product-option-change', (event, option) => {
+            const $changedOption = $(option);
             const $form = $changedOption.parents('form');
             const $submit = $('input.button', $form);
             const $messageBox = $('.alertMessageBox');
@@ -304,7 +302,7 @@ export default class Cart extends PageManager {
                     this.refreshContent();
                 } else {
                     swal.fire({
-                        html: response.data.errors.join('\n'),
+                        text: response.data.errors.join('\n'),
                         icon: 'error',
                     });
                 }
@@ -348,7 +346,7 @@ export default class Cart extends PageManager {
                     this.refreshContent();
                 } else {
                     swal.fire({
-                        html: resp.data.errors.join('\n'),
+                        text: resp.data.errors.join('\n'),
                         icon: 'error',
                     });
                 }

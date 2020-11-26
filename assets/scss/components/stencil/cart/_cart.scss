@@ -10,7 +10,6 @@
 // -----------------------------------------------------------------------------
 
 $cart-item-spacing:                     spacing("single");
-$cart-content-padding-right:            4px;
 
 $cart-thumbnail-maxWidth:               remCalc(100px);
 $cart-thumbnail-height:                 remCalc(100px);
@@ -18,7 +17,6 @@ $cart-thumbnail-maxHeight:              14rem;
 $cart-thumbnail-paddingVertical:        0.5rem;
 
 $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-spacing;
-$card-preview-zoom-bottom-offset:       6rem;
 
 //
 // Shared styles for additional checkout buttons
@@ -219,9 +217,6 @@ $card-preview-zoom-bottom-offset:       6rem;
 
 // Cart content
 // -----------------------------------------------------------------------------
-.cart-content-padding-right {
-    padding-right: $cart-content-padding-right;
-}
 
 .cart-header-quantity,
 .cart-item-quantity {
@@ -273,18 +268,13 @@ $card-preview-zoom-bottom-offset:       6rem;
 }
 
 .cart-item-brand {
-    color: stencilColor("color-textSecondary");
+    color: color("greys", "light");
     margin-bottom: spacing("eighth");
 }
 
 .cart-item-name {
     font-size: fontSize("smaller");
     margin: 0;
-    display: inline-block;
-
-    &__label {
-        display: inline-block;
-    }
 
     + .definitionList {
         margin-top: spacing("quarter");
@@ -367,11 +357,11 @@ $card-preview-zoom-bottom-offset:       6rem;
     }
 
     .form-select {
-        background-position: right remCalc(5px) center;
+        background-position: right remCalc(5px) top remCalc(7px);
         background-size: remCalc(20px) remCalc(20px);
         height: remCalc(32px);
         margin-bottom: spacing("half");
-        padding: 0 spacing("half");
+        padding: spacing("third") spacing("half");
     }
 
     .form-inlineMessage {
@@ -436,6 +426,7 @@ $card-preview-zoom-bottom-offset:       6rem;
 .coupon-code-add,
 .coupon-code-cancel,
 .shipping-estimate-show,
+.shipping-estimate-hide,
 .gift-certificate-add,
 .gift-certificate-cancel {
     color: stencilColor("color-textSecondary");
@@ -449,7 +440,7 @@ $card-preview-zoom-bottom-offset:       6rem;
 }
 
 .coupon-code-cancel,
-.shipping-estimate-show[aria-expanded="true"] {
+.shipping-estimate-hide {
     font-style: italic;
 }
 
@@ -566,11 +557,6 @@ $card-preview-zoom-bottom-offset:       6rem;
 // 1. Need to vertically align a block of text
 //
 // -----------------------------------------------------------------------------
-
-.previewCartWrapper {
-    max-height: calc(100vh - #{$card-preview-zoom-bottom-offset});
-    overflow: auto;
-}
 
 .previewCartList {
     @include u-listReset;

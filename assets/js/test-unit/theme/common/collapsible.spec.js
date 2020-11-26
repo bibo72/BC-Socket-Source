@@ -39,7 +39,6 @@ describe('Collapsible', () => {
 
         it('should open if it is closed', () => {
             collapsible.$target.removeClass('is-open');
-            collapsible.$target.hide();
             collapsible.$toggle.trigger(CollapsibleEvents.click);
 
             expect(collapsible.open).toHaveBeenCalled();

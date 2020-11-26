@@ -23,21 +23,6 @@
 // -----------------------------------------------------------------------------
 
 .listItem {
-    &:focus-within {
-        .listItem-figureBody {
-            @include breakpoint("large") {
-                opacity: 1;
-            }
-        }
-    }
-
-    &.focus-within {
-        .listItem-figureBody {
-            @include breakpoint("large") {
-                opacity: 1;
-            }
-        }
-    }
 
     @include breakpoint("small") {
         @include grid-row($behavior: "nest");
@@ -67,8 +52,7 @@
     border-color: $card-figcaption-button-borderColor;
     color: $card-figcaption-button-color;
 
-    &:hover,
-    &:focus {
+    &:hover {
         background-color: $card-figcaption-button-backgroundHover;
         border-color: $card-figcaption-button-borderColor;
         color: $card-figcaption-button-color;
@@ -83,11 +67,6 @@
     margin: 0 0 spacing("single");
     position: relative;
     
-    &__link {
-        display: block;
-        margin: 3px;
-    }
-
     @include breakpoint("small") {
         margin-bottom: 0;
         padding-left: spacing("half");
@@ -99,11 +78,14 @@
         margin: spacing("single") 0;
 
         @include breakpoint("large") {
+            @include verticalPositionMiddle();
             display: inline-block;
-            margin: 0;
+            margin: 0 0 spacing("single");
             pointer-events: all;
+            transform-style: preserve-3d;
         }
-    }    
+    }
+    
 }
 
 .listItem-figureBody {
@@ -111,13 +93,15 @@
     text-align: center;
 
     @include breakpoint("large") {
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
+        bottom: 0;
+        height: 100%;
+        left: spacing("half");
         opacity: 0;
         position: absolute;
+        right: spacing("half");
+        top: 0;
 
-        .listItem:hover & {
+        &:hover {
             opacity: 1;
         }
     }

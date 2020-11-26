@@ -1,7 +1,6 @@
 {
-  "name": "Socket Source",
-  "version": "4.12.1",
-  "template_engine": "handlebars_v4",
+  "name": "Bundle-V2.10-20201102",
+  "version": "4.9.0",
   "meta": {
     "price": 0,
     "documentation_url": "https://support.bigcommerce.com/articles/Public/Cornerstone-Theme-Manual",
@@ -149,7 +148,6 @@
     "color-greyLighter": "#cccccc",
     "color-greyLightest": "#e5e5e5",
     "color-blue": "004f91",
-    "banner--deafault-backgroundColor": "#707070",
     "button--default-color": "#004f91",
     "button--default-colorHover": "#003b6d",
     "button--default-colorActive": "#003b6d",
@@ -339,11 +337,7 @@
       "paypal"
     ],
     "lazyload_mode": "lazyload+lqip",
-    "show-admin-bar": true,
-    "checkout-paymentbuttons-paypal-color": "black",
-    "checkout-paymentbuttons-paypal-shape": "rect",
-    "checkout-paymentbuttons-paypal-size": "large",
-    "checkout-paymentbuttons-paypal-label": "pay"
+    "show-admin-bar": true
   },
   "read_only_files": [
     "/assets/scss/components/citadel",

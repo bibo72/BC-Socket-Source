@@ -3,18 +3,17 @@
     <div class="navUser-flex">
         <ul class="navUser-section navUser-section--alt">
             <li class="navUser-item">
-                <button class="navUser-action navUser-action--quickSearch"
-                   type="button"
-                   id="quick-search-expand"
-                   data-search="quickSearch"
+                <a class="navUser-action navUser-action--quickSearch"
+                   href="#" data-search="quickSearch"
                    aria-controls="quickSearch"
+                   aria-expanded="false"
                    aria-label="{{lang 'common.search'}}"
                 >
-                    <span class="icon navUser-icon">
-                        <svg><use xlink:href="#icon-search" /></svg>
-                    </span>
+                <span class="icon navUser-icon">
+                    <svg><use xlink:href="#icon-search" /></svg>
+                </span>
                     {{lang 'common.search'}}
-                </button>
+                </a>
             </li>
         </ul>
         <ul class="navUser-section navUser-section--alt">
@@ -60,9 +59,9 @@
                        href="{{urls.account.index}}"
                        aria-label="{{lang 'common.account'}}"
                     >
-                        <span class="icon navUser-icon">
-                            <svg><use xlink:href="#icon-user" /></svg>
-                        </span>
+                    <span class="icon navUser-icon">
+                        <svg><use xlink:href="#icon-user" /></svg>
+                    </span>
                         {{lang 'common.account'}}
                     </a>
                     <a class="navUser-action"
@@ -76,9 +75,9 @@
                        href="{{urls.auth.login}}"
                        aria-label="{{lang 'common.login'}}"
                     >
-                        <span class="icon navUser-icon">
-                            <svg><use xlink:href="#icon-user" /></svg>
-                        </span>
+                    <span class="icon navUser-icon">
+                        <svg><use xlink:href="#icon-user" /></svg>
+                    </span>
                         {{lang 'common.login'}}
                     </a>
                     {{#if settings.account_creation_enabled}}
@@ -98,7 +97,7 @@
                    data-dropdown="cart-preview-dropdown"
                    data-options="align:right"
                    href="{{urls.cart}}"
-                   aria-label="{{lang 'cart.nav_aria_label'}}"
+                   aria-label="{{lang 'common.cart'}}"
                 >
                     <span class="navUser-item-cartLabel">{{lang 'common.cart'}}</span>
                     <span class="countPill cart-quantity"></span>
@@ -108,7 +107,7 @@
             </li>
         </ul>
     </div>
-    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" data-prevent-quick-search-close>
-        {{> components/common/quick-search name='nav-quick-search'}}
+    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1" data-prevent-quick-search-close>
+        {{> components/common/quick-search}}
     </div>
 </nav>

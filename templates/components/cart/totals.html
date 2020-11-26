@@ -30,16 +30,14 @@
         </li>
     {{/if}}
     {{#each cart.taxes}}
-        {{#unless included}}
-            <li class="cart-total">
-                <div class="cart-total-label">
-                    <strong>{{name}}:</strong>
-                </div>
-                <div class="cart-total-value">
-                    <span>{{cost.formatted}}</span>
-                </div>
-            </li>
-        {{/unless}}
+        <li class="cart-total">
+            <div class="cart-total-label">
+                <strong>{{name}}:</strong>
+            </div>
+            <div class="cart-total-value">
+                <span>{{cost.formatted}}</span>
+            </div>
+        </li>
     {{/each}}
     {{#if cart.discount }}
         <li class="cart-total">
@@ -106,16 +104,4 @@
             {{/or}}
         </div>
     </li>
-    {{#each cart.taxes}}
-        {{#if included}}
-            <li class="cart-total">
-                <div class="cart-total-label">
-                    <strong>{{concat name (lang 'cart.included_in_total')}}:</strong>
-                </div>
-                <div class="cart-total-value">
-                    <span>{{cost.formatted}}</span>
-                </div>
-            </li>
-        {{/if}}
-    {{/each}}
 </ul>

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { showAlertModal } from './modal';
 
 function decrementCounter(counter, item) {
@@ -32,7 +33,7 @@ export default function (urlContext) {
     $('body').on('compareReset', () => {
         const $checked = $('body').find('input[name="products\[\]"]:checked');
 
-        compareCounter = $checked.length ? $checked.map((index, element) => element.value).get() : [];
+        compareCounter = $checked.length ? _.map($checked, element => element.value) : [];
         updateCounterNav(compareCounter, $compareLink, urlContext);
     });
 

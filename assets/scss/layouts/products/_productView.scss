@@ -11,14 +11,6 @@
     margin-left: -(spacing("base"));
     margin-right: -(spacing("base"));
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    @include breakpoint("medium") {
-        display: block;
-    }
-
     .modal & {
         padding-bottom: 0;
         padding-top: 0;
@@ -54,10 +46,6 @@
 
     .productView--quickView & {
         position: relative;
-    }
-
-    &.product-data {
-        order: -1;
     }
 }
 

@@ -1895,9 +1895,6 @@
     "uk": "Срібний",
     "zh": "银"
   },
-  "i18n.White": {
-    "default": "White"
-  },
   "i18n.Black": {
     "default": "Black",
     "fr": "Noir",
@@ -1995,8 +1992,5 @@
     "it": "Mostra bottoni in verticale",
     "uk": "Показати кнопки вертикально",
     "zh": "垂直显示按钮"
-  },
-  "i18n.CheckoutPayPalButton": {
-    "default": "Checkout PayPal Button"
   }
 }

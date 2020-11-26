@@ -23,7 +23,7 @@ export default class {
     initLinkBind() {
         const $content = $('#productReviews-content', this.$reviewsContent);
 
-        $('#productReview_link').on('click', () => {
+        $('.productView-reviewLink').on('click', () => {
             $('.productView-reviewTabLink').trigger('click');
             if (!$content.hasClass('is-open')) {
                 this.$collapsible.trigger(CollapsibleEvents.click);

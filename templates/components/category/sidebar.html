@@ -1,11 +1,11 @@
 <nav>
     {{#if category.subcategories}}
         <div class="sidebarBlock">
-            <h2 class="sidebarBlock-heading">{{category.name}}</h2>
+            <h5 class="sidebarBlock-heading">{{category.name}}</h5>
             <ul class="navList">
                 {{#each category.subcategories}}
                 <li class="navList-item">
-                    <a class="navList-action" href="{{url}}" title="{{name}}">{{name}}</a>
+                    <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
                 </li>
                 {{/each}}
             </ul>
