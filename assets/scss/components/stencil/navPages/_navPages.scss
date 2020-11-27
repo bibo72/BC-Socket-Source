@@ -439,7 +439,7 @@
     }
 
     @include breakpoint("medium") {
-        padding: spacing("half") 0 (spacing("half") + spacing("quarter"));
+        padding: (spacing("half") + spacing("quarter")) 0;
     }
 
     .collapsible-icon-wrapper {

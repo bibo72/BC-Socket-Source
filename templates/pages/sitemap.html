@@ -7,7 +7,7 @@
         <h3>{{label}}</h3>
         <ul>
             {{#each body}}
-                {{#or (if (lowercase name) '===' 'header top') (if (lowercase name) '===' 'products menu static page')}}
+                {{#or (if (lowercase label) '===' 'header top') (if (lowercase label) '===' 'products menu static page')}}
                     {{#if children}}
                         {{#each children}}
                             {{> components/sitemap/links}}

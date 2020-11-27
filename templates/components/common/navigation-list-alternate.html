@@ -9,7 +9,7 @@
             <svg><use xlink:href="#icon-chevron-down" /></svg>
         </span>
     </a>
-    {{> components/common/navigation-dropdown staticPage=staticPage}}
+    {{> components/common/navigation-dropdown staticPages=staticPages}}
 {{else}}
     <a class="navPages-action{{#if is_active}} activePage{{/if}}"
        href="{{url}}"
