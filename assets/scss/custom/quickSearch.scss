@@ -1,0 +1,106 @@
+#quickSearch {
+    @include breakpoint("medium") {
+        pointer-events: none;
+        background: transparent;
+        top: 70px !important;
+    }
+
+    .form-field {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid stencilColor("color-blue");
+        padding: 0 remCalc(10px) 0 spacing("single");
+        margin: 0;
+
+        @include breakpoint("medium") {
+            padding: 0 remCalc(4px) 0 spacing("base");
+        }
+
+        .form-input {
+            flex: 1;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .form-close {
+            @include square(38px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: stencilColor("color-blue");
+            text-decoration: none;
+            // display: none;
+        }
+    }
+
+    .quickSearch-container {
+        padding: 0;
+        @include breakpoint("medium") {
+            padding: 0 $container-padding;
+
+            .form {
+                pointer-events: auto;
+                width: 100%;
+                max-width: 866px;
+                background: $dropdown--quickSearch-backgroundColor;
+                margin-right: 0;
+            }
+        }
+    }
+
+    .quickSearchResults {
+        pointer-events: auto;
+        background: $dropdown--quickSearch-backgroundColor;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.13);
+        max-height: 75vh;
+        overflow-y: auto;
+        position: relative;
+
+        @include breakpoint("medium") {
+            margin-top: 30px;
+        }
+
+        >.container {
+            position: static;
+        }
+
+        .productList {
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            font-size: 0;
+            padding: 20px 0 0;
+            margin: 0 -1px;
+
+            .product {
+                width: 100%;
+                font-size: fontSize("base");
+                padding: 0 1px;
+                margin-bottom: 20px;
+
+                @include breakpoint("medium") {
+                    width: width("4/12");
+                }
+
+                .listItem {
+                    height: 100%;
+                }
+            }
+        }
+
+        .modal-close {
+            right: 0;
+            margin-top: -10px;
+
+            @include breakpoint("medium") {
+                right: 20px;
+            }
+        }
+    }
+}

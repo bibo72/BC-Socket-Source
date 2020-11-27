@@ -277,12 +277,12 @@
 
 .dropdown--quickSearch {
     background-color: $dropdown--quickSearch-backgroundColor;
-    padding: spacing("single") 0;
+    // padding: spacing("single");
     display: none;
 
-    @include breakpoint("small") {
-        padding: spacing("double");
-    }
+    // @include breakpoint("small") {
+    //     padding: spacing("double");
+    // }
 
     &.is-open {
         display: initial;
@@ -296,7 +296,7 @@
 
     .form {
         margin: auto;
-        max-width: 30rem;
+        max-width: 100%;
     }
 
     .form,
@@ -312,9 +312,9 @@
     .productGrid {
         padding: spacing("single") 0 0;
 
-        @include breakpoint("small") {
-            padding: spacing("double") 0 0;
-        }
+        // @include breakpoint("small") {
+        //     padding: spacing("double") 0 0;
+        // }
     }
 }
 

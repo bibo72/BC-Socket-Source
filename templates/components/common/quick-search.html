@@ -1,11 +1,14 @@
-<div class="container">
+<div class="container quickSearch-container">
     <form class="form" action="{{urls.search}}">
         <fieldset class="form-fieldset">
             <div class="form-field">
                 <label class="is-srOnly" for="search_query">{{lang "search.quick_search.input_label"}}</label>
                 <input class="form-input" data-search-quick name="search_query" id="search_query" data-error-message="{{lang 'search.error.empty_field'}}" placeholder="{{lang 'search.quick_search.input_placeholder'}}" autocomplete="off">
+                <a class="form-close" aria-label="{{lang 'common.close'}}" data-drop-down-close role="button">
+                    <span aria-hidden="true">&#215;</span>
+                </a>
             </div>
         </fieldset>
     </form>
-    <section class="quickSearchResults" data-bind="html: results"></section>
 </div>
+<section class="quickSearchResults" data-bind="html: results"></section>

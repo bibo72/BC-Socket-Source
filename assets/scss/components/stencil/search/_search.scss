@@ -24,11 +24,11 @@
 }
 
 .quickSearchResults {
-    margin-top: spacing("single");
+    // margin-top: spacing("single");
 
-    @include breakpoint("medium") {
-        margin-top: 0;
-    }
+    // @include breakpoint("medium") {
+    //     margin-top: 0;
+    // }
 
     .modal-close {
         display: none;

@@ -38,18 +38,19 @@
 
 .modal-close {
     @include square($reveal-close-height);
-    color: stencilColor("icon-color");
-    font-size: 26px;
+    color: stencilColor("color-black");
+    font-size: 24px;
     line-height: remCalc($reveal-close-height);
+    font-weight: bold;
     padding: 0;
     position: absolute;
     text-align: center;
     text-decoration: none;
     z-index: zIndex("high");
 
-    @include breakpoint("medium") {
-        font-size: 32px;
-    }
+    // @include breakpoint("medium") {
+    //     font-size: 32px;
+    // }
 
     &:hover {
         color: stencilColor("icon-color-hover");

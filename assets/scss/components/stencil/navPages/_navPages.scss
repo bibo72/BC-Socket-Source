@@ -225,9 +225,12 @@
         }
     }
 
+    &:hover {
+        text-decoration: underline;
+    }
+
     &:hover, &.activePage {
         color: stencilColor("navPages-color-hover");
-        text-decoration: underline;
 
         // scss-lint:disable NestingDepth
         svg {

@@ -1,18 +1,18 @@
-{{#if product_results.products}}
-    <a class="modal-close" aria-label="{{lang 'common.close'}}" data-drop-down-close role="button">
-        <span aria-hidden="true">&#215;</span>
-    </a>
-    <ul class="productGrid" {{#if settings.data_tag_enabled}} data-list-name="Quick Search Results" {{/if}}>
-
-        {{#each product_results.products}}
-        <li class="product">
-                {{> components/products/card settings=../settings alternate=true show_compare=../show_compare theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
-
-        </li>
-        {{/each}}
-    </ul>
-{{else}}
-    <p class="quickSearchMessage">
-        {{{lang 'search.results.quick_count' count=pagination.product_results.total search_query=(sanitize forms.search.query) }}}
-    </p>
-{{/if}}
+<div class="container">
+    {{#if product_results.products}}
+        <a class="modal-close" aria-label="{{lang 'common.close'}}" data-drop-down-close role="button">
+            <span aria-hidden="true">&#215;</span>
+        </a>
+        <ul class="productList" {{#if settings.data_tag_enabled}} data-list-name="Quick Search Results" {{/if}}>
+            {{#each (limit product_results.products 3)}}
+                <li class="product">
+                    {{> components/products/list-item settings=../settings alternate=true show_compare=../show_compare theme_settings=../theme_settings customer=../customer hide_product_quick_view=true event="list" position=(add @index 1)}}
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p class="quickSearchMessage">
+            {{{lang 'search.results.quick_count' count=pagination.product_results.total search_query=(sanitize forms.search.query) }}}
+        </p>
+    {{/if}}
+</div>

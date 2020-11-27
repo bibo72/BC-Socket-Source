@@ -3,7 +3,7 @@ import utils from '@bigcommerce/stencil-utils';
 import StencilDropDown from './stencil-dropdown';
 
 export default function () {
-    const TOP_STYLING = 'top: 49px;';
+    const TOP_STYLING = 'top: auto;';
     const $quickSearchResults = $('.quickSearchResults');
     const $quickSearchDiv = $('#quickSearch');
     const $searchQuery = $('#search_query');

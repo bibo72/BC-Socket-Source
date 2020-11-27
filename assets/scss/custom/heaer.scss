@@ -70,14 +70,20 @@ header.header {
     }
 
     .navUser {
-        padding: 0 8px;
+        padding: 0 10px;
+
+        @include breakpoint("medium") {
+            padding: 0 0 0 10px;
+        }
 
         .navUser-section {
             margin: 0;
         }
 
         .navUser-icon {
-            margin-right: 8px;
+            @include breakpoint("medium") {
+                margin-right: 8px;
+            }
         }
 
         .navUser-item--quickSearch {
@@ -85,6 +91,10 @@ header.header {
             .navUser-action--quickSearch {
                 font-size: 0;
                 color: stencilColor("color-blue");
+
+                .navUser-icon {
+                    margin: 0;
+                }
 
                 svg {
                     fill: stencilColor("color-blue");
