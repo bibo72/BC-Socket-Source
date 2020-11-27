@@ -31,76 +31,118 @@
         }
     }
 }
-.custom-account-section {
-    .custom-login-form {
-        padding: 20px;
 
-        .form-label {
-            font-family: $header-font-family;
-            font-size: fontSize("smallest");
-            font-weight: bold;
-            text-transform: uppercase;
+.login-form,
 
-            small {
-                display: none;
-            }
-        }
+.custom-login-form {
+    padding: 20px;
 
-        .form-actions {
-            display: flex;
-            align-items: center;
+    .form-label {
+        font-family: $header-font-family;
+        font-size: fontSize("smallest");
+        font-weight: bold;
+        text-transform: uppercase;
 
-            .forgot-password {
-                font-weight: bold;
-            }
+        small {
+            display: none;
         }
     }
 
-    .custom-registration {
-        padding: 30px 20px;
-        background: stencilColor("color-greyLightest");
+    .form-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
-        .registration-tips {
-            font-size: fontSize("large");
+        @include breakpoint("medium") {
+            flex-direction: row;
+            align-items: center;
+
         }
 
-        .registration-list {
+        .button--trapezoid {
+            width: 100%;
             margin: 0;
-            .registration-item {
-                display: flex;
-                align-items: center;
 
-                + .registration-item {
-                    margin-top: 15px;
-                }
+            @include breakpoint("medium") {
+                width: auto;
+            }
+        }
 
-                h6 {
-                    width: 180px;
-                    letter-spacing: 0;
-                    line-height: 22px;
-                    margin: 0;
-                }
+        .forgot-password {
+            font-weight: bold;
+            text-align: left;
+            margin: 20px 0 0;
 
-                a {
-                    font-size: fontSize("smaller");
-                    font-weight: bold;
-                    letter-spacing: 0;
-                }
+            @include breakpoint("medium") {
+                margin: 0 0 0 25px;
+            }
+        }
+    }
+}
+
+.custom-registration {
+    padding: 30px 20px;
+    background: stencilColor("color-greyLightest");
+
+    .registration-tips {
+        font-size: fontSize("large");
+    }
+
+    .registration-list {
+        margin: 0;
+        .registration-item {
+            display: flex;
+            align-items: center;
+
+            + .registration-item {
+                margin-top: 15px;
+            }
+
+            h6 {
+                width: 180px;
+                letter-spacing: 0;
+                line-height: 22px;
+                margin: 0;
+            }
+
+            a {
+                font-size: fontSize("smaller");
+                font-weight: bold;
+                letter-spacing: 0;
             }
         }
     }
 }
 
 .account-list {
-    padding: 18px 20px !important;
+    padding: 10px 20px !important;
+
+    @include breakpoint("medium") {
+        padding: 18px 20px !important;
+    }
     .account-item {
-        margin-bottom: 10px;
+        padding: 10px 0;
+
+        @include breakpoint("medium") {
+            padding: 0;
+
+            + .account-item {
+                padding: 10px 0 0;
+            }
+        }
 
         .account-action {
+            font-family: $header-font-family;
             font-size: fontSize("smallest");
             line-height: 24px;
             font-weight: bold;
             text-decoration: none;
+            text-transform: uppercase;
+
+            @include breakpoint("medium") {
+                font-family: $body-font-family;
+                text-transform: none;
+            }
 
             &:hover {
                 text-decoration: underline;

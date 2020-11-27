@@ -1,21 +1,27 @@
 <ul class="account-list">
     <li class="account-item">
         <a class="account-action"
-           href="{{urls.account.orders.all}}"
-           aria-label="{{lang 'account.nav.orders'}}"
-        >{{lang 'account.nav.orders'}}</a>
+            href="{{urls.account.orders.all}}"
+            aria-label="{{lang 'account.nav.orders'}}"
+        >
+            {{lang 'account.nav.orders'}}
+        </a>
     </li>
     <li class="account-item">
         <a class="account-action"
-           href="{{urls.account.wishlists.all}}"
-           aria-label="{{lang 'account.mobile_nav.wishlists'}}"
-        >{{lang 'account.mobile_nav.wishlists'}}</a>
+            href="{{#each customer.wishlists}}{{#if @first}}{{view_url}}{{/if}}{{/each}}"
+            aria-label="{{lang 'account.mobile_nav.wishlists'}}"
+        >
+            {{lang 'account.mobile_nav.wishlists'}}
+        </a>
     </li>
     <li class="account-item">
         <a class="account-action"
-           href="{{urls.account.details}}"
-           aria-label="{{lang 'account.nav.settings'}}"
-        >{{lang 'account.nav.settings'}}</a>
+            href="{{urls.account.details}}"
+            aria-label="{{lang 'account.nav.settings'}}"
+        >
+            {{lang 'account.nav.settings'}}
+        </a>
     </li>
     <li class="account-item">
         <a class="account-action"
@@ -33,6 +39,8 @@
         <a class="account-action"
             href="{{urls.auth.logout}}"
             aria-label="{{lang 'common.logout'}}"
-        >{{lang 'common.logout'}}</a>
+        >
+            {{lang 'common.logout'}}
+        </a>
     </li>
 </ul>

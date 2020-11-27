@@ -39,4 +39,17 @@ export default function ($mainMenu) {
         event.preventDefault();
         $mainMenu.collapseAll();
     });
+
+    $('[data-navPages-mobile-toggle]').on('click', (event) => {
+        event.preventDefault();
+        const $target = $(event.target).closest('[data-open]');
+        const id = $target.data('open');
+
+        $('#navPages-list-menu').removeClass('is-show');
+        $('#navPages-list-user').removeClass('is-show');
+        $(id).addClass('is-show');
+
+        $('[data-open]').removeClass('is-active');
+        $target.addClass('is-active');
+    });
 }

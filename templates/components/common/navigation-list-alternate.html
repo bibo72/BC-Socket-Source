@@ -4,7 +4,7 @@
        data-collapsible="navPages-{{id}}"
        aria-label="{{name}}"
     >
-        {{name}}
+        <span class="navPages-label">{{name}}</span>
         <span class="icon navPages-action-moreIcon" aria-hidden="true">
             <svg><use xlink:href="#icon-chevron-down" /></svg>
         </span>
@@ -15,6 +15,6 @@
        href="{{url}}"
        aria-label="{{name}}"
     >
-        {{name}}
+        <span class="navPages-label">{{name}}</span>
     </a>
 {{/if}}

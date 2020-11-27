@@ -268,7 +268,7 @@
         // scss-lint:disable NestingDepth
         &::before,
         &::after {
-            background-color: $header-font-color;
+            background: stencilColor("color-blue");
             bottom: auto;
             top: auto;
             transition: transform 100ms ease-in 150ms, top 100ms ease-in, bottom 100ms ease-in; // Animate lines from hamburger to 'x'
