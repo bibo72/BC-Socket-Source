@@ -26,3 +26,7 @@ body.hasAdminBar .header {
         }
     }
 }
+
+.zoid-component-frame {
+    z-index: zIndex('low') !important;
+}
