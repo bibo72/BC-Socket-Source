@@ -227,6 +227,7 @@
 
     &:hover, &.activePage {
         color: stencilColor("navPages-color-hover");
+        text-decoration: underline;
 
         // scss-lint:disable NestingDepth
         svg {
@@ -412,13 +413,13 @@
             width: 100%;
         }
 
-        .navPage-subMenu-action.is-open,
-        .navPage-subMenu-action:hover {
-            background: $navPage-subMenu-item--is-highlighted-background;
-            color: $navPage-subMenu-item--is-highlighted-color;
-            font-weight: 500;
-            opacity: 0.3;
-        }
+        // .navPage-subMenu-action.is-open,
+        // .navPage-subMenu-action:hover {
+        //     background: $navPage-subMenu-item--is-highlighted-background;
+        //     color: $navPage-subMenu-item--is-highlighted-color;
+        //     font-weight: 500;
+        //     opacity: 0.3;
+        // }
     }
 }
 

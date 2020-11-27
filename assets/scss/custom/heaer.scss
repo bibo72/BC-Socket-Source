@@ -180,6 +180,7 @@ header.header {
                         &.is-open {
                             justify-content: flex-start;
                             background: stencilColor("color-greyLightest");
+                            margin-bottom: 10px;
 
                             .navPages-label {
                                 order: 2;
@@ -192,6 +193,15 @@ header.header {
                         }
                     }
 
+                    .navPages-image {
+                        display: none;
+                    }
+
+
+                    .container {
+                        padding: 0;
+                    }
+
                     >.navPages-item {
                         background: stencilColor("color-white");
                     }
@@ -201,6 +211,97 @@ header.header {
                     display: flex;
                     align-items: center;
                     justify-content: flex-end;
+
+                    >.navPages-item {
+                        >.navPages-action {
+                            line-height: 24px;
+                            text-decoration: none;
+                            .navPages-label {
+                                padding: 8px 0;
+                            }
+
+                            &:hover, &.activePage {
+                                .navPages-label {
+                                    border-bottom: 2px solid stencilColor("color-blue");
+                                }
+                            }
+                        }
+
+                        >.navPage-subMenu-horizontal {
+                            width: 100% !important;
+                            left: 0 !important;
+                            right: 0 !important;
+                            background: transparent;
+
+                            >.container {
+                                padding-top: 25px;
+
+                                >.navPage-subMenu-list {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    background: stencilColor("color-greyLightest");
+                                    position: relative;
+
+                                    >.navPage-subMenu-item-child {
+                                        >.navPage-subMenu-action {
+                                            text-align: center;
+                                            text-decoration: none;
+                                            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.13);
+
+                                            &:hover {
+                                                color: stencilColor("color-white");
+                                                background: stencilColor("color-blue");
+                                            }
+                                        }
+
+                                        &:hover {
+                                            .navPage-subMenu-horizontal {
+                                                display: block;
+                                                width: 100%;
+                                                left: 0 !important;
+                                                right: 0 !important;
+                                                box-shadow: 0 1px 10px rgba(0, 0, 0, 0.13);
+
+                                                .container {
+                                                    padding: 0;
+                                                }
+
+                                                .navPage-subMenu-list {
+                                                    display: flex;
+                                                    flex-wrap: wrap;
+                                                    align-items: center;
+                                                    font-size: 0;
+                                                    width: auto;
+                                                    max-width: none;
+                                                    margin: 0 -20px;
+
+                                                    &::before,
+                                                    &::after {
+                                                        display: none;
+                                                    }
+
+                                                    .navPage-subMenu-item-child {
+                                                        width: width("4/12");
+
+                                                        .navPage-subMenu-action {
+                                                            display: flex;
+                                                            align-items: center;
+                                                            justify-content: center;
+
+                                                            .navPages-label {
+                                                                padding-left: 20px;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -268,6 +369,7 @@ header.header {
 
                 .navPages-container {
                     flex: 1;
+                    padding: 0;
                     // display: flex;
                     // align-items: center;
                     // justify-content: flex-end;
