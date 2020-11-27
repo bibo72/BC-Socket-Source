@@ -2,9 +2,27 @@
     display: none;
 }
 
+.footer-info-aboutUs {
+    @include breakpoint("medium") {
+        width: 35%;
+    }
+
+    p {
+        line-height:24px;
+        font-weight: normal;
+    }
+}
+.footer-info-webPages {
+    @include breakpoint("medium") {
+        width: 15%;
+    }
+}
+
 .footer-info-storeInfo {
     .footer-info-heading {
-        // display: none;
+        .button  {
+            margin: 0;
+        }
     }
 }
 
@@ -13,8 +31,9 @@
 }
 
 .footer-info-list {
+
     li {
-        margin-bottom: 10px;
+        margin-bottom: .5rem;
     }
 }
 

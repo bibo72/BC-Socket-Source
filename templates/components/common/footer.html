@@ -21,9 +21,15 @@
 <footer class="footer" role="contentinfo">
     <div class="container">
         <section class="footer-info">
-            <article class="footer-info-col" data-section-type="footer-webPages">
+            <article class="footer-info-col footer-info-aboutUs" data-section-type="footer-webPages">
                 <h5 class="footer-info-heading">{{lang 'About Us'}}</h5>
-                <div class="footer-info-list" id="footer-about-us"></div>
+                <div class="footer-info-list" id="footer-about-us">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                    <div class="badge-list">
+                        <img src="https://cdn11.bigcommerce.com/s-863wmd7ukn/product_images/uploaded_images/iso-badge.png">
+                        <img src="https://cdn11.bigcommerce.com/s-863wmd7ukn/product_images/uploaded_images/usa-badge.png">
+                    </div>
+                </div>
             </article>
 
             <article class="footer-info-col" data-section-type="footer-categories">
@@ -51,19 +57,17 @@
             </article>
 
             {{#each pages}}
-                {{#if (lowercase name) '===' 'footer links'}}
-                    {{#each children}}
-                        <article class="footer-info-col" data-section-type="footer-webPages">
-                            <h5 class="footer-info-heading">{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</h5>
-                            <ul class="footer-info-list">
-                                {{#each children}}
-                                    <li>
-                                        <a href="{{url}}">{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</a>
-                                    </li>
-                                {{/each}}
-                            </ul>
-                        </article>
-                    {{/each}}
+                {{#if (lowercase name) '===' 'footer resources'}}
+                    <article class="footer-info-col footer-info-webPages" data-section-type="footer-webPages">
+                        <h5 class="footer-info-heading">{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</h5>
+                        <ul class="footer-info-list">
+                            {{#each children}}
+                                <li>
+                                    <a href="{{url}}">{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </article>
                 {{/if}}
             {{/each}}
 
