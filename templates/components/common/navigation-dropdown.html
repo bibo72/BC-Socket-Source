@@ -7,13 +7,29 @@
             <li class="navPage-subMenu-item-child">
                 {{#if children}}
                     <a class="navPage-subMenu-action navPages-action navPages-action-depth-max has-subMenu{{#if is_active}} activePage{{/if}}" href="{{url}}" data-collapsible="navPages-{{id}}">
-                        {{name}}<span class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></span>
+                        <span class="navPages-label">{{name}}</span>
+                        <span class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></span>
                     </a>
                     {{> components/common/navigation-dropdown}}
                 {{else}}
-                    <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+                    <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">
+                        <span class="navPages-label">{{name}}</span>
+                    </a>
                 {{/if}}
             </li>
         {{/each}}
+        {{#if staticPages}}
+            {{#each staticPages}}
+                {{#all (if (lowercase name) '===' 'products menu static page') children}}
+                    {{#each children}}
+                        <li class="navPage-subMenu-item-child navPage-subMenu-item-staticPage">
+                            <a class="navPage-subMenu-action navPages-action" href="{{url}}">
+                                <span class="navPages-label">{{name}}</span>
+                            </a>
+                        </li>
+                    {{/each}}
+                {{/all}}
+            {{/each}}
+        {{/if}}
     </ul>
 </div>

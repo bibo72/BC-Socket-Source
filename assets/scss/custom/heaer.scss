@@ -161,31 +161,25 @@ header.header {
             }
 
             #navPages-list-menu {
-                padding: 10px 0;
-                display: none;
+                @media (max-width: 991px) {
+                    padding: 10px 0;
+                    display: none;
 
-                &.is-show {
-                    display: block;
-                    @include breakpoint("medium") {
-                        display: flex;
+                    &.is-show {
+                        display: block;
                     }
-                }
 
-                @include breakpoint("medium") {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                }
-
-                &.subMenu-is-open {
-                    padding: 0 0 10px;
-                    position: relative;
-                    z-index: 1;
-                    margin-top: -40px;
+                    &.subMenu-is-open {
+                        padding: 0 0 10px;
+                        position: relative;
+                        z-index: 1;
+                        margin-top: -40px;
+                    }
 
                     .navPages-action {
                         &.is-open {
                             justify-content: flex-start;
+                            background: stencilColor("color-greyLightest");
 
                             .navPages-label {
                                 order: 2;
@@ -198,31 +192,23 @@ header.header {
                         }
                     }
 
-
-                    .navPage-subMenu-list {
-                        padding: 10px 0;
+                    >.navPages-item {
+                        background: stencilColor("color-white");
                     }
                 }
 
                 @include breakpoint("medium") {
-                    padding: 0;
-                }
-
-                >.navPages-item {
-                    >.navPages-action-depth-max.has-subMenu.is-open {
-                        background: stencilColor("color-greyLightest");
-                    }
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
                 }
             }
 
             #navPages-list-user {
                 display: none;
-
-                &.is-show {
-                    display: block;
-
-                    @include breakpoint("medium") {
-                        display: none;
+                @media (max-width: 991px) {
+                    &.is-show {
+                        display: block;
                     }
                 }
             }

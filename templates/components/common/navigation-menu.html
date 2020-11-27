@@ -10,7 +10,7 @@
                 {{> components/common/navigation-list}}
             {{/if}}
             {{#if ../theme_settings.navigation_design '===' 'alternate'}}
-                {{> components/common/navigation-list-alternate}}
+                {{> components/common/navigation-list-alternate staticPage=../pages}}
             {{/if}}
             </li>
         {{/each}}
