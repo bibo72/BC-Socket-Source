@@ -41,40 +41,43 @@
             <li class="navUser-item navUser-item--account">
                 {{#if customer}}
                     <a class="navUser-action"
+                       data-dropdown="account-dropdown"
+                       data-options="align:right"
                        href="{{urls.account.index}}"
                        aria-label="{{lang 'common.account'}}"
                     >
-                    <span class="icon navUser-icon">
-                        <svg><use xlink:href="#icon-user" /></svg>
-                    </span>
-                        {{lang 'common.account'}}
-                    </a>
-                    <a class="navUser-action"
-                       href="{{urls.auth.logout}}"
-                       aria-label="{{lang 'common.logout'}}"
-                    >
-                        {{lang 'common.logout'}}
+                        <span class="icon" aria-hidden="true">
+                            <svg><use xlink:href="#icon-user" /></svg>
+                        </span>
+                        <span class="navUser-label">{{lang 'common.account'}}</span>
+                        <span class="icon" aria-hidden="true">
+                            <svg><use xlink:href="#icon-keyboard-arrow-down" /></svg>
+                        </span>
                     </a>
                 {{else}}
                     <a class="navUser-action"
+                       data-dropdown="account-dropdown"
+                       data-options="align:right"
                        href="{{urls.auth.login}}"
-                       aria-label="{{lang 'common.login'}}"
+                       aria-label="{{lang 'cart.nav_aria_label'}}"
                     >
-                    <span class="icon navUser-icon">
-                        <svg><use xlink:href="#icon-user" /></svg>
-                    </span>
-                        {{lang 'common.login'}}
+                        <span class="icon icon-user" aria-hidden="true">
+                            <svg><use xlink:href="#icon-user" /></svg>
+                        </span>
+                        <span class="navUser-label">{{lang 'Log In / Register'}}</span>
+                        <span class="icon" aria-hidden="true">
+                            <svg><use xlink:href="#icon-keyboard-arrow-down" /></svg>
+                        </span>
                     </a>
-                    {{#if settings.account_creation_enabled}}
-                        <span class="navUser-or">{{lang 'common.or'}}</span>
-                        <a class="navUser-action"
-                           href="{{urls.auth.create_account}}"
-                           aria-label="{{lang 'common.sign_up'}}"
-                        >
-                            {{lang 'common.sign_up'}}
-                        </a>
-                    {{/if}}
                 {{/if}}
+
+                <div class="dropdown-menu{{#if customer}}{{else}} dropdown-menu--login{{/if}}" id="account-dropdown" data-dropdown-content aria-hidden="true" aria-autoclose="false">
+                    {{#if customer}}
+                        {{> components/custom/account-list}}
+                    {{else}}
+                        {{> components/custom/login-form type='navUser'}}
+                    {{/if}}
+                </div>
             </li>
             <li class="navUser-item navUser-item--cart">
                 <a class="navUser-action"

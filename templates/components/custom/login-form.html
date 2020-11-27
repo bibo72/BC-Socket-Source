@@ -1,0 +1,37 @@
+<div class="custom-account-section">
+    <form class="form custom-login-form" action="{{urls.auth.check_login}}" method="post">
+        {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
+        {{inject 'enterPass' (lang 'forms.validate.common.password')}}
+        <div class="form-field">
+            <label class="form-label" for="login_email">
+                {{lang 'login.field_email'}}
+                <small><sup>{{lang 'common.required' }}</sup></small>
+            </label>
+            <input class="form-input" name="login_email" id="{{type}}_login_email" type="email">
+        </div>
+        <div class="form-field">
+            <label class="form-label" for="{{type}}_{{type}}_login_pass">
+                {{lang 'login.field_password'}}
+                <small><sup>{{lang 'common.required' }}</sup></small>
+            </label>
+            <input class="form-input" id="{{type}}_login_pass" type="password" name="login_pass" autocomplete="off">
+        </div>
+        <div class="form-actions">
+            <input type="submit" class="button button--primary button--trapezoid" value="{{lang 'login.submit_value' }}">
+            <a class="forgot-password" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password' }}</a>
+        </div>
+    </form>
+    <div class="custom-registration">
+        <p class="registration-tips">Register for an Account</p>
+        <ul class="registration-list">
+            <li class="registration-item">
+                <h6>Existing Customers:</h6>
+                <a href="{{urls.auth.login}}">Complete Registration</a>
+            </li>
+            <li class="registration-item">
+                <h6>New Customers:</h6>
+                <a href="{{urls.auth.create_account}}">Request an Account</a>
+            </li>
+        </ul>
+    </div>
+</div>

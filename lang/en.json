@@ -151,8 +151,8 @@
         "or": "or",
         "compare": "Compare",
         "sign_up": "Register",
-        "login": "Sign in",
-        "logout": "Sign out",
+        "login": "Log in",
+        "logout": "Log Out",
         "account": "Account",
         "cart": "Cart",
         "search": "Search",
@@ -247,10 +247,10 @@
         }
     },
     "login": {
-        "heading": "Sign in",
-        "field_email": "Email Address:",
-        "field_password": "Password:",
-        "submit_value": "Sign in",
+        "heading": "Log in",
+        "field_email": "Email",
+        "field_password": "Password",
+        "submit_value": "Log in",
         "forgot_password": "Forgot your password?",
         "new_customer": {
             "heading": "New Customer?",
@@ -271,10 +271,10 @@
         "breadcrumb": "Your Account",
         "nav": {
             "overview": "Overview",
-            "orders": "Orders",
+            "orders": "Orders / Invoices",
             "returns": "Returns",
             "messages": "Messages ({num_new_messages})",
-            "wishlists": "Wish Lists ({num_wishlists})",
+            "wishlists": "My Saved Lists",
             "recently_viewed": "Recently Viewed",
             "settings": "Account Settings",
             "addresses": "Addresses",
@@ -282,7 +282,7 @@
         },
         "mobile_nav": {
             "messages": "Messages",
-            "wishlists": "Wish Lists"
+            "wishlists": "My Saved Lists"
         },
         "addresses": {
             "heading": "Addresses",
@@ -298,7 +298,7 @@
             "merchant_said": "{store_name} said:"
         },
         "orders": {
-            "heading": "Orders",
+            "heading": "Orders / Invoices",
             "none": "You haven't placed any orders with us. When you do, their status will appear on this page.",
             "return": {
                 "already_returned": "This order contains no products that can be returned. Have you already returned all of the items within this order?",
@@ -858,7 +858,7 @@
         "message": "Store is currently unavailable, please try again in a few minutes"
     },
     "forbidden": {
-        "page_heading": "Sorry! Please sign in to continue",
+        "page_heading": "Sorry! Please log in to continue",
         "if_you_were_signed_in": "If you were signed in,",
         "sign_in": "please sign back in",
         "to_continue": ", to resume your work in a new session."

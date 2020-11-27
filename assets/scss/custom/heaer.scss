@@ -107,9 +107,6 @@ header.header {
             @include breakpoint("medium") {
                 font-size: fontSize("smallest");
                 background: stencilColor("color-blue");
-                .navUser-action {
-                    text-transform: capitalize;
-                }
             }
 
             .navUser-icon {
@@ -160,10 +157,20 @@ header.header {
                                 color: stencilColor("color-white");
                                 font-size: fontSize("smallest");
                                 font-weight: normal;
+                                text-transform: capitalize;
                                 padding: 9px 17px;
+
+                                .navUser-label {
+                                    padding-left: 8px;
+                                }
+
+                                .icon-user {
+                                    @include square(18px);
+                                }
 
                                 svg {
                                     fill: stencilColor("color-white");
+                                    stroke: stencilColor("color-white");
                                 }
                             }
                         }

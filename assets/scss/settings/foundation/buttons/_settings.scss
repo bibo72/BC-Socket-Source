@@ -73,7 +73,7 @@ $buttonStyle-action-borderColorActive:       null;
 // Size Modifiers
 // -----------------------------------------------------------------------------
 
-$buttonSize-default-fontSize:           fontSize("base");
+$buttonSize-default-fontSize:           fontSize("smaller");
 $buttonSize-default-horizontalPadding:  spacing("single") + spacing("half");
 $buttonSize-default-verticalPadding:    spacing("third") + spacing("quarter");
 
@@ -116,7 +116,7 @@ $button-display:                        inline-block;
 $button-margin-bottom:                  spacing("base");
 
 $button-font-family:                    fontFamily("headingSans");
-$button-font-weight:                    fontWeight("normal");
+$button-font-weight:                    fontWeight("bold");
 $button-font-align:                     center;
 
 $button-border-width:                   1px;
@@ -166,7 +166,7 @@ $buttonStyleMap: (
         backgroundColorActive:          $buttonStyle-primary-backgroundColorActive,
         borderColor:                    $buttonStyle-primary-borderColor,
         borderColorHover:               $buttonStyle-primary-borderColorHover,
-        borderColorActive:              $buttonStyle-primary-borderColorActive
+        borderColorActive:              $buttonStyle-primary-borderColorActive,
     ),
 
     disabled: (

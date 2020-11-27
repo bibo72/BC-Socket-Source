@@ -16,6 +16,8 @@ import carousel from './common/carousel';
 import loadingProgressBar from './global/loading-progress-bar';
 import svgInjector from './global/svg-injector';
 import objectFitImages from './global/object-fit-polyfill';
+import custom from './custom/index';
+import toggleNavigationMenu from './custom/toggleNavigationMenu';
 
 export default class Global extends PageManager {
     onReady() {
@@ -28,8 +30,9 @@ export default class Global extends PageManager {
         foundation($(document));
         quickView(this.context);
         carousel();
-        menu();
+        const $mainMenu = menu();
         mobileMenuToggle();
+        toggleNavigationMenu($mainMenu);
         privacyCookieNotification();
         if (showAdminBar) {
             adminBar(secureBaseUrl, channelId, maintenanceModeSettings, JSON.parse(adminBarLanguage), productId, categoryId);
@@ -37,6 +40,7 @@ export default class Global extends PageManager {
         loadingProgressBar();
         svgInjector();
         objectFitImages();
+        custom(this.context);
 
         const url = 'https://cdn.bundleb2b.net/bundleb2b.2.10.0.js';
         const el = document.createElement('script');

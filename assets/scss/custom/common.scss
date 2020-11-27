@@ -1,3 +1,28 @@
 body.hasAdminBar .header {
     padding-top: 0 !important;
 }
+
+.button {
+    text-transform: uppercase;
+
+    &.button--primary {
+        min-width: 150px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.button--trapezoid {
+            background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColor") 0) top right no-repeat;
+
+            &:hover,
+            &:focus {
+                background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColorHover") 0) top right no-repeat;
+            }
+
+            &:active {
+                background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColorActive") 0) top right no-repeat;
+            }
+        }
+    }
+}
