@@ -19,7 +19,7 @@
                     <div class="sale-flag-star"></div>
                 </div>
             {{/if}}
-        {{/or}}    
+        {{/or}}
         {{> components/common/responsive-img
             image=image
             class="listItem-image"
@@ -61,10 +61,10 @@
                             <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--small" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a>
                         {{/if}}
                         {{#if pre_order}}
-                            <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--primary">{{lang 'products.pre_order'}}</a>
+                            <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--primary button--trapezoid">{{lang 'products.pre_order'}}</a>
                         {{/if}}
                         {{#if add_to_cart_url }}
-                            <a href="{{add_to_cart_url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--primary">{{lang 'products.add_to_cart'}}</a>
+                            <a href="{{add_to_cart_url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} class="button button--primary button--trapezoid">{{lang 'products.add_to_cart'}}</a>
                         {{/if}}
                         {{#if out_of_stock_message }}
                             <a href="{{url}}" data-event-type="product-click" class="button button--small" data-product-id="{{id}}">{{out_of_stock_message}}</a>
