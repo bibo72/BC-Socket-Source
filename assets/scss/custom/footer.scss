@@ -14,8 +14,8 @@
     }
 
     .badge-list {
-        img {
-            margin-right: 10px;
+        img + img {
+            margin-left: 10px;
         }
     }
 }
