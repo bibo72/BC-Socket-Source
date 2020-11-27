@@ -1,6 +1,7 @@
 .navUser-item--account {
     @include breakpoint("medium") {
         #account-dropdown {
+            width: 218px;
             max-width: 218px;
             left: auto !important;
             right: 80px !important;
@@ -16,6 +17,7 @@
             }
 
             &.dropdown-menu--login {
+                width: 400px;
                 max-width: 400px;
                 left: auto !important;
                 right: 0 !important;

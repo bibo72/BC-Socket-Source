@@ -285,7 +285,7 @@
     // }
 
     &.is-open {
-        display: initial;
+        display: inline-block;
         // scss-lint:disable ImportantRule
         left: 0 !important; // 1
         outline: none;
