@@ -5,9 +5,9 @@
     },
     "footer": {
         "brands": "Popular Brands",
-        "navigate": "Navigate",
-        "info": "Info",
-        "categories": "Categories",
+        "navigate": "Resource",
+        "info": "Contact Us",
+        "categories": "Shop",
         "call_us": "Call us at {phone_number}"
     },
     "home": {

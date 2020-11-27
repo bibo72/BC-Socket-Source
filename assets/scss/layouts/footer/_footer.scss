@@ -15,7 +15,7 @@
 .footer {
     background-color: $footer-background;
     border-top: container("border");
-    padding: spacing("double") 0;
+    padding: spacing("double") 0 0;
 }
 
 .footer-info {
@@ -25,10 +25,11 @@
 
 .footer-info-col {
     @include grid-column(12);
-    color: stencilColor("color-textSecondary");
+    color: stencilColor("color-greyDarkest");
     display: inline-block;
     float: none;
     font-size: fontSize("base"); // 2
+    font-weight: bold;
     margin-bottom: spacing("double");
     text-align: center;
     vertical-align: top;
@@ -39,7 +40,7 @@
     }
 
     @include breakpoint("medium") {
-        width: width("4/12");
+        width: width("3/12");
     }
 
     > :first-child {
@@ -89,7 +90,7 @@
 .footer-info-heading {
     color: $footer-heading-fontColor;
     font-size: fontSize("base");
-    text-transform: inherit;
+    // text-transform: inherit;
 }
 
 .footer-info-list {
@@ -97,7 +98,7 @@
     margin-left: 0;
 
     a {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-greyDarkest");
         text-decoration: none;
 
         // scss-lint:disable NestingDepth
@@ -116,13 +117,13 @@
     }
 
     > .powered-by {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-greyDarkest");
         font-size: fontSize("tiny");
         margin: 0;
     }
 
     a {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-greyDarkest");
         text-decoration: none;
 
         // scss-lint:disable NestingDepth

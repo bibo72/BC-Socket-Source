@@ -1,5 +1,5 @@
 <li>
-    <a href="{{url}}">{{label}}</a>
+    <a href="{{url}}">{{#replace 'Footer ' label}} {{else}}{{label}}{{/replace}}</a>
     {{#if children}}
         <ul>
             {{#each children}}

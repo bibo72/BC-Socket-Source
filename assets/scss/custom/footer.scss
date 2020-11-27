@@ -1,0 +1,30 @@
+.footer-info-newsletterSubscription {
+    display: none;
+}
+
+.footer-info-storeInfo {
+    .footer-info-heading {
+        // display: none;
+    }
+}
+
+.footer-info-heading {
+    margin-bottom: spacing("single");
+}
+
+.footer-info-list {
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+.footer-copyright {
+    font-size: 13px;
+    background: stencilColor("color-greyLightest");
+    padding: 20px 0;
+
+
+    .powered-by {
+        margin: 0;
+    }
+}

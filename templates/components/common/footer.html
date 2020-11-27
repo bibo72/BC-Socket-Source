@@ -20,43 +20,101 @@
 {{/if}}
 <footer class="footer" role="contentinfo">
     <div class="container">
-        {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
-            <article class="footer-info-col
-                footer-info-col--social
-                footer-info-col--{{#if theme_settings.social_icon_placement_bottom '===' 'bottom_left'}}left{{else}}right{{/if}}"
-                data-section-type="footer-webPages">
-                    <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
-                    {{> components/common/social-links}}
-            </article>
-        {{/if}}
         <section class="footer-info">
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
-                <h5 class="footer-info-heading">{{lang 'footer.navigate'}}</h5>
-                <ul class="footer-info-list">
-                    {{#each pages}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
-                        </li>
-                    {{/each}}
-                    <li>
-                        <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
-                    </li>
-                </ul>
+            <article class="footer-info-col" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">{{lang 'About Us'}}</h5>
+                <div class="footer-info-list" id="footer-about-us"></div>
             </article>
 
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-categories">
+            <article class="footer-info-col" data-section-type="footer-categories">
                 <h5 class="footer-info-heading">{{lang 'footer.categories'}}</h5>
                 <ul class="footer-info-list">
                     {{#each categories}}
-                        <li>
-                            <a href="{{url}}">{{name}}</a>
-                        </li>
+                        {{#if (lowercase name) '===' 'products'}}
+                            {{#each children}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        {{/if}}
+                    {{/each}}
+                    {{#each pages}}
+                        {{#all (if (lowercase name) '===' 'products menu static page') children}}
+                            {{#each children}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        {{/all}}
                     {{/each}}
                 </ul>
             </article>
 
+            {{#each pages}}
+                {{#if (lowercase name) '===' 'footer links'}}
+                    {{#each children}}
+                        <article class="footer-info-col" data-section-type="footer-webPages">
+                            <h5 class="footer-info-heading">{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</h5>
+                            <ul class="footer-info-list">
+                                {{#each children}}
+                                    <li>
+                                        <a href="{{url}}">{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </article>
+                    {{/each}}
+                {{/if}}
+            {{/each}}
+
+            <article class="footer-info-col footer-info-storeInfo" data-section-type="storeInfo">
+                <h5 class="footer-info-heading">
+                    <a class="button button--primary button--trapezoid" href='/about-us/'>{{lang 'footer.info'}}</a>
+                </h5>
+                <ul class="footer-info-list">
+                    <li>
+                        <a href="tel:{{theme_settings.store_phone}}">
+                            <span class="icon">
+                                <svg><use xlink:href="#icon-phone" /></svg>
+                            </span>
+                            {{theme_settings.store_phone}}(Phone)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:{{theme_settings.store_toll_free}}">
+                            <span class="icon">
+                                <svg><use xlink:href="#icon-phone" /></svg>
+                            </span>
+                            {{theme_settings.store_toll_free}}(Toll Free)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:{{theme_settings.store_fax}}">
+                            <span class="icon">
+                                <svg><use xlink:href="#icon-print" /></svg>
+                            </span>
+                            {{theme_settings.store_fax}}(Fax)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:{{theme_settings.store_email}}">
+                            <span class="icon">
+                                <svg><use xlink:href="#icon-envelope" /></svg>
+                            </span>
+                            {{theme_settings.store_email}}
+                        </a>
+                    </li>
+                </ul>
+                {{#if settings.address}}
+                    <!-- <address>{{nl2br settings.address}}</address> -->
+                {{/if}}
+                {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
+                    {{> components/common/social-links}}
+                {{/if}}
+            </article>
+
             {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
+            <article class="footer-info-col" data-section-type="footer-brands">
                 <h5 class="footer-info-heading">{{lang 'footer.brands'}}</h5>
                 <ul class="footer-info-list">
                     {{#each shop_by_brand}}
@@ -69,17 +127,7 @@
             </article>
             {{/and}}
 
-            {{#if settings.address}}
-            <article class="footer-info-col footer-info-col--small" data-section-type="storeInfo">
-                <h5 class="footer-info-heading">{{lang 'footer.info'}}</h5>
-                <address>{{nl2br settings.address}}</address>
-                {{#if settings.phone_number}}
-                    <strong>{{lang 'footer.call_us' phone_number=settings.phone_number}}</strong>
-                {{/if}}
-            </article>
-            {{/if}}
-
-            <article class="footer-info-col" data-section-type="newsletterSubscription">
+            <article class="footer-info-col footer-info-newsletterSubscription" data-section-type="newsletterSubscription">
                 {{#if settings.show_newsletter_box}}
                     {{> components/common/subscription-form}}
                 {{/if}}
@@ -96,10 +144,12 @@
                 <p class="powered-by">Powered by <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a></p>
             </div>
         {{/if}}
-        {{#if theme_settings.show_copyright_footer}}
-            <div class="footer-copyright">
-                <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} </p>
-            </div>
-        {{/if}}
     </div>
+    {{#if theme_settings.show_copyright_footer}}
+        <div class="footer-copyright">
+            <div class="container">
+                <p class="powered-by">&copy; {{moment format="YYYY"}} The Socket Source, Inc. All Rights Reserved</p>
+            </div>
+        </div>
+    {{/if}}
 </footer>

@@ -69,8 +69,8 @@
     "searchpage_products_per_page": 12,
     "show_product_quick_view": true,
     "show_product_quantity_box": true,
-    "show_powered_by": true,
-    "shop_by_brand_show_footer": true,
+    "show_powered_by": false,
+    "shop_by_brand_show_footer": false,
     "show_copyright_footer": true,
     "show_accept_amex": false,
     "show_accept_discover": false,
@@ -171,7 +171,7 @@
     "button--disabled-color": "#ffffff",
     "button--disabled-backgroundColor": "#cccccc",
     "button--disabled-borderColor": "transparent",
-    "icon-color": "#757575",
+    "icon-color": "#1d1d1b",
     "icon-color-hover": "#999999",
     "button--icon-svg-color": "#757575",
     "icon-ratingEmpty": "#8F8F8F",
@@ -309,7 +309,7 @@
     "restrict_to_login": false,
     "swatch_option_size": "22x22",
     "social_icon_placement_top": false,
-    "social_icon_placement_bottom": "bottom_none",
+    "social_icon_placement_bottom": true,
     "geotrust_ssl_common_name": "",
     "geotrust_ssl_seal_size": "M",
     "navigation_design": "alternate",
@@ -384,7 +384,11 @@
       },
       "images": {},
       "settings": {
-        "header_tips": "The Socket Source sells only through distribution"
+        "header_tips": "The Socket Source sells only through distribution",
+        "store_phone": "714-521-2415",
+        "store_toll_free": "1-800-621-5577",
+        "store_fax": "714-521-2415",
+        "store_email": "Email@Address.com"
       }
     }
   ]

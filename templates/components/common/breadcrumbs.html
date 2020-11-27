@@ -2,14 +2,14 @@
     <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
         {{#unless theme_settings.hide_breadcrumbs }}
             {{#each breadcrumbs}}
-                {{#all (if (lowercase name) '!==' 'header top') (if (lowercase name) '!==' 'products menu static page')}}
+                {{#all (if (lowercase name) '!==' 'header top') (if (lowercase name) '!==' 'products menu static page') (if (lowercase name) '!==' 'footer links')}}
                     <li class="breadcrumb {{#if @last}}is-active{{/if}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <a class="breadcrumb-label"
                         itemprop="item"
                         href="{{url}}"
                         {{#if @last}}aria-current="page"{{/if}}
                         >
-                            <span itemprop="name">{{name}}</span>
+                            <span itemprop="name">{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</span>
                         </a>
                         <meta itemprop="position" content="{{add @index 1}}" />
                     </li>
