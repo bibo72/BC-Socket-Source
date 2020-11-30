@@ -121,7 +121,14 @@ div[data-content-region="home_below_top_products"] {
 
     div[data-layout-name="Home Review"] {
         display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         outline: none;
+
+        @include breakpoint("medium") {
+            flex-direction: row;
+        }
 
         &:focus {
             outline: none;
@@ -129,13 +136,29 @@ div[data-content-region="home_below_top_products"] {
 
         >div[data-sub-layout] {
             &:first-of-type {
-                @include square(280px);
                 flex-basis: remCalc(280px);
                 max-width: remCalc(280px);
-                box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.15);
 
                 >div[data-widget-id] {
+                    @include square(280px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 1px 1px 9px 1px rgba(0,0,0,.15);
+                }
+            }
 
+            &:last-of-type {
+                flex-basis: 100%;
+                max-width: 100%;
+                padding-top: 24px;
+                padding-bottom: 35px;
+
+                @include breakpoint("medium") {
+                    flex: 1;
+                    padding-left: 52px;
+                    padding-top: 50px;
+                    padding-bottom: 50px;
                 }
             }
         }
