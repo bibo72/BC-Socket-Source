@@ -41,12 +41,31 @@
 
 
 div[data-layout-name="CMS Title"] {
+    max-width: layout("max") + ($container-padding * 2);
+    padding: 0 $container-padding;
+    margin: 0 auto;
+
+    >div {
+        max-width: 785px;
+        margin: 0 auto;
+    }
+
     span {
         font-family: $header-font-family;
+        line-height: 38px !important;
     }
 }
 
 div[data-layout-name="Home Description"] {
+    max-width: layout("max") + ($container-padding * 2);
+    padding: 0 $container-padding;
+    margin: 0 auto;
+
+    >div {
+        max-width: 805px;
+        margin: 0 auto;
+    }
+
     #buttonLink {
         span {
             text-decoration: underline;
@@ -59,15 +78,25 @@ div[data-layout-name="Home Badges"] {
     z-index: 1;
 
     >div[data-sub-layout] {
-        flex-direction: row;
+        @include breakpoint("small") {
+            flex-direction: row;
+        }
 
         >div[data-widget-id] {
             padding: 0 15px;
             margin-bottom: 20px;
 
             >div {
-                padding: 20px;
+                @include square(175px);
+                background: stencilColor("color-white");
                 box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.15);
+                padding: 20px;
+                margin: auto;
+
+                >div {
+                    width: 100% !important;
+                    height: 100% !important;
+                }
             }
         }
     }
@@ -77,5 +106,108 @@ div[data-layout-name="Home Description Bottom Background"] {
     min-height: 155px;
     &::after {
         background-position: top center;
+    }
+}
+
+
+div[data-content-region="home_below_top_products"] {
+    > div[data-layout-id] {
+        &::not(.slick-initialized) {
+            &::not(:first-of-type) {
+                display: none;
+            }
+        }
+    }
+
+    div[data-layout-name="Home Review"] {
+        display: flex !important;
+        outline: none;
+
+        &:focus {
+            outline: none;
+        }
+
+        >div[data-sub-layout] {
+            &:first-of-type {
+                @include square(280px);
+                flex-basis: remCalc(280px);
+                max-width: remCalc(280px);
+                box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.15);
+
+                >div[data-widget-id] {
+
+                }
+            }
+        }
+    }
+}
+
+.home-reviews {
+    .home-review-content {
+
+        .home-review-text {
+            position: relative;
+            padding: 36px 0;
+
+            @include breakpoint("medium") {
+                padding: 0 90px;
+            }
+
+            &::before,
+            &::after {
+                content: ' ';
+                display: inline-block;
+                width: 30px;
+                height: 21px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                position: absolute;
+
+                @include breakpoint("medium") {
+                    width: 60px;
+                    height: 42px;
+                }
+            }
+
+            &::before {
+                background-image: url("../img/custom/quotation-left.png");
+                top: 0;
+                left: 0;
+            }
+
+            &::after {
+                background-image: url("../img/custom/quotation-right.png");
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        .home-review-info {
+            display: flex;
+            align-items: center;
+            @include breakpoint("medium") {
+                padding: 0 90px;
+            }
+
+            .home-review-author {
+                font-family: $header-font-family;
+                font-weight: bold;
+
+                +.home-review-company {
+                    padding-left: 41px;
+                    position: relative;
+                    &::before {
+                        content: ' ';
+                        display: inline-block;
+                        width: 1px;
+                        height: 30px;
+                        background: stencilColor("input-border-color");
+                        position: absolute;
+                        left: 20px;
+                    }
+                }
+            }
+        }
     }
 }
