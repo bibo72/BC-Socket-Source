@@ -22,7 +22,15 @@
     <div class="container">
         <section class="footer-info">
             <article class="footer-info-col footer-info-aboutUs" data-section-type="footer-webPages">
-                <h5 class="footer-info-heading">{{lang 'About Us'}}</h5>
+                <h3 class="footer-info-heading js-footer-info-heading">
+                    <span>{{lang 'About Us'}}</span>
+                    <span class="icon icon-add">
+                        <svg><use xlink:href="#icon-add" /></svg>
+                    </span>
+                    <span class="icon icon-minus">
+                        <svg><use xlink:href="#icon-minus" /></svg>
+                    </span>
+                </h3>
                 <div class="footer-info-list" id="footer-about-us">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
                     <div class="badge-list">
@@ -33,7 +41,15 @@
             </article>
 
             <article class="footer-info-col" data-section-type="footer-categories">
-                <h5 class="footer-info-heading">{{lang 'footer.categories'}}</h5>
+                <h3 class="footer-info-heading js-footer-info-heading">
+                    <span>{{lang 'footer.categories'}}</span>
+                    <span class="icon icon-add">
+                        <svg><use xlink:href="#icon-add" /></svg>
+                    </span>
+                    <span class="icon icon-minus">
+                        <svg><use xlink:href="#icon-minus" /></svg>
+                    </span>
+                </h3>
                 <ul class="footer-info-list">
                     {{#each categories}}
                         {{#if (lowercase name) '===' 'products'}}
@@ -59,7 +75,15 @@
             {{#each pages}}
                 {{#if (lowercase name) '===' 'footer resources'}}
                     <article class="footer-info-col footer-info-webPages" data-section-type="footer-webPages">
-                        <h5 class="footer-info-heading">{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</h5>
+                        <h3 class="footer-info-heading js-footer-info-heading">
+                            <span>{{#replace 'Footer ' name}} {{else}}{{name}}{{/replace}}</span>
+                            <span class="icon icon-add">
+                                <svg><use xlink:href="#icon-add" /></svg>
+                            </span>
+                            <span class="icon icon-minus">
+                                <svg><use xlink:href="#icon-minus" /></svg>
+                            </span>
+                        </h3>
                         <ul class="footer-info-list">
                             {{#each children}}
                                 <li>

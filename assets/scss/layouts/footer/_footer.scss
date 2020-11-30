@@ -30,13 +30,13 @@
     float: none;
     font-size: fontSize("base"); // 2
     font-weight: bold;
-    margin-bottom: spacing("double");
-    text-align: center;
+    // text-align: center;
     vertical-align: top;
 
     @include breakpoint("small") {
-        text-align: left;
+        // text-align: left;
         width: width("6/12");
+        margin-bottom: spacing("double");
     }
 
     @include breakpoint("medium") {
@@ -88,14 +88,46 @@
 // -----------------------------------------------------------------------------
 
 .footer-info-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: $footer-heading-fontColor;
     font-size: fontSize("base");
     // text-transform: inherit;
+
+    .icon {
+        @include breakpoint("small") {
+            display: none !important;
+        }
+    }
+
+    .icon-add {
+        display: inline-block;
+    }
+    .icon-minus {
+        display: none;
+    }
+
+    &.is-open {
+        .icon-add {
+            display: none;
+        }
+
+        .icon-minus {
+            display: inline-block;
+        }
+    }
 }
 
 .footer-info-list {
     list-style: none;
     margin-left: 0;
+    margin-bottom: 40px !important;
+
+    @include breakpoint("small") {
+        display: block !important;
+        margin-bottom: 0;
+    }
 
     a {
         color: stencilColor("color-greyDarkest");
