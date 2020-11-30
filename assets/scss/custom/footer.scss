@@ -28,6 +28,10 @@
 .footer-info-storeInfo {
     margin-bottom: spacing('double');
     .footer-info-heading {
+        margin-top: 30px;
+        @include breakpoint("small") {
+            margin-top: 0;
+        }
         .button  {
             margin: 0;
         }
