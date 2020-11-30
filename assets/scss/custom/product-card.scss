@@ -1,0 +1,125 @@
+.card-rating,
+.card-brand,
+.card-figcaption,
+.listItem-rating,
+.listItem-brand,
+.listItem-summary,
+.listItem-actions,
+.rrp-price--withoutTax,
+.non-sale-price--withoutTax {
+    display: none;
+}
+
+.card-sku,
+.listItem-sku {
+    font-family: $header-font-family;
+    font-weight: bold;
+    margin: 0 0 8px;
+}
+
+.card-title,
+.listItem-title {
+    font-family: $body-font-family;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0 0 8px;
+}
+
+.card-stock,
+.listItem-stock {
+    color: stencilColor("color-green");
+    font-size: 13px;
+    text-align: left;
+    margin: 0 0 8px;
+
+    &.red {
+        color: stencilColor("color-red");
+    }
+}
+
+.card-price,
+.listItem-price {
+    font-family: $header-font-family;
+    font-weight: bold;
+    font-size: fontSize("smallest");
+
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    .card-title {
+        margin: 0 0 18px;
+    }
+
+    .card-flex-container {
+        display: flex;
+        align-items: flex-end;
+
+        .card-figure {
+            @include square(90px);
+        }
+
+        .card-body {
+            flex: 1;
+            padding: 0 0 0 19px;
+        }
+
+        .card-actions {
+            display: flex;
+            align-items: center;
+            margin-top: 7px;
+
+            .card-quantity {
+                flex: 1;
+
+                .form-input {
+                    height: 32px;
+                    padding: 5px 8px;
+                }
+            }
+
+            .button {
+                width: 50px;
+                height: 32px;
+
+                @media (max-width: 374px) {
+                    width: 32px;
+                }
+
+                @include breakpoint("small") {
+                    width: 32px;
+                }
+                font-size: 0;
+                min-width: auto;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    background: stencilColor("color-white");
+    padding: 10px;
+
+    .listItem-figure {
+        width: 100px;
+        height: 100%;
+        // background: #70706f;
+        margin: 0;
+    }
+
+    .listItem-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .listItem-body {
+        flex: 1;
+        padding: 0 10px;
+    }
+}

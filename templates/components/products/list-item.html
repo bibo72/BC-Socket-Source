@@ -58,7 +58,7 @@
                 <div class="listItem-stock">In Stock[XX]</div>
             {{/if}}
             {{#if price}}
-                <div class="listItem-price">{{> components/products/price price=price}} / EA</div>
+                <div class="listItem-price">{{> components/products/price price=price}}</div>
             {{/if}}
             <div class="listItem-actions">
                 {{#or customer (if theme_settings.restrict_to_login '!==' true)}}

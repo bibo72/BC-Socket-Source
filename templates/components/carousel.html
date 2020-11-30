@@ -30,10 +30,10 @@
             {{/if}}
             </div>
             {{#if heading}}
-                {{> components/carousel-content show_background=true}}
+                {{> components/carousel-content show_background=false}}
             {{else}}
                 {{#if text}}
-                    {{> components/carousel-content show_background=true}}
+                    {{> components/carousel-content show_background=false}}
                 {{else}}
                     {{#if button_text}}
                         {{> components/carousel-content show_background=false}}

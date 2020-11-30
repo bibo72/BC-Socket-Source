@@ -15,7 +15,8 @@
     }
 
     body {
-        padding-top: $header-height; // 2
+        padding-top: 115px; // 2
+
         @include breakpoint("medium") {
             padding-top: 0;
         }

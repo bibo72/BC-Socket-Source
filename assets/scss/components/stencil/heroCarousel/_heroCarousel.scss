@@ -17,7 +17,7 @@
     width: 1px;
     min-width: 100%;
     margin-bottom: (spacing("double") + spacing("single"));
-    margin-top: -(spacing("single")); // 3
+    margin-top: -20px; // 3
     overflow: hidden;
     visibility: hidden;
 
@@ -25,21 +25,21 @@
         visibility: visible;
     }
 
-    @include breakpoint("medium") {
-        margin-top: -(spacing("single") + spacing("base")); // 3
-    }
+    // @include breakpoint("medium") {
+    //     margin-top: -(spacing("single") + spacing("base")); // 3
+    // }
 
     &.slick-initialized {
         opacity: 1;
         max-height: 100vh;
-        
+
         @include breakpoint("small") {
-            max-height: remCalc(400px);            
+            max-height: remCalc(400px);
         }
 
-        @include breakpoint("medium") {
-            max-height: remCalc(600px);            
-        }
+        // @include breakpoint("medium") {
+        //     max-height: remCalc(600px);
+        // }
     }
 
     &:not(.slick-initialized) :not(.heroCarousel-slide--first).heroCarousel-slide {
@@ -74,11 +74,12 @@
     }
 
     .slick-dots {
-        bottom: spacing("third");
+        bottom: spacing("single");
+        // bottom: spacing("third");
 
-        @include breakpoint("medium") {
-            bottom: spacing("single");
-        }
+        // @include breakpoint("medium") {
+        //     bottom: spacing("single");
+        // }
 
         // scss-lint:disable SelectorDepth, NestingDepth
         li {
@@ -116,11 +117,11 @@
                 height: 100%;
             }
         }
-    }    
+    }
 
     &.compat-object-fit { // 1
         overflow: hidden;
-        
+
         .heroCarousel-image {
             width: auto;
         }
@@ -137,52 +138,61 @@
             max-height: remCalc(400px);
         }
 
-        @include breakpoint("medium") {
-            max-height: remCalc(600px);
-        }
+        // @include breakpoint("medium") {
+        //     max-height: remCalc(600px);
+        // }
     }
 
     &.is-square-image-type {
-        
+
         .heroCarousel-image-wrapper {
             height: 100vw;
-        
+
             @include breakpoint("small") {
                 height: 56.25vw;
-            }    
+            }
         }
     }
 
     &.is-vertical-image-type {
-        
+
         .heroCarousel-image-wrapper {
             height: 110vw;
-        
+
             @include breakpoint("small") {
                 height: 56.25vw;
-            }    
+            }
         }
     }
 }
 
 .heroCarousel-content {
-    background-color: rgba($carousel-bgColor, 1);
-    padding: spacing("half") spacing("single") (spacing("double"));
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    // text-align: center;
+    // background-color: rgba($carousel-bgColor, 1);
+    // padding: spacing("half") spacing("single") (spacing("double"));
+    background-color: transparent;
+    max-width: layout("max") + ($container-padding * 2);
+    padding: 0 $container-padding;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: spacing("single");
 
     @include breakpoint("small") {
         @include carouselOpaqueBackgrounds;
-        width: remCalc(700px);
-        padding: spacing("single") * 1.5;
-        width: 70%;
-        background-color: rgba($carousel-bgColor, 0.9);
-        left: 0;
-        padding: spacing("single");
-        margin: 0 auto;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        // width: remCalc(700px);
+        // padding: spacing("single") * 1.5;
+        // width: 70%;
+        // background-color: rgba($carousel-bgColor, 0.9);
+        // padding: spacing("single");
+        background-color: transparent;
+        flex-direction: row;
+        align-items: center;
+        // top: 50%;
+        // transform: translateY(-50%);
 
         &.heroCarousel-content--empty {
             background-color: transparent;
@@ -192,31 +202,39 @@
 
 .heroCarousel-title {
     color: $carousel-title-color;
-    font-size: fontSize("small");
-    margin-top: 0;
+    font-size: fontSize("larger");
+    line-height: 32px;
+    margin: 0;
 
-    @include breakpoint("medium") {
-        font-size: fontSize("hero");
+    @include breakpoint("small") {
+        // font-size: fontSize("hero");
+        padding-right: 29px;
     }
 }
 
 .heroCarousel-description {
     color: $carousel-description-color;
-    font-size: fontSize("tiny");
+    font-size: fontSize("smaller");
+    margin: 0;
 
-    @include breakpoint("small") {
-        font-size: fontSize("smallest");
-    }
+    // @include breakpoint("small") {
+    //     font-size: fontSize("smallest");
+    // }
 
-    @include breakpoint("medium") {
-        font-size: fontSize("smaller");
-    }
+    // @include breakpoint("medium") {
+    //     font-size: fontSize("smaller");
+    // }
 }
 
 .heroCarousel-action {
+    color: $carousel-description-color;
+    text-transform: capitalize;
+    text-decoration: underline;
+    line-height: 32px;
+    // background: transparent;
     margin: 0;
 
-    @include breakpoint("medium") {
-        margin-top: spacing("single");
-    }
+    // @include breakpoint("medium") {
+    //     margin-top: spacing("single");
+    // }
 }

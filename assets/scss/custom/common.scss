@@ -2,6 +2,10 @@ body.hasAdminBar .header {
     padding-top: 0 !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 0;
+}
+
 .button {
     text-transform: uppercase;
 
@@ -12,16 +16,60 @@ body.hasAdminBar .header {
         align-items: center;
         justify-content: center;
 
+        svg {
+            fill: stencilColor("button--primary-color");
+        }
+
+        &:hover,
+        &:focus {
+            svg {
+                fill: stencilColor("button--primary-colorHover");
+            }
+        }
+
+        &:active {
+            svg {
+                fill: stencilColor("button--primary-colorActive");
+            }
+        }
+
         &.button--trapezoid {
             background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColor") 0) top right no-repeat;
+            border: none;
 
             &:hover,
             &:focus {
                 background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColorHover") 0) top right no-repeat;
+                border: none;
             }
 
             &:active {
                 background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColorActive") 0) top right no-repeat;
+                border: none;
+            }
+        }
+
+        &.button--icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+
+            svg {
+                fill: stencilColor("button--primary-borderColor");
+            }
+
+            &:hover,
+            &:focus {
+                svg {
+                    fill: stencilColor("button--primary-borderColorHover");
+                }
+            }
+
+            &:active {
+                svg {
+                    fill: stencilColor("button--primary-borderColorActive");
+                }
             }
         }
     }

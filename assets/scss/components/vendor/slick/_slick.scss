@@ -98,23 +98,34 @@
 // -----------------------------------------------------------------------------
 
 .slick-dots {  // 2
+    text-align: right;
+    max-width: layout("max") + ($container-padding * 2);
+    padding: 0 $container-padding;
     margin: 0;
+    left: 50%;
+    transform: translate3d(-50%, 0 , 0);
+    pointer-events: none;
 
     li {
-        @include square(32px);
+        @include square(25px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        // padding: remCalc(5px);
         margin: 0;
-        padding: remCalc(5px);
+        pointer-events: auto;
 
         // scss-lint:disable SelectorDepth, NestingDepth
         button,
         button::before {
-            @include square(15px);
+            @include square(11px);
             border-radius: 50%;
         }
 
         button {
             // scss-lint:disable NestingDepth
             border: 1px solid $slick-dot-color;
+            background: $slick-dot-color;
             display: inline-block;
             margin: 0;
             padding: 0;
@@ -124,7 +135,7 @@
 
             &:hover {
                 &::before {
-                    background: $slick-dot-color;
+                    background: $slick-dot-color-active;
                 }
             }
         }
