@@ -103,9 +103,12 @@ div[data-layout-name="Home Badges"] {
 }
 
 div[data-layout-name="Home Description Bottom Background"] {
-    min-height: 155px;
-    &::after {
-        background-position: top center;
+    >div[data-sub-layout] {
+        height: 155px;
+
+        &::after {
+            background-position: top center;
+        }
     }
 }
 
