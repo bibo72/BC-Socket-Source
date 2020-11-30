@@ -210,4 +210,8 @@ div[data-content-region="home_below_top_products"] {
             }
         }
     }
+
+    .slick-dots {
+        transform: translate3d(-50%,-100%,0);
+    }
 }
