@@ -61,4 +61,11 @@
     .powered-by {
         margin: 0;
     }
+
+    .powered-rights {
+        display: block;
+        @include breakpoint("small") {
+            display: inline-block;
+        }
+    }
 }
