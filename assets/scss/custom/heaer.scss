@@ -147,7 +147,9 @@ header.header {
                     align-items: center;
                     justify-content: center;
                     padding: 8px 1.5rem;
+                    border: none;
                     margin: 0;
+                    outline: none;
 
                     &.is-active {
                         color: stencilColor("button--default-color");

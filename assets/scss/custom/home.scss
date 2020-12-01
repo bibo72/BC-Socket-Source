@@ -241,6 +241,11 @@ div[data-content-region="home_below_top_products"] {
     }
 
     .slick-dots {
+        text-align: center;
         transform: translate3d(-50%,-100%,0);
+
+        @include breakpoint("small") {
+            text-align: right;
+        }
     }
 }

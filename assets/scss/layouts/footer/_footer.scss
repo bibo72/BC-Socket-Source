@@ -14,7 +14,7 @@
 
 .footer {
     background-color: $footer-background;
-    border-top: container("border");
+    border-top: 2px solid #179188;
     padding: spacing("double") 0 0;
 }
 
@@ -93,7 +93,7 @@
     justify-content: space-between;
     color: $footer-heading-fontColor;
     font-size: fontSize("base");
-    // text-transform: inherit;
+    text-transform: uppercase;
 
     .icon {
         @include breakpoint("small") {
