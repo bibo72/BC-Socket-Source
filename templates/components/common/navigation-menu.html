@@ -1,7 +1,7 @@
 <nav class="navPages">
     <div class="navPages-mobile-toggle" data-navPages-mobile-toggle>
         <button class="button button--primary is-active" data-open="#navPages-list-menu">Menu</button>
-        <button class="button button--primary" data-open="#navPages-list-user">{{#if customer}}{{lang 'Log In / Register'}}{{else}}{{lang 'common.account'}}{{/if}}</button>
+        <button class="button button--primary" data-open="#navPages-list-user">{{#if customer}}{{lang 'common.account'}}{{else}}{{lang 'Log In / Register'}}{{/if}}</button>
     </div>
     <ul id="navPages-list-menu" class="navPages-list{{#if theme_settings.navigation_design '!==' 'simple'}} navPages-list-depth-max{{/if}} is-show">
         {{#each categories}}
