@@ -3,13 +3,15 @@
 // =============================================================================
 
 .facetLabel {
-    background: $facetLabel-backgroundColor;
-    border-radius: $facetLabel-borderRadius;
-    padding: spacing("eighth") spacing("third") spacing("eighth") (spacing("third") + spacing("eighth"));
+    // background: $facetLabel-backgroundColor;
+    // border-radius: $facetLabel-borderRadius;
+    // padding: spacing("eighth") spacing("third") spacing("eighth") (spacing("third") + spacing("eighth"));
     text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
 
     .icon {
-        @include square(12px);
+        @include square(15px);
         display: inline-block;
         fill: $facetLabel-removeIcon-color;
         position: relative; // Vertical align the icon

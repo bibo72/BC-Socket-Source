@@ -58,43 +58,51 @@
         padding: $accordion-navList-padding;
 
         @include breakpoint("medium") {
-            padding: 0;
+            padding: $accordion-navList-padding 0;
         }
     }
 
     .accordion-navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 10px;
+
         @include breakpoint("medium") {
             background-position: right 0 top 50%;
+            background: stencilColor("color-greyLightest");
             border: 0;
         }
     }
 
     .accordion-title {
-        font-weight: normal;
-        padding: $accordion-navList-padding;
+        // font-weight: normal;
+        // padding: $accordion-navList-padding;
         text-decoration: none;
-        text-transform: inherit;
+        // text-transform: inherit;
+        padding: 0;
 
-        @include breakpoint("medium") {
-            margin-bottom: spacing("half");
-            margin-top: 0;
-            padding: 0;
-        }
+        // @include breakpoint("medium") {
+        //     margin-bottom: spacing("half");
+        //     margin-top: 0;
+        //     padding: 0;
+        // }
     }
 
     .accordion-indicator {
-        fill: color("greys", "light");
+        @include square(20px);
+        // fill: color("greys", "light");
     }
 
-    .accordion-navigation-actions {
-        right: $accordion-navList-padding;
-        top: $accordion-navList-padding + spacing("eighth");
+    // .accordion-navigation-actions {
+    //     right: $accordion-navList-padding;
+    //     top: $accordion-navList-padding + spacing("eighth");
 
-        @include breakpoint("medium") {
-            right: 0;
-            top: 0;
-        }
-    }
+    //     @include breakpoint("medium") {
+    //         right: 0;
+    //         top: 0;
+    //     }
+    // }
 }
 
 
@@ -136,18 +144,18 @@
 //
 // -----------------------------------------------------------------------------
 .accordion-navigation-actions {
-    position: absolute;
-    right: $accordion-navigation-paddingHorizontal;
-    top: $accordion-navigation-paddingVertical;
+    // position: absolute;
+    // right: $accordion-navigation-paddingHorizontal;
+    // top: $accordion-navigation-paddingVertical;
 
-    > a {
-        color: stencilColor("color-textSecondary");
-        vertical-align: middle;
+    // > a {
+    //     color: stencilColor("color-textSecondary");
+    //     vertical-align: middle;
 
-        // scss-lint:disable NestingDepth
-        &:hover {
-            color: stencilColor("color-textSecondary--hover");
-        }
-        // scss-lint:enable NestingDepth
-    }
+    //     // scss-lint:disable NestingDepth
+    //     &:hover {
+    //         color: stencilColor("color-textSecondary--hover");
+    //     }
+    //     // scss-lint:enable NestingDepth
+    // }
 }

@@ -18,6 +18,8 @@
 .navList-action,
 .navBar-action {
     text-decoration: none;
+    font-weight: bold !important;
+    font-size: 13px !important;
 }
 
 .navList-action.is-active {
@@ -34,7 +36,6 @@
 // 1. Position checkbox so it is vertically centered
 //
 // -----------------------------------------------------------------------------
-
 .navList-action--checkbox {
     @include checkRadioBase();
     @include checkBox-base();
@@ -49,7 +50,10 @@
     }
 
     &:after {
-        margin-top: -$checkRadio-outerSize / 2 + remCalc(1);
+        // margin-top: -$checkRadio-outerSize / 2 + remCalc(1);
+        background-image: none;
+        background-color: stencilColor('checkRadio-checked');
+        transform: translate3d(0, -50%, 0) scale(0.7) !important;
     }
 
     &:focus {

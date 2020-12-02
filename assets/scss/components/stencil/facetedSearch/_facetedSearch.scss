@@ -14,9 +14,18 @@
     border: $facetedSearch-toggle-border;
     border-radius: $facetedSearch-toggle-borderRadius;
     border-width: $facetedSearch-toggle-borderWidth;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: $facetedSearch-toggle-verticalSpacing;
     padding: $facetedSearch-toggle-padding;
+
+    font-size: 16px;
+    font-weight: bold;
+    font-family: $header-font-family;
+    text-transform: uppercase;
+    color: stencilColor("color-textHeading");
+    background: stencilColor("color-greyLightest");
 
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule
@@ -33,7 +42,7 @@
 .facetedSearch-toggle-text,
 .facetedSearch-toggle-indicator {
     display: block;
-    font-weight: normal;
+    // font-weight: normal;
 }
 
 .facetedSearch-toggle-text {
@@ -44,9 +53,10 @@
 
 .facetedSearch-toggle-indicator {
     @include grid-column(5);
+    font-size: 0;
     font-weight: bold;
-    padding: 0;
     text-align: right;
+    padding: 0;
 }
 
 
@@ -75,10 +85,10 @@
         }
     }
 
-    .facetedSearch-toggle + &,
-    .sidebarBlock + & {
-        margin-top: $facetedSearch-toggle-verticalSpacing;
-    }
+    // .facetedSearch-toggle + &,
+    // .sidebarBlock + & {
+    //     margin-top: $facetedSearch-toggle-verticalSpacing;
+    // }
 
 
     .facetedSearch-toggle + &.is-open,

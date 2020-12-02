@@ -1,4 +1,43 @@
 .sidebarBlock-subcategories,
-.category-header-image {
+.category-header-image,
+.actionBar {
     display: none;
+}
+
+.accordion-block {
+    .facetedSearch-clearLink {
+        display: none;
+    }
+}
+
+.clear-all-faceted {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 29px;
+}
+
+.page-header-mobile {
+    padding: 0 .75rem;
+    display: block;
+    @include breakpoint("medium") {
+        display: none;
+    }
+}
+.page-header-desktop {
+    display: none;
+    @include breakpoint("medium") {
+        display: block;
+    }
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: stencilColor("color-textHeading");
+    margin-bottom: 35px;
 }

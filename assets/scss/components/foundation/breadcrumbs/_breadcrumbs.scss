@@ -17,6 +17,7 @@
     display: none; // 1
     font-size: 0; // 2
     // text-align: center;
+    margin-bottom: 35px;
 
     @include breakpoint("small") {
         display: block; // 1
@@ -26,24 +27,35 @@
 .breadcrumb {
     display: inline-block;
     float: none;
+    font-weight: 700;
     margin-right: 0.25rem;
+
+    a {
+        color: stencilColor("color-textHeading");
+        text-decoration: none;
+    }
 
     &.is-active {
 
         // scss-lint:disable NestingDepth
         > .breadcrumb-label {
             cursor: pointer;
-            font-weight: 700;
+            color: stencilColor("color-textHeading");
         }
     }
 
     // needs to override common bigcommerce styles for accessibility improvements
     &:not(:first-child):before {
+        @include square(12);
+        content: ' ';
         display: inline-block;
         margin: 0 0.25rem;
-        transform: rotate(15deg);
-        border-right: 0.1em solid $primary-color;
-        height: 0.8em;
-        content: '';
+        // transform: rotate(15deg);
+        // border-right: 0.1em solid $primary-color;
+        // height: 0.8em;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M684.57 450.07l-.134.133L339.43 105.197l-61.863 61.864 345.005 345.006L277.7 856.939l61.864 61.864L684.436 573.93l61.863-61.863.134-.134z'/%3E%3C/svg%3E");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }

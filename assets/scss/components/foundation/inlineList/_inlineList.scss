@@ -8,6 +8,7 @@
     margin-left: -1 * spacing("half");
 
     > li {
+        float: none;
         margin-bottom: spacing("half");
         margin-left: spacing("half");
     }

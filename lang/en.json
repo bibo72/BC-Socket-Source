@@ -824,7 +824,7 @@
         },
         "faceted": {
             "selected": {
-                "title": "Refine by",
+                "title": "Active Filters",
                 "rating-label": "Rated {rating, plural, one {# Star} other {# Stars}} Or More",
                 "no-filters": "No filters applied",
                 "clear-all": "Clear all"
@@ -843,7 +843,7 @@
             "show-less": "Show Less",
             "show-filters": "Show Filters",
             "hide-filters": "Hide Filters",
-            "browse-by": "Browse by"
+            "browse-by": "Filter"
         },
         "error": {
             "empty_field": "Search field cannot be empty."

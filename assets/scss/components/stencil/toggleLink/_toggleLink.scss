@@ -34,10 +34,10 @@ $toggle-spacing: spacing("single") + spacing("half");
     }
 }
 
-.toggleLink-text {
-    font-size: fontSize("smallest");
-    font-weight: fontWeight("normal");
-}
+// .toggleLink-text {
+//     font-size: fontSize("smallest");
+//     font-weight: fontWeight("normal");
+// }
 
 .toggleLink-text--off {
     display: inline-block;

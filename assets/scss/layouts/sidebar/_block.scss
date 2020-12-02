@@ -17,5 +17,7 @@
 
 .sidebarBlock-heading {
     margin-top: 0;
-    text-transform: inherit;
+    // text-transform: inherit;
+    background: stencilColor("color-greyLightest");
+    padding: 13px 10px;
 }

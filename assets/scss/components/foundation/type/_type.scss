@@ -36,8 +36,10 @@ cite {
 }
 
 .page-heading {
-    margin: 0 0 spacing("double");
-    text-align: center;
+    line-height: 38px;
+    text-transform: uppercase;
+    margin: 0 0 19px;
+    // text-align: center;
 }
 
 h1 {

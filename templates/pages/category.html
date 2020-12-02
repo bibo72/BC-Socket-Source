@@ -18,6 +18,27 @@ category:
 {{#partial "page"}}
 
 <div class="page">
+    <div class="page-header-mobile">
+        <a class="back-link">
+            <span class="icon" aria-hidden="true">
+                <svg><use xlink:href="#icon-chevron-left"/></svg>
+            </span>
+            Back to {{#each breadcrumbs}}{{#if @index '===' (subtract  ../breadcrumbs.length 2)}}{{name}}{{/if}}{{/each}}
+        </a>
+        {{#unless theme_settings.hide_category_page_heading }}
+            <h1 class="page-heading">{{category.name}}</h1>
+            {{{region name="category_below_header"}}}
+        {{/unless}}
+        {{#if category.image}}
+            {{> components/common/responsive-img
+                image=category.image
+                fallback_size=theme_settings.zoom_size
+                lazyload=theme_settings.lazyload_mode
+                class="category-header-image"
+            }}
+        {{/if}}
+        {{{category.description}}}
+    </div>
     {{#if category.faceted_search_enabled}}
         <aside class="page-sidebar" id="faceted-search-container">
             {{> components/category/sidebar}}
@@ -35,20 +56,22 @@ category:
     {{/if}}
 
     <main class="page-content" id="product-listing-container">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-        {{#if category.image}}
-            {{> components/common/responsive-img
-                image=category.image
-                fallback_size=theme_settings.zoom_size
-                lazyload=theme_settings.lazyload_mode
-                class="category-header-image"
-            }}
-        {{/if}}
-        {{#unless theme_settings.hide_category_page_heading }}
-            <h1 class="page-heading">{{category.name}}</h1>
-            {{{region name="category_below_header"}}}
-        {{/unless}}
-        {{{category.description}}}
+        <div class="page-header-desktop">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            {{#unless theme_settings.hide_category_page_heading }}
+                <h1 class="page-heading">{{category.name}}</h1>
+                {{{region name="category_below_header"}}}
+            {{/unless}}
+            {{#if category.image}}
+                {{> components/common/responsive-img
+                    image=category.image
+                    fallback_size=theme_settings.zoom_size
+                    lazyload=theme_settings.lazyload_mode
+                    class="category-header-image"
+                }}
+            {{/if}}
+            {{{category.description}}}
+        </div>
 
         {{> components/category/product-listing}}
         {{{region name="category_below_content"}}}

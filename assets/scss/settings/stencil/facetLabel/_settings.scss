@@ -6,4 +6,4 @@ $facetLabel-backgroundColor:                container("fill", "dark");
 $facetLabel-borderRadius:                   4px;
 $facetLabel-removeIcon-width:               14px;
 $facetLabel-removeIcon-height:              14px;
-$facetLabel-removeIcon-color:               $small-font-color;
+$facetLabel-removeIcon-color:               stencilColor("checkRadio-checked");
