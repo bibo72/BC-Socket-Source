@@ -1,4 +1,46 @@
 {
+  "i18n.Custom": {
+    "default": "Custom",
+    "fr": "Douane",
+    "it": "Personalizzato",
+    "uk": "На замовлення",
+    "zh": "自定义"
+  },
+  "i18n.HeaderTipsLabel": {
+    "default": "Header Tips",
+    "fr": "Conseils d'en-tête",
+    "it": "Suggerimenti per le intestazioni",
+    "uk": "Поради щодо заголовка",
+    "zh": "标头提示"
+  },
+  "i18n.ContactPhoneLabel": {
+    "default": "Contact Phone",
+    "fr": "Numéro du contact",
+    "it": "Contatto telefonico",
+    "uk": "Контактний телефон",
+    "zh": "联系电话"
+  },
+  "i18n.ContactTollFreeLabel": {
+    "default": "Contact Toll Free",
+    "fr": "Numéro de téléphone sans frais",
+    "it": "Numero verde di contatto",
+    "uk": "Безкоштовний контактний номер",
+    "zh": "免费联系电话"
+  },
+  "i18n.ContactFaxLabel": {
+    "default": "Contact Fax",
+    "fr": "Contact Fax",
+    "it": "Contatta Fax",
+    "uk": "Контактний факс",
+    "zh": "联系传真"
+  },
+  "i18n.ContactEmailLabel": {
+    "default": "Contact Email",
+    "fr": "Email du contact",
+    "it": "contatto email",
+    "uk": "Контактна електронна адреса",
+    "zh": "联系邮箱"
+  },
   "i18n.Global": {
     "default": "Global",
     "fr": "Global",

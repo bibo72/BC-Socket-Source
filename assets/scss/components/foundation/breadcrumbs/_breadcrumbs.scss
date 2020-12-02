@@ -16,7 +16,7 @@
 .breadcrumbs {
     display: none; // 1
     font-size: 0; // 2
-    text-align: center;
+    // text-align: center;
 
     @include breakpoint("small") {
         display: block; // 1

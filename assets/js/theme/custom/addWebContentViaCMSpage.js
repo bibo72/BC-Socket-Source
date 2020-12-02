@@ -1,7 +1,7 @@
 import { api } from '@bigcommerce/stencil-utils';
 // import Url from 'url';
 
-export default function (cmsPagePath, $selector, className) {
+export default function (cmsPagePath, $selector) {
     const options = {
         template: 'custom/cms-page-content',
     };
@@ -13,12 +13,6 @@ export default function (cmsPagePath, $selector, className) {
             }
 
             $selector.html($(content));
-
-            if (className) {
-                if ($(content).text() && $(content).text().trim()) {
-                    $('body').addClass(className);
-                }
-            }
         });
     }
 }

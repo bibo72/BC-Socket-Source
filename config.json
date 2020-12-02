@@ -44,6 +44,11 @@
     "Firefox ESR"
   ],
   "settings": {
+    "header_tips": "The Socket Source sells only through distribution",
+    "contact_phone": "714-521-2415",
+    "contact_toll_free": "1-800-621-5577",
+    "contact_fax": "714-521-2415",
+    "contact_email": "Email@Address.com",
     "hide_breadcrumbs": false,
     "hide_page_heading": false,
     "hide_category_page_heading": false,
@@ -383,13 +388,7 @@
         ]
       },
       "images": {},
-      "settings": {
-        "header_tips": "The Socket Source sells only through distribution",
-        "store_phone": "714-521-2415",
-        "store_toll_free": "1-800-621-5577",
-        "store_fax": "714-521-2415",
-        "store_email": "Email@Address.com"
-      }
+      "settings": {}
     }
   ]
 }

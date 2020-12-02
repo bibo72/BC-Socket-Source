@@ -1,4 +1,4 @@
-// import addWebContentViaCMSpage from './addWebContentViaCMSpage';
+import addWebContentViaCMSpage from './addWebContentViaCMSpage';
 // // import backToTop from './backToTop';
 // import cookiesDisplay from './cookies-display';
 // import onWindowScroll from './onWindowScroll';
@@ -12,8 +12,7 @@ export default function (context) {
     // } = context;
     console.log(context);
 
-    // addWebContentViaCMSpage('/top-promotion-information/', $('#top-promotion-information'), 'has-top-promotion');
-    // addWebContentViaCMSpage('/recommend-product/', $('#menu-recommend-products'));
+    addWebContentViaCMSpage('/footer-about-us-content/', $('#footer-about-us'));
     // // backToTop();
     // cookiesDisplay();
     // onWindowScroll();

@@ -1,5 +1,35 @@
 [
   {
+    "name": "i18n.Custom",
+    "settings": [
+      {
+        "type": "text",
+        "label": "i18n.HeaderTipsLabel",
+        "id": "header_tips"
+      },
+      {
+        "type": "text",
+        "label": "i18n.ContactPhoneLabel",
+        "id": "contact_phone"
+      },
+      {
+        "type": "text",
+        "label": "i18n.ContactTollFreeLabel",
+        "id": "contact_toll_free"
+      },
+      {
+        "type": "text",
+        "label": "i18n.ContactFaxLabel",
+        "id": "contact_fax"
+      },
+      {
+        "type": "text",
+        "label": "i18n.ContactEmailLabel",
+        "id": "contact_email"
+      }
+    ]
+  },
+  {
     "name": "i18n.Global",
     "settings": [
       {
