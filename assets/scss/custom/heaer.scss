@@ -312,6 +312,52 @@ header.header {
                                                 }
                                             }
                                         }
+
+
+                                        .navPage-subMenu-horizontal.is-open {
+                                            display: block;
+                                            width: 100%;
+                                            top: auto !important;
+                                            left: 0 !important;
+                                            right: 0 !important;
+                                            border: none !important;
+                                            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.13);
+                                            padding: 1.5rem 1.5rem 2.25rem !important;
+                                            margin: 0 !important;
+
+                                            .container {
+                                                padding: 0;
+                                            }
+
+                                            .navPage-subMenu-list {
+                                                display: flex;
+                                                flex-wrap: wrap;
+                                                align-items: center;
+                                                font-size: 0;
+                                                width: auto;
+                                                max-width: none;
+                                                margin: 0 -20px;
+
+                                                &::before,
+                                                &::after {
+                                                    display: none;
+                                                }
+
+                                                .navPage-subMenu-item-child {
+                                                    width: width("4/12");
+
+                                                    .navPage-subMenu-action {
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+
+                                                        .navPages-label {
+                                                            padding-left: 20px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                     .navPage-subMenu-item-staticPage {
 

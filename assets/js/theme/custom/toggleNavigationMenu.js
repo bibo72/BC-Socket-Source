@@ -52,4 +52,14 @@ export default function ($mainMenu) {
         $('[data-open]').removeClass('is-active');
         $target.addClass('is-active');
     });
+
+    $('#navPages-list-menu>.navPages-item>.navPage-subMenu-horizontal>.container>.navPage-subMenu-list>.navPage-subMenu-item-child>.navPage-subMenu-action').on('click', (event) => {
+        if (window.innerWidth > 1024) {
+            event.preventDefault();
+            const $target = $(event.target).closest('.navPage-subMenu-action');
+
+            const url = $target.attr('href');
+            if (url) window.location = url;
+        }
+    });
 }
