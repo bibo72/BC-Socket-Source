@@ -2,6 +2,7 @@ import addWebContentViaCMSpage from './addWebContentViaCMSpage';
 // // import backToTop from './backToTop';
 // import cookiesDisplay from './cookies-display';
 // import onWindowScroll from './onWindowScroll';
+import multilineTextDisplay from './multilineTextDisplay';
 import toggleFooterInfo from './toggleFooterInfo';
 
 export default function (context) {
@@ -16,5 +17,6 @@ export default function (context) {
     // // backToTop();
     // cookiesDisplay();
     // onWindowScroll();
+    multilineTextDisplay();
     toggleFooterInfo();
 }

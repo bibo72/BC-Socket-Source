@@ -4,7 +4,7 @@ header.header {
         height: 55px;
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: fontSize("smallest");
         line-height: normal;
         color: stencilColor("color-white");
         background: stencilColor("color-greyDarkest");

@@ -74,6 +74,17 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 }
+.pagination-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: stencilColor("color-greyLightest");
+    padding: 9px 10px;
+
+    .pagination-total {
+        padding-right: 30px;
+    }
+}
 
 .zoid-component-frame {
     z-index: zIndex('low') !important;

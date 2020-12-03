@@ -1,0 +1,74 @@
+<div class="products-table-container">
+    <table class="products-table">
+        <thead>
+            <tr>
+                <th>{{lang 'Item ID'}}</th>
+                <th>{{lang 'Description'}}</th>
+                <th class="th-stock">{{lang 'Stock'}}</th>
+                <th class="th-price">{{lang 'Price'}}</th>
+                <th class="th-actions">{{lang 'QTY'}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+                <tr>
+                    <td>
+                        <div class="table-sku">{{sku}}</div>
+                    </td>
+                    <td>
+                        <div class="table-description">
+                            {{#each custom_fields}}{{#if (lowercase name) '===' 'short description'}}{{value}}{{/if}}{{/each}}
+                        </div>
+                    </td>
+                    <td class="td-stock">
+                        {{#if out_of_stock_message}}
+                            <div class="table-stock">Call for Availability</div>
+                        {{else}}
+                            <div class="table-stock green">In Stock[XX]</div>
+                        {{/if}}
+                    </td>
+                    <td class="td-price">
+                        <div  class="table-price">
+                            {{> components/products/price price=price}}
+                        </div>
+                    </td>
+                    <td class="td-actions">
+                        <div class="table-actions">
+                            <input type="text" class="table-quantity" />
+                            {{#if has_options}}
+                                <a href="{{url}}" data-event-type="product-click" class="button button--primary" data-product-id="{{id}}">
+                                    <span class="icon">
+                                        <svg><use xlink:href="#icon-cart" /></svg>
+                                    </span>
+                                    {{lang 'products.choose_options'}}
+                                </a>
+                            {{/if}}
+                            {{#if pre_order}}
+                                <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--primary">
+                                    <span class="icon">
+                                        <svg><use xlink:href="#icon-cart" /></svg>
+                                    </span>
+                                    {{lang 'products.pre_order'}}
+                                </a>
+                            {{/if}}
+                            {{#if add_to_cart_url }}
+                                <a href="{{add_to_cart_url}}" data-event-type="product-click" class="button button--primary">
+                                    <span class="icon">
+                                        <svg><use xlink:href="#icon-cart" /></svg>
+                                    </span>
+                                    {{lang 'products.add_to_cart'}}
+                                </a>
+                            {{/if}}
+                            <button class="button button--primary button--icon" data-product-id="{{id}}">
+                                <span class="icon">
+                                    <svg><use xlink:href="#icon-clipboard" /></svg>
+                                </span>
+                                <span>{{lang 'account.wishlists.add_item'}}</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

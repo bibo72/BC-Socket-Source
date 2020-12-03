@@ -11,7 +11,8 @@
 }
 
 .card-sku,
-.listItem-sku {
+.listItem-sku,
+.table-sku {
     font-family: $header-font-family;
     font-weight: bold;
     margin: 0 0 8px;
@@ -26,8 +27,8 @@
 }
 
 .card-stock,
-.listItem-stock {
-    color: stencilColor("color-green");
+.listItem-stock,
+.table-stock {
     font-size: 13px;
     text-align: left;
     margin: 0 0 8px;
@@ -35,10 +36,15 @@
     &.red {
         color: stencilColor("color-red");
     }
+
+    &.green {
+        color: stencilColor("color-green");
+    }
 }
 
 .card-price,
-.listItem-price {
+.listItem-price,
+.table-price {
     font-family: $header-font-family;
     font-weight: bold;
     font-size: fontSize("smallest");
@@ -49,6 +55,12 @@
 
 .card {
     .card-title {
+        display: none;
+        margin: 0 0 18px;
+    }
+
+    .card-description {
+        font-size: 13px;
         margin: 0 0 18px;
     }
 
@@ -121,5 +133,97 @@
     .listItem-body {
         flex: 1;
         padding: 0 10px;
+    }
+}
+
+
+.products-table-container {
+    overflow-x: auto;
+    .products-table {
+        width: 100%;
+        margin: 30px 0 17px;
+
+        th, td {
+            text-align: left;
+        }
+
+        tr {
+            border-top: container("border");
+        }
+
+        th {
+            font-size: fontSize("smallest");
+            font-family: $header-font-family;
+            text-transform: uppercase;
+            background: stencilColor("color-greyLightest");
+            padding: 15px 10px;
+        }
+
+        td {
+            padding: 25px 10px;
+        }
+
+        .table-sku,
+        .table-stock,
+        .table-price {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .table-stock {
+            text-align: right;
+        }
+
+        .table-description {
+            font-size: 12px;
+        }
+
+        .th-stock,
+        .td-stock {
+            width: 130px;
+        }
+        .th-stock {
+            text-align: center;
+        }
+
+        .td-price,
+        .td-price {
+            width: 105px;
+        }
+
+        .th-actions,
+        .td-actions {
+            width: 145px;
+        }
+
+        .table-actions {
+            display: flex;
+            align-items: center;
+            margin: 0;
+
+            .table-quantity {
+                flex: 1;
+                width: 60px;
+                height: 32px;
+                padding: 5px 8px;
+            }
+
+            .button {
+                width: 50px;
+                height: 32px;
+                font-size: 0;
+                min-width: auto;
+                padding: 0;
+                margin: 0 0 0 1px !important;
+
+                @media (max-width: 374px) {
+                    width: 32px;
+                }
+
+                @include breakpoint("small") {
+                    width: 32px;
+                }
+            }
+        }
     }
 }

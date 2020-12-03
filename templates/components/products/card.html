@@ -1,6 +1,11 @@
 <article class="card {{#if alternate}}card--alternate{{/if}}" {{#if settings.data_tag_enabled}} data-event-type="{{event}}" data-entity-id="{{id}}" data-position="{{position}}" data-name="{{name}}" data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{brand.name}}" data-product-price="{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}"  {{/if}}>
     <div class="card-main-content">
         <p class="card-sku">{{sku}}</p>
+        {{#each custom_fields}}
+            {{#if (lowercase name) '===' 'short description'}}
+                <div class="card-description">{{{value}}}</div>
+            {{/if}}
+        {{/each}}
         <h4 class="card-title">
             <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
         </h4>
@@ -68,7 +73,7 @@
             {{#if out_of_stock_message}}
                 <div class="card-stock red">{{out_of_stock_message}}</div>
             {{else}}
-                <div class="card-stock">In Stock[XX]</div>
+                <div class="card-stock green">In Stock[XX]</div>
             {{/if}}
 
             <div class="card-price" data-test-info-type="price">

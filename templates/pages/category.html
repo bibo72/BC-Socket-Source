@@ -27,7 +27,9 @@ category:
         </a>
         {{#unless theme_settings.hide_category_page_heading }}
             <h1 class="page-heading">{{category.name}}</h1>
-            {{{region name="category_below_header"}}}
+            <div class="category-banner">
+                {{{region name="category_below_header"}}}
+            </div>
         {{/unless}}
         {{#if category.image}}
             {{> components/common/responsive-img
@@ -37,7 +39,7 @@ category:
                 class="category-header-image"
             }}
         {{/if}}
-        {{{category.description}}}
+        <div class="category-description">{{{category.description}}}</div>
     </div>
     {{#if category.faceted_search_enabled}}
         <aside class="page-sidebar" id="faceted-search-container">
@@ -60,7 +62,9 @@ category:
             {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
             {{#unless theme_settings.hide_category_page_heading }}
                 <h1 class="page-heading">{{category.name}}</h1>
-                {{{region name="category_below_header"}}}
+                <div class="category-banner">
+                    {{{region name="category_below_header"}}}
+                </div>
             {{/unless}}
             {{#if category.image}}
                 {{> components/common/responsive-img
@@ -70,7 +74,7 @@ category:
                     class="category-header-image"
                 }}
             {{/if}}
-            {{{category.description}}}
+            <div class="category-description">{{{category.description}}}</div>
         </div>
 
         {{> components/category/product-listing}}

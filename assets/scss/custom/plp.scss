@@ -35,9 +35,70 @@
 .back-link {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: fontSize("smallest");
     font-weight: bold;
     text-decoration: none;
     color: stencilColor("color-textHeading");
     margin-bottom: 35px;
+}
+
+.category-banner {
+    >div {
+        margin-bottom: 20px;
+    }
+}
+
+.category-description {
+    margin-bottom: 47px;
+}
+
+.category-products-actions {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint("small") {
+       flex-direction: row;
+       align-items: center;
+       justify-content: space-between;
+    }
+
+    .category-products-search {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        border: 1px solid stencilColor("input-border-color");
+
+        @include breakpoint("small") {
+            max-width: 495px;
+        }
+
+        .form-input {
+            height: 38px;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .button {
+            @include square(40px);
+            border: none;
+            background: transparent;
+            margin: 0;
+
+            svg {
+                fill: stencilColor("color-blue");
+            }
+        }
+    }
+
+    .pagination-section {
+        background: transparent;
+        padding: 20px 0 0 0;
+
+        @include breakpoint("small") {
+            padding: 0 0 0 20px;
+        }
+    }
 }

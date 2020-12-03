@@ -1,6 +1,18 @@
 {{#if category.products}}
     {{> components/products/filter sort=pagination.category.sort}}
 
+    <div class="category-products-actions">
+        <div class="category-products-search">
+            <input type="text" class="form-input" />
+            <button type="button" class="button button--icon">
+                <span class="icon">
+                    <svg><use xlink:href="#icon-search"></use></svg>
+                </span>
+            </button>
+        </div>
+        {{> components/common/paginator pagination.category total=category.total_products}}
+    </div>
+
     <form action="{{urls.compare}}" method='POST' {{#if settings.data_tag_enabled}} data-list-name="Category: {{category.name}}" {{/if}} data-product-compare>
         {{#if theme_settings.product_list_display_mode '===' 'grid'}}
             {{#if settings.data_tag_enabled}}
@@ -8,6 +20,8 @@
             {{else}}
                 {{> components/products/grid products=category.products show_compare=category.show_compare theme_settings=theme_settings}}
             {{/if}}
+        {{else if theme_settings.product_list_display_mode '===' 'table'}}
+            {{> components/products/table products=category.products theme_settings=theme_settings event="list"}}
         {{else}}
             {{#if settings.data_tag_enabled}}
                 {{> components/products/list products=category.products show_compare=category.show_compare theme_settings=theme_settings event="list" }}
@@ -17,7 +31,7 @@
         {{/if}}
     </form>
 
-    {{> components/common/paginator pagination.category}}
+    {{> components/common/paginator pagination.category total=category.total_products}}
 {{else}}
     <p>{{lang 'categories.no_products'}}</p>
 {{/if}}

@@ -67,7 +67,7 @@ body.hasAdminBar {
     box-shadow: 0 remCalc(2) remCalc(7) 0 rgba(0, 0, 0, 0.2);
     color: $adminBar-text-color;
     font-family: "Source Sans Pro", arial, "sans serif", sans-serif;
-    font-size: 14px;
+    font-size: fontSize("smallest");
     font-weight: normal;
     height: $adminBar-height;
     left: 0;
