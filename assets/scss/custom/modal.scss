@@ -1,0 +1,78 @@
+// modal
+
+// shopping list modal
+
+.modal_content__shopping_list {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: remCalc(300px);
+    max-width: remCalc(500px);
+    min-height: remCalc(400px);
+    max-height: remCalc(500px);
+    padding: remCalc(30px);
+    padding-top: remCalc(24px);
+    margin: 0;
+
+    * {
+        margin: 0;
+    }
+
+    .modal_title {
+        width: 100%;
+        height: auto;
+        font-size: 26px;
+        line-height: 36px;
+        font-family: stencilFontFamily("headings-font"), Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .button--trapezoid {
+        width: 100%;
+        max-width: remCalc(171px);
+        margin: remCalc(21px) 0 remCalc(30px);
+
+        .button {
+            width: 100%;
+        }
+    }
+
+    .form_shoppinglist {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: remCalc(235px);
+        overflow-x: hidden;
+        border: 1px solid #70706F;
+    }
+
+    .shopping_lists {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        list-style: none;
+    }
+
+    .shopping_list {
+        margin: 0;
+        padding: 0;
+
+        &:not(:first-child) {
+            border-top: 1px solid #70706F;
+        }
+    }
+
+    .shopping_list_div {
+        padding: remCalc(13px) remCalc(20px);
+        font-family: stencilFontFamily("headings-font"), Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover,
+        &:active {
+            background-color: #EDEDED;
+        }
+    }
+}
