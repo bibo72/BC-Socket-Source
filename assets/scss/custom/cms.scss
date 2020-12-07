@@ -15,12 +15,12 @@
                         max-width: 100%;
                     }
                 }
+            }
 
-                &[data-layout-name="Full"] {
-                    >div[data-sub-layout] {
-                        @include breakpoint("small") {
-                            max-width: (layout("max") + ($container-padding * 2)) /2;
-                        }
+            >div[data-sub-layout-container][data-layout-name="Full"] {
+                >div[data-sub-layout] {
+                    @include breakpoint("small") {
+                        max-width: (layout("max") + ($container-padding * 2)) /2;
                     }
                 }
             }
