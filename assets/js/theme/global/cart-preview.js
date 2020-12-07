@@ -57,13 +57,16 @@ export default function (secureBaseUrl, cartId) {
     let quantity = 0;
 
     if (cartId) {
-        // Get existing quantity from localStorage if found
-        if (utils.tools.storage.localStorageAvailable()) {
-            if (localStorage.getItem('cart-quantity')) {
-                quantity = Number(localStorage.getItem('cart-quantity'));
-                $body.trigger('cart-quantity-update', quantity);
-            }
-        }
+        utils.api.cart.getCartQuantity({}, (err, response) => {
+            $body.trigger('cart-quantity-update', response);
+        });
+        // // Get existing quantity from localStorage if found
+        // if (utils.tools.storage.localStorageAvailable()) {
+        //     if (localStorage.getItem('cart-quantity')) {
+        //         quantity = Number(localStorage.getItem('cart-quantity'));
+        //         $body.trigger('cart-quantity-update', quantity);
+        //     }
+        // }
 
         // Get updated cart quantity from the Cart API
         const cartQtyPromise = new Promise((resolve, reject) => {

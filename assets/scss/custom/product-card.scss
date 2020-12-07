@@ -16,6 +16,14 @@
     font-family: $header-font-family;
     font-weight: bold;
     margin: 0 0 8px;
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .card-title,

@@ -7,15 +7,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button {
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-transform: uppercase;
 
-    &.button--primary {
-        min-width: 150px;
-        height: 50px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+    svg {
+        fill: stencilColor("button--default-color");
+    }
 
+    &:hover,
+    &:focus {
+        svg {
+            fill: stencilColor("button--default-colorHover");
+        }
+    }
+
+    &:active {
+        svg {
+            fill: stencilColor("button--default-colorActive");
+        }
+    }
+
+    &.button--primary {
         svg {
             fill: stencilColor("button--primary-color");
         }
@@ -32,48 +47,45 @@ h1, h2, h3, h4, h5, h6 {
                 fill: stencilColor("button--primary-colorActive");
             }
         }
+    }
+}
 
-        &.button--trapezoid {
-            background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColor") 0) top right no-repeat;
+
+.button--trapezoid {
+    background: linear-gradient(-135deg, transparent 13px, stencilColor("button--primary-backgroundColor") 0) top right no-repeat;
+    padding: 1px;
+
+    .button {
+        min-width: 150px;
+        background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--default-backgroundColor") 0) top right no-repeat;
+        border: none;
+        margin: 0 !important;
+
+        &:hover,
+        &:focus {
+            background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--default-backgroundColorHover") 0) top right no-repeat;
+        }
+
+        &:active {
+            background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--default-backgroundColorActive") 0) top right no-repeat;
+        }
+
+        &.button--primary {
+            background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--primary-backgroundColor") 0) top right no-repeat;
             border: none;
 
             &:hover,
             &:focus {
-                background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColorHover") 0) top right no-repeat;
-                border: none;
+                background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--primary-backgroundColorHover") 0) top right no-repeat;
             }
 
             &:active {
-                background: linear-gradient(-135deg, transparent 12px, stencilColor("button--primary-backgroundColorActive") 0) top right no-repeat;
-                border: none;
-            }
-        }
-
-        &.button--icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-
-            svg {
-                fill: stencilColor("button--primary-borderColor");
-            }
-
-            &:hover,
-            &:focus {
-                svg {
-                    fill: stencilColor("button--primary-borderColorHover");
-                }
-            }
-
-            &:active {
-                svg {
-                    fill: stencilColor("button--primary-borderColorActive");
-                }
+                background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--primary-backgroundColorActive") 0) top right no-repeat;
             }
         }
     }
 }
+
 .pagination-section {
     display: flex;
     align-items: center;

@@ -23,7 +23,7 @@
                 <form method="post" action="{{delete_url}}" class="form">
                     <fieldset class="form-fieldset">
                         {{#if is_public}}
-                            <a href="{{share_url}}" class="button button--primary button--trapezoid"
+                            <a href="{{share_url}}" class="button button--primary"
                            role="button">{{lang 'common.share'}}</a>
                         {{/if}}
                         <a href="{{edit_url}}" class="button button--small" data-wishlist>{{lang 'common.edit'}}</a>
@@ -41,7 +41,7 @@
 
     {{/unless}}
     <div class="form-actions">
-        <a href="{{this.urls.account.wishlists.add}}" class="button button--primary button--trapezoid" role="button" data-wishlist>{{lang 'account.wishlists.new'}}</a>
+        <a href="{{this.urls.account.wishlists.add}}" class="button button--primary" role="button" data-wishlist>{{lang 'account.wishlists.new'}}</a>
         {{inject 'wishlistDelete' (lang 'account.wishlists.delete_alert')}}
         {{#if customer.wishlists}}
             {{#each customer.wishlists}}

@@ -17,7 +17,9 @@
             <input class="form-input" id="{{type}}_login_pass" type="password" name="login_pass" autocomplete="off">
         </div>
         <div class="form-actions">
-            <input type="submit" class="button button--primary button--trapezoid" value="{{lang 'login.submit_value' }}">
+            <div class="button--trapezoid">
+                <input type="submit" class="button button--primary" value="{{lang 'login.submit_value' }}">
+            </div>
             <a class="forgot-password" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password' }}</a>
         </div>
     </form>

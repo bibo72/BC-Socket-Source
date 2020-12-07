@@ -67,7 +67,7 @@
                         <div class="paymentMethod-row">
                             <form action="{{delete_url}}" method="post" data-delete-payment-method="{{lang 'forms.payment_methods.confirm_delete'}}">
                                 {{#if edit_url}}
-                                    <a class="button button--primary button--trapezoid methodActions-button" href="{{edit_url}}">{{lang 'common.edit' }}</a>
+                                    <a class="button button--primary methodActions-button" href="{{edit_url}}">{{lang 'common.edit' }}</a>
                                 {{/if}}
                                 {{#if delete_url}}
                                     <button type="submit" class="button button--small methodActions-button">{{lang 'common.delete' }}</button>
