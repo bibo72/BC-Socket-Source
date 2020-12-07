@@ -1,0 +1,29 @@
+#cms-page {
+    div[data-content-region="page_builder_content"] {
+        >div[data-layout-id] {
+            >div[data-sub-layout-container]:not([data-layout-name="Full"]) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: layout("max") + ($container-padding * 2);
+                padding: 0 $container-padding;
+                margin: auto;
+
+                > [data-sub-layout] {
+                    @media (max-width: 767px) {
+                        flex-basis: 100%;
+                        max-width: 100%;
+                    }
+                }
+
+                &[data-layout-name="Full"] {
+                    >div[data-sub-layout] {
+                        @include breakpoint("small") {
+                            max-width: (layout("max") + ($container-padding * 2)) /2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
