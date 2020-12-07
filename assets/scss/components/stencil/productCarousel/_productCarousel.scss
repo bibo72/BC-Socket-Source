@@ -27,9 +27,9 @@
         width: grid-calc(3, $total-columns);
     }
 
-    @include breakpoint("large") {
-        width: grid-calc(2, $total-columns);
-    }
+    // @include breakpoint("large") {
+    //     width: grid-calc(2, $total-columns);
+    // }
 
     .card {
         margin-bottom: 0;

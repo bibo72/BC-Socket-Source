@@ -1,6 +1,8 @@
 <article class="card {{#if alternate}}card--alternate{{/if}}" data-product-id="{{id}}" {{#if settings.data_tag_enabled}} data-event-type="{{event}}" data-entity-id="{{id}}" data-position="{{position}}" data-name="{{name}}" data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{brand.name}}" data-product-price="{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}"  {{/if}}>
     <div class="card-main-content">
-        <p class="card-sku">{{sku}}</p>
+        <p class="card-sku">
+            <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{sku}}</a>
+        </p>
         {{#each custom_fields}}
             {{#if (lowercase name) '===' 'short description'}}
                 <div class="card-description">{{{value}}}</div>
@@ -125,7 +127,7 @@
                         {{/if}}
                     {{/if}}
                 {{/or}}
-                <button class="button button--primary button--icon" data-product-id="{{id}}">
+                <button class="button" data-product-id="{{id}}">
                     <span class="icon">
                         <svg><use xlink:href="#icon-clipboard" /></svg>
                     </span>

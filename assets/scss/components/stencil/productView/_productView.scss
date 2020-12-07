@@ -343,12 +343,13 @@
 
         @include breakpoint("large") {
             display: inline-block;
-            margin-top: 1rem;
+            // margin-top: 1rem;
         }
 
         // scss-lint:disable SelectorDepth, NestingDepth
-        .button {
+        .button--trapezoid {
             width: 100%;
+            margin-bottom: 1rem;
 
             @include breakpoint("large") {
                 margin-right: spacing("half");
