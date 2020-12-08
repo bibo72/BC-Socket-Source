@@ -95,6 +95,8 @@
                 &[data-layout-name="Full-3 Left"],
                 &[data-layout-name="Full-3 Right"] {
                     max-width: 100%;
+                    padding-left: 0;
+                    padding-right: 0;
                 }
 
                 &[data-layout-name="Layout-2 XS"] {
