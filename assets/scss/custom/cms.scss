@@ -97,6 +97,23 @@
                     max-width: 100%;
                     padding-left: 0;
                     padding-right: 0;
+                    >div[data-sub-layout] {
+                        &:nth-of-type(2) {
+                            padding: 35px 1.5rem;
+                        }
+                    }
+                }
+                &[data-layout-name="Full-3 Right"] {
+                    >div[data-sub-layout] {
+                        @include breakpoint("medium") {
+                            &:nth-of-type(1) {
+                                order: 2;
+                            }
+                            &:nth-of-type(2) {
+                                order: 1;
+                            }
+                        }
+                    }
                 }
 
                 &[data-layout-name="Layout-2 XS"] {
