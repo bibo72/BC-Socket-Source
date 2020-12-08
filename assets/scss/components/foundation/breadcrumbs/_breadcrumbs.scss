@@ -11,7 +11,19 @@
 //    The font-size is reset in the breadcrumb settings file.
 //
 // -----------------------------------------------------------------------------
+.breadcrumbs-back-link {
+    display: flex;
+    align-items: center;
+    font-size: fontSize("smallest");
+    font-weight: bold;
+    text-decoration: none;
+    color: stencilColor("color-textHeading");
+    margin-bottom: 35px;
 
+    @include breakpoint("small") {
+        display: none; // 1
+    }
+}
 
 .breadcrumbs {
     display: none; // 1

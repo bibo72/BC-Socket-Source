@@ -1,5 +1,11 @@
 {{#partial "page"}}
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <a class="breadcrumbs-back-link">
+        <span class="icon" aria-hidden="true">
+            <svg><use xlink:href="#icon-chevron-left"/></svg>
+        </span>
+        Back to {{#each breadcrumbs}}{{#if @index '===' (subtract  ../breadcrumbs.length 2)}}{{name}}{{/if}}{{/each}}
+    </a>
 
     {{#unless theme_settings.hide_page_heading }}
         <h1 class="page-heading">{{ page.title }}</h1>
