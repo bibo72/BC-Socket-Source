@@ -1,4 +1,36 @@
 #cms-page {
+    .cms-accordion {
+        .accordion-block {
+            margin-top: $accordion-navList-spacing;
+
+            .accordion-content {
+                padding: $accordion-navList-padding 0;
+                @include breakpoint("medium") {
+                    padding: $accordion-navList-padding;
+                }
+            }
+
+            .accordion-navigation {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 13px 10px;
+                background-position: right 0 top 50%;
+                background: stencilColor("color-greyLightest");
+                border: 0;
+            }
+
+            .accordion-title {
+                text-decoration: none;
+                padding: 0;
+            }
+
+            .accordion-indicator {
+                @include square(20px);
+            }
+        }
+    }
+
     div[data-content-region="page_builder_content"] {
         >div[data-layout-id] {
             >div[data-sub-layout-container] {
@@ -174,6 +206,18 @@
                     }
                 }
 
+                &[data-layout-name="Layout-2"] {
+                    >div[data-sub-layout] {
+                        @include breakpoint("medium") {
+                            &:nth-of-type(1) {
+                                order: 2;
+                            }
+                            &:nth-of-type(2) {
+                                order: 1;
+                            }
+                        }
+                    }
+                }
 
                 &[data-layout-name="Layout-3"] {
                     #buttonLink {
