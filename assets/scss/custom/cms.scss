@@ -1,4 +1,36 @@
 #cms-page {
+    .cms-accordion {
+        .accordion-block {
+            margin-top: $accordion-navList-spacing;
+
+            .accordion-content {
+                padding: $accordion-navList-padding 0;
+                @include breakpoint("medium") {
+                    padding: $accordion-navList-padding;
+                }
+            }
+
+            .accordion-navigation {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 13px 10px;
+                background-position: right 0 top 50%;
+                background: stencilColor("color-greyLightest");
+                border: 0;
+            }
+
+            .accordion-title {
+                text-decoration: none;
+                padding: 0;
+            }
+
+            .accordion-indicator {
+                @include square(20px);
+            }
+        }
+    }
+
     div[data-content-region="page_builder_content"] {
         >div[data-layout-id] {
             >div[data-sub-layout-container] {
@@ -99,7 +131,28 @@
                     padding-right: 0;
                     >div[data-sub-layout] {
                         &:nth-of-type(2) {
-                            padding: 35px 1.5rem;
+                            padding: 35px 0;
+                            >div[data-widget-id] {
+                                padding: 0 1.5rem;
+                                display: flex;
+                                align-items: flex-start;
+                                @include breakpoint("medium") {
+                                    width: layout("max") / 2;
+                                    max-width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+                &[data-layout-name="Full-3 Left"] {
+                    >div[data-sub-layout] {
+                        @include breakpoint("medium") {
+                            &:nth-of-type(2) {
+                                align-items: flex-start;
+                                >div[data-widget-id] {
+                                    padding: 0 0 0 2rem;
+                                }
+                            }
                         }
                     }
                 }
@@ -111,6 +164,10 @@
                             }
                             &:nth-of-type(2) {
                                 order: 1;
+                                align-items: flex-end;
+                                >div[data-widget-id] {
+                                    padding: 0 2rem 0 0;
+                                }
                             }
                         }
                     }
@@ -144,6 +201,50 @@
 
                             &:nth-of-type(2) {
                                 font-family: $header-font-family;
+                            }
+                        }
+                    }
+                }
+
+                &[data-layout-name="Layout-2"] {
+                    >div[data-sub-layout] {
+                        @include breakpoint("medium") {
+                            &:nth-of-type(1) {
+                                order: 2;
+                            }
+                            &:nth-of-type(2) {
+                                order: 1;
+                            }
+                        }
+                    }
+                }
+
+                &[data-layout-name="Layout-3"] {
+                    #buttonLink {
+                        background: linear-gradient(-135deg, transparent 13px, stencilColor("button--primary-backgroundColor") 0) top right no-repeat;
+                        padding: 1px;
+
+                        >span {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            min-width: 150px;
+                            height: 50px;
+                            background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--primary-backgroundColor") 0) top right no-repeat;
+                            border: none;
+                            padding: .875rem 2.25rem;
+                        }
+
+                        &:hover,
+                        &:focus {
+                            >span {
+                                background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--primary-backgroundColorHover") 0) top right no-repeat;
+                            }
+                        }
+
+                        &:active {
+                            >span {
+                                background: linear-gradient(-135deg, transparent 12.7px, stencilColor("button--primary-backgroundColorActive") 0) top right no-repeat;
                             }
                         }
                     }

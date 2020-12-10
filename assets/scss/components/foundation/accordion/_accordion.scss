@@ -48,11 +48,11 @@
             margin-top: $accordion-navList-spacing;
         }
     }
+}
 
-    .accordion-block {
-        @include breakpoint("medium") {
-            margin-top: $accordion-navList-spacing;
-        }
+.accordion-block {
+    @include breakpoint("medium") {
+        margin-top: $accordion-navList-spacing;
     }
 
     .accordion-content {
