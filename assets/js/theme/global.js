@@ -43,8 +43,8 @@ export default class Global extends PageManager {
         objectFitImages();
         custom(this.context);
 
-        // const url = 'https://cdn.bundleb2b.net/bundleb2b.2.10.0.js';
-        const url = 'http://127.0.0.1:8080/bundleb2b.2.10.0.js';
+        const url = 'https://cdn.bundleb2b.net/bundleb2b.2.10.0.js';
+        // const url = 'http://127.0.0.1:8080/bundleb2b.2.10.0.js';
         const el = document.createElement('script');
         el.setAttribute('src', url);
         document.querySelector('body').append(el);
@@ -61,11 +61,11 @@ export default class Global extends PageManager {
                 callback(SS) {
                     console.log('b2bcontext', SS);
 
-                    const getShoppingList = async () => {
+                    const getModalShoppingList = async (qty, sku, id) => {
                         const shoppingList = await SS.api.getShoppingLists();
                         console.log(shoppingList);
                         let html = `
-                            <div class="modal_content__shopping_list">
+                            <div class="modal_content__shopping_list" data-this-qty="${qty}" data-this-sku="${sku}" data-this-id="${id}">
                                 <p class="modal_title">${SS.text['shopping.list.add.to.list.title']}</p>
                                 <div class="button--trapezoid"><a href="/shopping-lists/" class="button button--primary">New List</a></div>
                                 <form action="" class="form form-wishlist form-action form_shoppinglist" data-shoppinglist-add method="post">
@@ -90,16 +90,15 @@ export default class Global extends PageManager {
                         return html
                     };
 
-                    const addToShoppingList = async (e) => {
+                    const addToShoppingListModal = async (e) => {
                         if (e.target.hasAttribute('add-to-list')) {
                           e.preventDefault()
                           window.B3Spinner.show()
-                          const container = quickView ? '#modal ' : ''
                           try {
-                            const productId = document.querySelector(`${container}input[name=product_id]`).value
-                            const qty = document.querySelector(`${container}[name='qty[]']`).value
-                            const sku = trim(document.querySelector(`${container}[data-product-sku]`).innerHTML)
-                            const data = await SS.api.getVariantsByProductId({ productId })
+                            const productId = $(e.target).closest('.modal_content__shopping_list').data('thisId');
+                            const qty = $(e.target).closest('.modal_content__shopping_list').data('thisQty');
+                            const sku = $(e.target).closest('.modal_content__shopping_list').data('thisSku').replace(/(^\s*)|(\s*$)/g, '');
+                            const data = await SS.api.getVariantsByProductId({ productId });
                             const hasVariants = (data.length > 0)
                             const shoppingListId = e.target.getAttribute('data-list-id')
                             let status = false
@@ -115,18 +114,8 @@ export default class Global extends PageManager {
                             }
                     
                             if (!hasVariants || status) {
-                              const form = document.querySelector(`${container}form[data-cart-item-add]`)
-                              const formData = filterEmptyFilesFromForm(new FormData(form))
                               const optionList = []
-                              Array.from(formData).forEach(item => {
-                                if (item[0].indexOf('attribute') !== -1 && item[1] !== '') {
-                                  const optionObj = {
-                                    option_id: item[0],
-                                    option_value: item[1],
-                                  }
-                                  optionList.push(optionObj)
-                                }
-                              })
+                              
                               const Data = {
                                 id: shoppingListId,
                                 items: [
@@ -157,27 +146,17 @@ export default class Global extends PageManager {
                         }
                     }
 
-                    function filterEmptyFilesFromForm(formData) {
-                        try {
-                            Array.from(formData).forEach(item => {
-                            const key = item[0]
-                            const val = item[1]
-                            if (val instanceof File && !val.name && !val.size) {
-                                formData.delete(key)
-                            }
-                            })
-                        } catch (e) {
-                            // console.error(e)
-                        }
-                        return formData
-                    }
-
                     const modal = defaultModal();
                     $('body').on('click', '[data-shoppinglist-modal]', async e => {
                         e.stopPropagation();
                         modal.open({ size: 'small' });
 
-                        const html = await getShoppingList();
+                        const $product = $(e.target).closest('.card');
+                        const qty = $product.find('input.js-card-quantity-input').val();
+                        const sku = $product.find('[data-shoppinglist-modal]').data('productSku');
+                        const id = $product.find('[data-shoppinglist-modal]').data('productId');
+
+                        const html = await getModalShoppingList(qty, sku, id);
                         if (html) {
                             $('#modal .modal-content').html(html);
                             $('#modal .loadingOverlay').hide();
@@ -185,7 +164,7 @@ export default class Global extends PageManager {
                     });
 
                     document.querySelector('body').addEventListener('click', e => {
-                        addToShoppingList(e)
+                        addToShoppingListModal(e)
                     })
                 }
             },

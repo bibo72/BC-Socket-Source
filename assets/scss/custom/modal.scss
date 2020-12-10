@@ -70,9 +70,26 @@
         text-transform: uppercase;
         cursor: pointer;
 
+        max-width: 80%;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+
         &:hover,
         &:active {
             background-color: #EDEDED;
         }
+    }
+}
+
+.b2b-loading-overlay {
+    z-index: 1006 !important;
+}
+
+.modal--small {
+    max-width: remCalc(335px);
+
+    @include breakpoint("small") {
+        max-width: remCalc(500px);
     }
 }
