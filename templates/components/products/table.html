@@ -42,6 +42,16 @@
                                     </span>
                                     {{lang 'products.choose_options'}}
                                 </a>
+                                <a href="{{url}}"
+                                    class="button button--primary button--icon" 
+                                    data-product-id="{{id}}" 
+                                    data-product-qty="0" 
+                                    data-product-sku="{{sku}}">
+                                    <span class="icon">
+                                        <svg><use xlink:href="#icon-clipboard" /></svg>
+                                    </span>
+                                    <span>{{lang 'account.wishlists.add_item'}}</span>
+                                </a>
                             {{/if}}
                             {{#if pre_order}}
                                 <button type="button" data-href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--primary js-table-add-to-cart">
@@ -49,6 +59,17 @@
                                         <svg><use xlink:href="#icon-cart" /></svg>
                                     </span>
                                     {{lang 'products.pre_order'}}
+                                </button>
+                                <button type="button" 
+                                    class="button button--primary button--icon" 
+                                    data-product-id="{{id}}" 
+                                    data-shoppinglist-modal 
+                                    data-product-qty="0" 
+                                    data-product-sku="{{sku}}">
+                                    <span class="icon">
+                                        <svg><use xlink:href="#icon-clipboard" /></svg>
+                                    </span>
+                                    <span>{{lang 'account.wishlists.add_item'}}</span>
                                 </button>
                             {{/if}}
                             {{#if add_to_cart_url }}
@@ -58,13 +79,19 @@
                                     </span>
                                     {{lang 'products.add_to_cart'}}
                                 </button>
+                                <button type="button" 
+                                    class="button button--primary button--icon" 
+                                    data-product-id="{{id}}" 
+                                    data-shoppinglist-modal 
+                                    data-product-qty="0" 
+                                    data-product-sku="{{sku}}">
+                                    <span class="icon">
+                                        <svg><use xlink:href="#icon-clipboard" /></svg>
+                                    </span>
+                                    <span>{{lang 'account.wishlists.add_item'}}</span>
+                                </button>
                             {{/if}}
-                            <button class="button button--primary button--icon" data-product-id="{{id}}">
-                                <span class="icon">
-                                    <svg><use xlink:href="#icon-clipboard" /></svg>
-                                </span>
-                                <span>{{lang 'account.wishlists.add_item'}}</span>
-                            </button>
+                            
                         </div>
                     </td>
                 </tr>

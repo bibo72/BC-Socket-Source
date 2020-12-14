@@ -61,6 +61,11 @@
         &:not(:first-child) {
             border-top: 1px solid #70706F;
         }
+
+        &:hover,
+        &:active {
+            background-color: #EDEDED;
+        }
     }
 
     .shopping_list_div {
@@ -74,11 +79,6 @@
         overflow: hidden;
         text-overflow:ellipsis;
         white-space: nowrap;
-
-        &:hover,
-        &:active {
-            background-color: #EDEDED;
-        }
     }
 }
 

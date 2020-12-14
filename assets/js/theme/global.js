@@ -19,6 +19,7 @@ import objectFitImages from './global/object-fit-polyfill';
 import custom from './custom/index';
 import toggleNavigationMenu from './custom/toggleNavigationMenu';
 import { defaultModal, modalTypes } from './global/modal';
+import swal from './global/sweet-alert';
 
 export default class Global extends PageManager {
     onReady() {
@@ -42,6 +43,7 @@ export default class Global extends PageManager {
         svgInjector();
         objectFitImages();
         custom(this.context);
+        this.fnCheckBeforeShoppinglistModal(this.context);
 
         const url = 'https://cdn.bundleb2b.net/bundleb2b.2.10.0.js';
         // const url = 'http://127.0.0.1:8080/bundleb2b.2.10.0.js';
@@ -77,7 +79,7 @@ export default class Global extends PageManager {
                                 <div data-click='addToShoppingList' 
                                     data-stop 
                                     class="shopping_list_div" 
-                                    add-to-list 
+                                    add-to-list-from-modal
                                     data-list-id="${item.id}" 
                                     data-list-status="${item.status}">
                                     ${item.name}
@@ -91,7 +93,7 @@ export default class Global extends PageManager {
                     };
 
                     const addToShoppingListModal = async (e) => {
-                        if (e.target.hasAttribute('add-to-list')) {
+                        if (e.target.hasAttribute('add-to-list-from-modal')) {
                           e.preventDefault()
                           window.B3Spinner.show()
                           try {
@@ -140,27 +142,55 @@ export default class Global extends PageManager {
                     
                             window.B3Spinner.hide()
                           } catch (error) {
-                              console.log(error);
+                            console.log(error);
                             SS.utils.Alert.error('Woops! Something went wrong! Please try again later.')
+                            window.B3Spinner.hide()
                           }
                         }
                     }
 
                     const modal = defaultModal();
                     $('body').on('click', '[data-shoppinglist-modal]', async e => {
-                        e.stopPropagation();
-                        modal.open({ size: 'small' });
+                      e.stopPropagation();
 
-                        const $product = $(e.target).closest('.card');
-                        const qty = $product.find('input.js-card-quantity-input').val();
-                        const sku = $product.find('[data-shoppinglist-modal]').data('productSku');
-                        const id = $product.find('[data-shoppinglist-modal]').data('productId');
+                      if (SS.isB2CUser) {
+                        swal.fire({
+                          text: 'Please log in as b2b user for further information.',
+                          icon: 'info',
+                          timer: '2000',
+                          showConfirmButton: false,
+                        });
+                        return
+                      }
 
-                        const html = await getModalShoppingList(qty, sku, id);
-                        if (html) {
-                            $('#modal .modal-content').html(html);
-                            $('#modal .loadingOverlay').hide();
-                        }
+                      const $currentTarget = $(e.currentTarget);
+
+                      const id = $currentTarget.data('productId');
+                      const sku = $currentTarget.data('productSku');
+
+                      modal.open({ size: 'small' });
+
+                      let qty = 1; // init num at least 1
+
+                      const $card = $currentTarget.closest('.card');
+                      console.log($card);
+                      if ($card && $card.length) {
+                        qty = $card.find('input.js-card-quantity-input').val();
+                        console.log('card qty', qty);
+                      }
+
+                      const $tableItem = $currentTarget.closest('.table-product-item');
+                      console.log($tableItem);
+                      if ($tableItem && $tableItem.length) {
+                        qty = $tableItem.find('input.js-table-quantity-input').val();
+                        console.log('table qty', qty);
+                      }
+
+                      const html = await getModalShoppingList(qty, sku, id);
+                      if (html) {
+                          $('#modal .modal-content').html(html);
+                          $('#modal .loadingOverlay').hide();
+                      }
                     });
 
                     document.querySelector('body').addEventListener('click', e => {
@@ -180,5 +210,25 @@ export default class Global extends PageManager {
                 },
             },
         };
+
+    }
+
+    // check user clicking on data-shoppinglist-modal
+    fnCheckBeforeShoppinglistModal(context) {
+      const customer = context.customer;
+      $('body').on('click', '[data-shoppinglist-modal]', e => {
+        e.stopPropagation();
+        console.log(e);
+        const $currentTarget = $(e.currentTarget);
+        if (!customer) {
+          swal.fire({
+            text: 'Please log in for further information.',
+            icon: 'info',
+            timer: '2000',
+            showConfirmButton: false,
+          });
+          return
+        }
+      });
     }
 }

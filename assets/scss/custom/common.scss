@@ -101,3 +101,17 @@ h1, h2, h3, h4, h5, h6 {
 .zoid-component-frame {
     z-index: zIndex('low') !important;
 }
+
+
+// swal
+
+.swal2-container .swal2-icon.swal2-info {
+    font-size: 1rem;
+}
+
+
+// shop by price
+
+.form-minMaxRow .button {
+    height: remCalc(36px);
+}
