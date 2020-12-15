@@ -17,6 +17,13 @@ product:
 
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
+    <a class="back-link">
+        <span class="icon" aria-hidden="true">
+            <svg><use xlink:href="#icon-chevron-left"/></svg>
+        </span>
+        Back to {{#each breadcrumbs}}{{#if @index '===' (subtract  ../breadcrumbs.length 2)}}{{name}}{{/if}}{{/each}}
+    </a>
+
     {{#each product.shipping_messages}}
         {{> components/common/alert-info message}}
     {{/each}}

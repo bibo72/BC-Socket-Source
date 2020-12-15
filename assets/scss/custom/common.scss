@@ -103,6 +103,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+// :focus
+a:focus,
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
+    outline: none;
+}
+
+
 // swal
 
 .swal2-container .swal2-icon.swal2-info {
@@ -114,4 +124,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .form-minMaxRow .button {
     height: remCalc(36px);
+}
+
+
+// breadcrumbs
+
+.breadcrumbs {
+
+    .breadcrumb {
+
+        &.is-active {
+            font-weight: normal;
+        }
+    }
 }

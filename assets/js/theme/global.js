@@ -61,8 +61,6 @@ export default class Global extends PageManager {
             login: {
                 overwrite: false,
                 callback(SS) {
-                    console.log('b2bcontext', SS);
-
                     const getModalShoppingList = async (qty, sku, id) => {
                         const shoppingList = await SS.api.getShoppingLists();
                         console.log(shoppingList);
