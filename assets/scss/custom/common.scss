@@ -86,6 +86,13 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.button.button--primary[disabled] {
+
+    &:hover {
+        color: stencilColor("button--primary-colorHover");
+    }
+}
+
 .pagination-section {
     display: flex;
     align-items: center;

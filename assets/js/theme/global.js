@@ -216,8 +216,7 @@ export default class Global extends PageManager {
       const customer = context.customer;
       $('body').on('click', '[data-shoppinglist-modal]', e => {
         e.stopPropagation();
-        console.log(e);
-        const $currentTarget = $(e.currentTarget);
+        
         if (!customer) {
           swal.fire({
             text: 'Please log in for further information.',

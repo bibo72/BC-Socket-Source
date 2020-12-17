@@ -25,7 +25,7 @@
         letter-spacing: 0;
     }
 
-    div[itemscope][itemtype] {
+    div.product_content[itemscope][itemtype] {
         margin: remCalc(17px) 0 0;
     }
 
@@ -91,12 +91,12 @@
     }
 
     .slick-slider {
-        margin: 0 remCalc(-6px) remCalc(25px);
+        margin: remCalc(6px) remCalc(-6px) remCalc(25px);
         position: relative;
 
         .slick-list {
             width: 100%;
-            padding: remCalc(6px) 0 0;
+            padding: 0;
             margin: 0;
         }
 
@@ -172,6 +172,144 @@
             width: 98%;
             max-width: 98%;
             height: auto;
+        }
+
+        &.is-active {
+
+            &:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: #004F91;
+                position: absolute;
+                left: 0;
+                right: auto;
+                top: auto;
+                bottom: -4px;
+            }
+        }
+    }
+
+    .productView-info {
+        margin: 0;
+    }
+
+    .productView-price {
+        margin: remCalc(58px) 0 0;
+        font-size: 26px;
+    }
+
+    .price-section {
+        line-height: 32px;
+        font-family: stencilFontFamily("headings-font"), Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        letter-spacing: 0;
+    }
+
+    .productView-options {
+        margin: remCalc(27px) 0 0;
+        text-align: left;
+
+        .form {
+            display: block;
+            margin: 0;
+            font-size: 0;
+
+            .form-field {
+                margin: 0;
+                display: inline-block;
+            }
+    
+            .form-action {
+                max-width: remCalc(215px);
+                display: inline-block;
+                width: calc( 100% - 100px - 20px ); // .form-input--incrementTotal margin-left
+                margin: 0;
+                margin-left: remCalc(20px);
+    
+                .button--trapezoid {
+                    margin: 0;
+    
+                    .button {
+                        width: 100%;
+                        height: 48px;
+                        font-size: 16px;
+                        line-height: 24px;
+                        padding: remCalc(12px);
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .form-wishlist {
+            display: block;
+            margin: remCalc(20px) 0 0;
+    
+            .wishlist-button {
+                display: flex;
+                width: 100%;
+                font-size: 16px;
+                line-height: 24px;
+                color: #1D1D1B;
+                border: 1px solid #70706F;
+                padding: remCalc(7px) remCalc(15px);
+                height: 40px;
+                justify-content: space-between;
+                font-family: stencilFontFamily("body-font"), Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                text-transform: capitalize;
+
+                &:hover,
+                &:active,
+                &:visited,
+                &:focus {
+                    background-color: transparent;
+                }
+    
+                svg {
+                    fill: #1D1D1B;
+                }
+            }
+        }
+    }
+
+    .form-label--alternate {
+        margin: 0;
+    }
+
+    .form-increment {
+        display: inline-block;
+
+        .button {
+            display: none;
+        }
+    }
+
+    .form-input--incrementTotal {
+        display: inline-block;
+        width: remCalc(100px);
+        height: remCalc(50px);
+        border: 1px solid #70706F;
+    }
+
+    #wishlist-dropdown {
+
+        .button {
+            display: flex;
+            width: 100%;
+            font-size: 16px;
+            line-height: 24px;
+            // border: 1px solid transparent;
+            border-color: #70706F;
+            color: #1D1D1B;
+            padding: remCalc(7px) remCalc(15px);
+            height: 40px;
+            font-family: stencilFontFamily("body-font"), Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            justify-content: flex-start;
         }
     }
 
