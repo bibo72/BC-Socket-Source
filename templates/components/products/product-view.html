@@ -245,13 +245,34 @@
                 {{/if}}
             {{/if}}
 
+            {{!--
             {{#if settings.bulk_discount_enabled}}
                 <div class="productView-info-bulkPricing">
-                    {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+                    {{!> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
                 </div>
             {{/if}}
+            --}}
 
         </dl>
+
+        {{#if settings.bulk_discount_enabled}}
+            {{#if product.bulk_discount_rates}}
+                <div class="product_bulk_price">
+                    <ul class="qty_list">
+                        <li class="qty qty_label">QTY</li>
+                        {{#each product.bulk_discount_rates}}
+                            <li class="qty">{{min}}-{{max}}</li>
+                        {{/each}}
+                    </ul>
+                    <ul class="price_list">
+                        <li class="price price_label">Price/Ea</li>
+                        {{#each product.bulk_discount_rates}}
+                            <li class="price">{{discount.formatted}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+        {{/if}}
 
         {{#if product.call_for_price}}
             <p class="productView-price">
@@ -295,6 +316,21 @@
 
     </section>
 
+    {{#if pages}}
+        {{#each pages}}
+            {{#if (lowercase name) '===' 'products menu static page'}}
+                <div class="products_links">
+                    <p class="links">
+                        {{#each children}}
+                            <a href="{{url}}" class="link">{{name}}</a>
+                        {{/each}}
+                    </p>
+                </div>
+            {{/if}}
+        {{/each}}
+    {{/if}}
+
+    {{!--
     {{#if product.description}}
         <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
             {{#if theme_settings.show_product_details_tabs}}
@@ -304,6 +340,7 @@
             {{/if}}
         </article>
     {{/if}}
+    --}}
 </div>
 
 <div id="previewModal" class="modal modal--large" data-reveal>
