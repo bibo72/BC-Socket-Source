@@ -89,11 +89,11 @@
 
     .productView-thumbnails {
         padding: 0;
-        margin: 0;
+        margin: 0 remCalc(-6px);
     }
 
     .productView-thumbnail {
-        padding: remCalc(15px) remCalc(7.5px) 0;
+        padding: remCalc(12px) remCalc(6px) 0;
     }
 
     .slick-slider {
@@ -338,13 +338,16 @@
 
         .links {
             margin: 0;
+            display: inline-flex;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
 
             .link {
                 font-weight: bold;
                 text-transform: capitalize;
 
                 + .link {
-                    margin-left: remCalc(15px);
+                    margin-right: remCalc(15px);
                 }
             }
         }
@@ -454,6 +457,10 @@
             margin: 0 remCalc(-7.5px);
         }
 
+        .productView-thumbnail {
+            padding: remCalc(15px) remCalc(7.5px) 0;
+        }
+
         .productView-details,
         .products_links {
             display: block;
@@ -471,6 +478,10 @@
         .productView-product {
             border: none;
             padding: 0;
+        }
+
+        .product_bulk_price {
+            margin: remCalc(28px) 0 0;
         }
 
         .productView-price {
@@ -594,6 +605,7 @@
             flex-wrap: wrap;
 
             li {
+                padding: remCalc(7px);
                 
                 + li {
                     margin: 0;
@@ -612,6 +624,7 @@
         .price_label {
             width: remCalc(102px);
             flex: 0 0 remCalc(102px);
+            padding: remCalc(8px);
         }
 
         .qty,
