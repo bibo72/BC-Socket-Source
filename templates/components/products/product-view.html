@@ -166,10 +166,8 @@
                 {{/each}}
             {{/if}}
 
-            {{!--
-            <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
-            <dd class="productView-info-value" data-product-sku{{#if schema}} itemprop="sku"{{/if}}>{{product.sku}}</dd>
-            --}}
+            <dt class="productView-info-name sku-label u-hiddenVisually"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
+            <dd class="productView-info-value u-hiddenVisually" data-product-sku{{#if schema}} itemprop="sku"{{/if}}{{#unless product.sku}} style="display: none;"{{/unless}}>{{product.sku}}</dd>
 
             <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
             <dd class="productView-info-value" data-product-upc{{#unless product.upc}} style="display: none;"{{/unless}}>{{product.upc}}</dd>

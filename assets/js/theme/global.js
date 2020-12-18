@@ -63,7 +63,6 @@ export default class Global extends PageManager {
                 callback(SS) {
                     const getModalShoppingList = async (qty, sku, id) => {
                         const shoppingList = await SS.api.getShoppingLists();
-                        console.log(shoppingList);
                         let html = `
                             <div class="modal_content__shopping_list" data-this-qty="${qty}" data-this-sku="${sku}" data-this-id="${id}">
                                 <p class="modal_title">${SS.text['shopping.list.add.to.list.title']}</p>
@@ -140,7 +139,6 @@ export default class Global extends PageManager {
                     
                             window.B3Spinner.hide()
                           } catch (error) {
-                            console.log(error);
                             SS.utils.Alert.error('Woops! Something went wrong! Please try again later.')
                             window.B3Spinner.hide()
                           }
@@ -174,14 +172,12 @@ export default class Global extends PageManager {
                       console.log($card);
                       if ($card && $card.length) {
                         qty = $card.find('input.js-card-quantity-input').val();
-                        console.log('card qty', qty);
                       }
 
                       const $tableItem = $currentTarget.closest('.table-product-item');
                       console.log($tableItem);
                       if ($tableItem && $tableItem.length) {
                         qty = $tableItem.find('input.js-table-quantity-input').val();
-                        console.log('table qty', qty);
                       }
 
                       const html = await getModalShoppingList(qty, sku, id);
