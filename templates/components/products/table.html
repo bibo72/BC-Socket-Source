@@ -60,17 +60,6 @@
                                     </span>
                                     {{lang 'products.pre_order'}}
                                 </button>
-                                <button type="button" 
-                                    class="button button--primary button--icon" 
-                                    data-product-id="{{id}}" 
-                                    data-shoppinglist-modal 
-                                    data-product-qty="0" 
-                                    data-product-sku="{{sku}}">
-                                    <span class="icon">
-                                        <svg><use xlink:href="#icon-clipboard" /></svg>
-                                    </span>
-                                    <span>{{lang 'account.wishlists.add_item'}}</span>
-                                </button>
                             {{/if}}
                             {{#if add_to_cart_url }}
                                 <button type="button" data-href="{{add_to_cart_url}}" data-event-type="product-click" class="button button--primary js-table-add-to-cart">

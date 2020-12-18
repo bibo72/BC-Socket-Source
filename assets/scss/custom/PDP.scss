@@ -650,6 +650,7 @@
                             font-family: stencilFontFamily("body-font"), Arial, Helvetica, sans-serif;
                             font-weight: bold;
                             text-transform: capitalize;
+                            margin: 0;
 
                             &:hover,
                             &:active,
@@ -663,6 +664,10 @@
                             }
                         }
                     }
+                }
+
+                > .form-action {
+                    display: block;
                 }
             }
         }
