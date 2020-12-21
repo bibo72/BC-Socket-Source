@@ -102,3 +102,22 @@
         }
     }
 }
+
+
+.category-products-search {
+
+    .form {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+
+        .form-input {
+            padding: 0;
+            padding-left: 10px;
+        }
+    }
+}
