@@ -47,6 +47,8 @@
                     @media (max-width: 991px) {
                         flex-basis: 100%;
                         max-width: 100%;
+                        padding: 0;
+                        justify-content: flex-start;
                     }
                 }
 
@@ -77,6 +79,13 @@
                     >div[data-sub-layout] {
                         @include breakpoint("medium") {
                             max-width: layout("max") / 2;
+                        }
+
+                        &:nth-of-type(1) {
+                            padding: 0 1.5rem;
+                            @include breakpoint("medium") {
+                                padding: 0;
+                            }
                         }
 
                         &:nth-of-type(2) {
@@ -130,6 +139,13 @@
                     padding-left: 0;
                     padding-right: 0;
                     >div[data-sub-layout] {
+                        &:nth-of-type(1) {
+                            padding: 0 1.5rem;
+                            @include breakpoint("medium") {
+                                padding: 0;
+                            }
+                        }
+
                         &:nth-of-type(2) {
                             padding: 35px 0;
                             >div[data-widget-id] {
@@ -189,9 +205,13 @@
                                 width: 125px;
                                 height: 125px;
                                 position: absolute;
-                                top: 50%;
+                                top: 0;
                                 left: 0;
-                                transform: translate3D(0, -50%, 0);
+
+                                @include breakpoint("medium") {
+                                    top: 50%;
+                                    transform: translate3D(0, -50%, 0);
+                                }
 
                                 img {
                                     max-width: 100%;
