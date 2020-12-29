@@ -3,8 +3,8 @@
     <table class="products-table">
         <thead>
             <tr>
-                <th>{{lang 'Item ID'}}</th>
-                <th>{{lang 'Description'}}</th>
+                <th class="th_sku">{{lang 'Item ID'}}</th>
+                <th class="th_description">{{lang 'Description'}}</th>
                 <th class="th-stock">{{lang 'Stock'}}</th>
                 <th class="th-price">{{lang 'Price'}}</th>
                 <th class="th-actions">{{lang 'QTY'}}</th>
@@ -13,10 +13,10 @@
         <tbody>
             {{#each products}}
                 <tr class="table-product-item" data-product-id="{{id}}">
-                    <td>
+                    <td class="td_sku">
                         <div class="table-sku">{{sku}}</div>
                     </td>
-                    <td>
+                    <td class="td_description">
                         <div class="table-description">
                             {{#each custom_fields}}{{#if (lowercase name) '===' 'short description'}}{{value}}{{/if}}{{/each}}
                         </div>
@@ -44,7 +44,7 @@
                                     {{lang 'products.choose_options'}}
                                 </a>
                                 <a href="{{url}}"
-                                    class="button button--primary button--icon" 
+                                    class="button button--icon" 
                                     data-product-id="{{id}}" 
                                     data-product-qty="0" 
                                     data-product-sku="{{sku}}">
@@ -70,7 +70,7 @@
                                     {{lang 'products.add_to_cart'}}
                                 </button>
                                 <button type="button" 
-                                    class="button button--primary button--icon" 
+                                    class="button button--icon" 
                                     data-product-id="{{id}}" 
                                     data-shoppinglist-modal 
                                     data-product-qty="0" 

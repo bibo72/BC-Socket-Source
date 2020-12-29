@@ -1,6 +1,7 @@
 {{#if category.products}}
     {{> components/products/filter sort=pagination.category.sort}}
 
+    <h6 class="category_search_title">Search within Results</h6>
     <div class="category-products-actions">
         <div class="category-products-search">
             <form class="form" action="{{urls.search}}">
