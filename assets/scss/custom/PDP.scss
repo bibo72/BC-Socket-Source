@@ -230,6 +230,14 @@
             .form-field {
                 margin: 0;
                 display: inline-block;
+                vertical-align: top;
+            }
+
+            [data-product-option-change] {
+
+                .form-field {
+                    display: block;
+                }
             }
     
             .form-action {
@@ -415,22 +423,24 @@
         }
 
         .productView-thumbnail-link {
-            // transform: rotateZ(-90deg);
+            transform: rotateZ(-90deg);
 
-            img {
+            /* img {
                 transform: translate(-50%, -50%) rotateZ(-90deg);
-            }
+            } */
         }
 
         .slick-slider {
             margin: remCalc(7.5px) remCalc(-7.5px) remCalc(20px);
 
             .slick-prev {
-                left: remCalc(-35.5px);
+                // left: remCalc(-35.5px);
+                left: remCalc(-40px);
             }
     
             .slick-next {
-                right: remCalc(-35.5px);
+                // right: remCalc(-35.5px);
+                right: remCalc(-40px);
             }
 
             .slick-dots {
