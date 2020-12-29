@@ -1,0 +1,64 @@
+<div id="productCollapse" class="product_collapse">
+
+    <div class="container">
+
+        <a href="#product{{pascalcase (lang 'products.description')}}" role="button" class="product_collapse_trigger" data-collapsible>
+            <span class="product_collapse_title">{{pascalcase (lang 'products.description')}}</span>
+    
+            <span class="product_collapse_indicator">
+                <span class="indicator_label">
+                    <span class="icon" aria-hidden="true">
+                        <svg><use xlink:href="#icon-chevron-left"/></svg>
+                    </span>
+                </span>
+            </span>
+        </a>
+    
+        <div
+            id="product{{pascalcase (lang 'products.description')}}"
+            class="product_collapse_content_container">
+            <div class="product_collapse_content">
+                {{{product.description}}}
+            </div>
+        </div>
+
+        {{#if product}}
+            {{#if product.custom_fields}}
+                {{#each product.custom_fields}}
+                    {{#or (if (lowercase name) '===' 'specifications') (if (lowercase name) '===' 'file downloads')}}
+                        <a href="#product{{pascalcase name}}" role="button" class="product_collapse_trigger" data-collapsible data-custom-fields-id="{{id}}">
+                            <span class="product_collapse_title">
+                                {{#if (lowercase name) '===' 'file downloads'}}
+                                    {{#replace 'File ' name}}
+                                    {{else}}
+                                        {{name}}
+                                    {{/replace}}
+                                {{else}}
+                                    {{name}}
+                                {{/if}}
+                            </span>
+                    
+                            <span class="product_collapse_indicator">
+                                <span class="indicator_label">
+                                    <span class="icon" aria-hidden="true">
+                                        <svg><use xlink:href="#icon-chevron-left"/></svg>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    
+                        <div
+                            id="product{{pascalcase name}}"
+                            class="product_collapse_content_container">
+                            <div class="product_collapse_content">
+                                {{{value}}}
+                            </div>
+                        </div>
+                    {{/or}}
+                {{/each}}
+            {{/if}}
+        {{/if}}
+
+    </div>
+
+</div>

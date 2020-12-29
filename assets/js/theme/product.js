@@ -8,6 +8,8 @@ import ProductDetails from './common/product-details';
 import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/form-utils';
 
+import customCollapsible from './custom/collapsible';
+
 export default class Product extends PageManager {
     constructor(context) {
         super(context);
@@ -52,6 +54,12 @@ export default class Product extends PageManager {
 
         this.productReviewHandler();
         this.bulkPricingHandler();
+
+        // open the first tab
+        const firstCollapsibleInstance = $('.product_collapse_trigger').first().data('collapsibleInstance');
+        firstCollapsibleInstance.open();
+
+        customCollapsible();
     }
 
     productReviewHandler() {

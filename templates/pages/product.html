@@ -13,28 +13,43 @@ product:
 {{inject "zoomSize" theme_settings.zoom_size}}
 {{inject "productSize" theme_settings.product_size}}
 
-{{#partial "page"}}
+{{#partial "full-page"}}
 
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div class="container">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    
+        <a class="back-link">
+            <span class="icon" aria-hidden="true">
+                <svg><use xlink:href="#icon-chevron-left"/></svg>
+            </span>
+            Back to {{#each breadcrumbs}}{{#if @index '===' (subtract  ../breadcrumbs.length 2)}}{{name}}{{/if}}{{/each}}
+        </a>
+    
+        {{#each product.shipping_messages}}
+            {{> components/common/alert-info message}}
+        {{/each}}
+    
+        <div itemscope itemtype="http://schema.org/Product" class="product_content">
+            {{> components/products/product-view schema=true}}
+    
+            {{{region name="product_below_content"}}}
+    
+            {{#if product.videos.list.length}}
+                {{> components/products/videos product.videos}}
+            {{/if}}
+    
+            {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
+                {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+            {{/all}}
+    
+            {{!> components/products/tabs}}
+    
+        </div>
 
-    {{#each product.shipping_messages}}
-        {{> components/common/alert-info message}}
-    {{/each}}
-
-    <div itemscope itemtype="http://schema.org/Product">
-        {{> components/products/product-view schema=true  }}
-
-        {{{region name="product_below_content"}}}
-
-        {{#if product.videos.list.length}}
-            {{> components/products/videos product.videos}}
-        {{/if}}
-
-        {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
-            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
-        {{/all}}
-
-        {{> components/products/tabs}}
     </div>
+
+    {{> components/products/collapse}}
+
 {{/partial}}
+
 {{> layout/base}}

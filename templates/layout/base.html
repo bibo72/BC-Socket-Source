@@ -46,7 +46,7 @@
         {{~inject "settings" settings}}
         {{~inject "page_type" page_type}}
     </head>
-    <body>
+    <body class="{{#if page_type}}page_type__{{snakecase page_type}}{{/if}} {{#if page}}page_title__{{snakecase page.title}} page_id__{{page.id}}{{/if}}">
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
 
         {{> components/common/header }}

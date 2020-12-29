@@ -1,0 +1,125 @@
+// product collapse
+
+.product_collapse {
+
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #EDEDED;
+    margin: 0;
+    padding: remCalc(80px) 0;
+
+    .product_collapse_indicator {
+
+        .indicator_label {
+
+            .icon {
+                display: block;
+                @include square(30px);
+                transform: rotateZ(-90deg);
+                transform-origin: center;
+            }
+        }
+    }
+
+    .product_collapse_trigger {
+        display: flex;
+        width: 100%;
+        height: auto;
+        font-size: 24px;
+        line-height: 30px;
+        font-family: stencilFontFamily("body-font"), Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: #1D1D1B;
+        letter-spacing: 0;
+        border: 1px solid transparent;
+        padding: remCalc(9px) remCalc(15px);
+        background-color: stencilColor("color-white");
+        text-decoration: none;
+        text-transform: capitalize;
+        justify-content: space-between;
+        align-items: stretch;
+
+        &.is-open {
+
+            .product_collapse_indicator {
+
+                .indicator_label {
+        
+                    .icon {
+                        transform: rotateZ(90deg);
+                    }
+                }
+            }
+        }
+
+        &:not(:first-child) {
+            margin: remCalc(10px) 0 0;
+        }
+    }
+
+    .product_collapse_content_container {
+        padding: 0;
+        margin: remCalc(40px) 0;
+        display: none;
+
+        &.is-open {
+            display: block;
+        }
+
+        .product_collapse_content {
+            margin: 0;
+            padding: 0;
+
+            p {
+                margin: 0 0 remCalc(27px);
+                letter-spacing: 0;
+            }
+        }
+    }
+
+    @include breakpoint("medium") {
+
+        .container {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            .product_collapse_indicator {
+                display: none;
+            }
+
+            .product_collapse_trigger {
+                display: block;
+                width: auto;
+                margin: 0;
+                margin-right: remCalc(50px);
+                background-color: transparent;
+                padding-left: 0;
+                padding-right: 0;
+                order: 0;
+                
+                &.is-open {
+                    border: none;
+                    border-bottom: 2px solid #179188;
+                }
+            }
+
+            .product_collapse_content_container {
+                order: 1;
+                width: 100%;
+                margin: remCalc(30px) 0;
+
+                .product_collapse_content {
+                    
+                    p {
+                        margin: 0 0 remCalc(31px);
+                    }
+                }
+            }
+        }
+    }
+
+}

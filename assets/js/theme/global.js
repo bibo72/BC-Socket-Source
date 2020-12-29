@@ -19,6 +19,7 @@ import objectFitImages from './global/object-fit-polyfill';
 import custom from './custom/index';
 import toggleNavigationMenu from './custom/toggleNavigationMenu';
 import { defaultModal, modalTypes } from './global/modal';
+import swal from './global/sweet-alert';
 
 export default class Global extends PageManager {
     onReady() {
@@ -42,9 +43,10 @@ export default class Global extends PageManager {
         svgInjector();
         objectFitImages();
         custom(this.context);
+        this.fnCheckBeforeShoppinglistModal(this.context);
 
-        // const url = 'https://cdn.bundleb2b.net/bundleb2b.2.10.0.js';
-        const url = 'http://127.0.0.1:8080/bundleb2b.2.10.0.js';
+        const url = 'https://cdn.bundleb2b.net/bundleb2b.2.10.0.js';
+        // const url = 'http://127.0.0.1:8080/bundleb2b.2.10.0.js';
         const el = document.createElement('script');
         el.setAttribute('src', url);
         document.querySelector('body').append(el);
@@ -59,13 +61,10 @@ export default class Global extends PageManager {
             login: {
                 overwrite: false,
                 callback(SS) {
-                    console.log('b2bcontext', SS);
-
-                    const getShoppingList = async () => {
+                    const getModalShoppingList = async (qty, sku, id) => {
                         const shoppingList = await SS.api.getShoppingLists();
-                        console.log(shoppingList);
                         let html = `
-                            <div class="modal_content__shopping_list">
+                            <div class="modal_content__shopping_list" data-this-qty="${qty}" data-this-sku="${sku}" data-this-id="${id}">
                                 <p class="modal_title">${SS.text['shopping.list.add.to.list.title']}</p>
                                 <div class="button--trapezoid"><a href="/shopping-lists/" class="button button--primary">New List</a></div>
                                 <form action="" class="form form-wishlist form-action form_shoppinglist" data-shoppinglist-add method="post">
@@ -77,7 +76,7 @@ export default class Global extends PageManager {
                                 <div data-click='addToShoppingList' 
                                     data-stop 
                                     class="shopping_list_div" 
-                                    add-to-list 
+                                    add-to-list-from-modal
                                     data-list-id="${item.id}" 
                                     data-list-status="${item.status}">
                                     ${item.name}
@@ -90,16 +89,15 @@ export default class Global extends PageManager {
                         return html
                     };
 
-                    const addToShoppingList = async (e) => {
-                        if (e.target.hasAttribute('add-to-list')) {
+                    const addToShoppingListModal = async (e) => {
+                        if (e.target.hasAttribute('add-to-list-from-modal')) {
                           e.preventDefault()
                           window.B3Spinner.show()
-                          const container = quickView ? '#modal ' : ''
                           try {
-                            const productId = document.querySelector(`${container}input[name=product_id]`).value
-                            const qty = document.querySelector(`${container}[name='qty[]']`).value
-                            const sku = trim(document.querySelector(`${container}[data-product-sku]`).innerHTML)
-                            const data = await SS.api.getVariantsByProductId({ productId })
+                            const productId = $(e.target).closest('.modal_content__shopping_list').data('thisId');
+                            const qty = $(e.target).closest('.modal_content__shopping_list').data('thisQty');
+                            const sku = $(e.target).closest('.modal_content__shopping_list').data('thisSku').replace(/(^\s*)|(\s*$)/g, '');
+                            const data = await SS.api.getVariantsByProductId({ productId });
                             const hasVariants = (data.length > 0)
                             const shoppingListId = e.target.getAttribute('data-list-id')
                             let status = false
@@ -115,18 +113,8 @@ export default class Global extends PageManager {
                             }
                     
                             if (!hasVariants || status) {
-                              const form = document.querySelector(`${container}form[data-cart-item-add]`)
-                              const formData = filterEmptyFilesFromForm(new FormData(form))
                               const optionList = []
-                              Array.from(formData).forEach(item => {
-                                if (item[0].indexOf('attribute') !== -1 && item[1] !== '') {
-                                  const optionObj = {
-                                    option_id: item[0],
-                                    option_value: item[1],
-                                  }
-                                  optionList.push(optionObj)
-                                }
-                              })
+                              
                               const Data = {
                                 id: shoppingListId,
                                 items: [
@@ -151,41 +139,56 @@ export default class Global extends PageManager {
                     
                             window.B3Spinner.hide()
                           } catch (error) {
-                              console.log(error);
                             SS.utils.Alert.error('Woops! Something went wrong! Please try again later.')
+                            window.B3Spinner.hide()
                           }
                         }
                     }
 
-                    function filterEmptyFilesFromForm(formData) {
-                        try {
-                            Array.from(formData).forEach(item => {
-                            const key = item[0]
-                            const val = item[1]
-                            if (val instanceof File && !val.name && !val.size) {
-                                formData.delete(key)
-                            }
-                            })
-                        } catch (e) {
-                            // console.error(e)
-                        }
-                        return formData
-                    }
-
                     const modal = defaultModal();
                     $('body').on('click', '[data-shoppinglist-modal]', async e => {
-                        e.stopPropagation();
-                        modal.open({ size: 'small' });
+                      e.stopPropagation();
 
-                        const html = await getShoppingList();
-                        if (html) {
-                            $('#modal .modal-content').html(html);
-                            $('#modal .loadingOverlay').hide();
-                        }
+                      if (SS.isB2CUser) {
+                        swal.fire({
+                          text: 'Please log in as b2b user for further information.',
+                          icon: 'info',
+                          timer: '2000',
+                          showConfirmButton: false,
+                        });
+                        return
+                      }
+
+                      const $currentTarget = $(e.currentTarget);
+
+                      const id = $currentTarget.data('productId');
+                      const sku = $currentTarget.data('productSku');
+
+                      modal.open({ size: 'small' });
+
+                      let qty = 1; // init num at least 1
+
+                      const $card = $currentTarget.closest('.card');
+                      console.log($card);
+                      if ($card && $card.length) {
+                        qty = $card.find('input.js-card-quantity-input').val();
+                      }
+
+                      const $tableItem = $currentTarget.closest('.table-product-item');
+                      console.log($tableItem);
+                      if ($tableItem && $tableItem.length) {
+                        qty = $tableItem.find('input.js-table-quantity-input').val();
+                      }
+
+                      const html = await getModalShoppingList(qty, sku, id);
+                      if (html) {
+                          $('#modal .modal-content').html(html);
+                          $('#modal .loadingOverlay').hide();
+                      }
                     });
 
                     document.querySelector('body').addEventListener('click', e => {
-                        addToShoppingList(e)
+                        addToShoppingListModal(e)
                     })
                 }
             },
@@ -201,5 +204,24 @@ export default class Global extends PageManager {
                 },
             },
         };
+
+    }
+
+    // check user clicking on data-shoppinglist-modal
+    fnCheckBeforeShoppinglistModal(context) {
+      const customer = context.customer;
+      $('body').on('click', '[data-shoppinglist-modal]', e => {
+        e.stopPropagation();
+        
+        if (!customer) {
+          swal.fire({
+            text: 'Please log in for further information.',
+            icon: 'info',
+            timer: '2000',
+            showConfirmButton: false,
+          });
+          return
+        }
+      });
     }
 }

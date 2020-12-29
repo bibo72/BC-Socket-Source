@@ -10,25 +10,56 @@
 
     <section class="productView-details">
         <div class="productView-product">
+
             <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+
             {{#if product.brand}}
                 <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
                     <a href="{{product.brand.url}}"{{#if schema}} itemprop="url"{{/if}}><span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span></a>
                 </h2>
             {{/if}}
-            {{#if product.call_for_price}}
-                <p class="productView-price">
-                    <span>{{product.call_for_price}}</span>
-                </p>
-            {{/if}}
-            <div class="productView-price">
-                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-                    {{> components/products/price price=product.price schema_org=schema}}
+
+            {{product.detail_messages}}
+
+            {{#each product.custom_fields}}
+                {{#if (lowercase name) '===' 'short description'}}
+                    <p class="product_short_description">{{value}}</p>
+                {{/if}}
+            {{/each}}
+
+            {{#if product.stock_level}}
+                {{#if (toInt product.stock_level) '>' 0}}
+                    <p class="product_stock stock_in">{{lang 'products.in_stock' stock_level=product.stock_level}}</p>
                 {{else}}
-                    {{> components/common/login-for-pricing}}
-                {{/or}}
+                    <p class="product_stock stock_out">{{lang 'products.out_of_stock'}}</p>
+                {{/if}}
+            {{else if product.out_of_stock}}
+                {{#if product.out_of_stock_message}}
+                    <p class="product_stock stock_out">{{product.out_of_stock_message}}</p>
+                {{else}}
+                    <p class="product_stock stock_out">{{lang 'products.out_of_stock'}}</p>
+                {{/if}}
+            {{/if}}
+
+            {{!-- <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}"> --}}
+            <div class="form-field form-field--stock u-hiddenVisually">
+                <label class="form-label form-label--alternate">
+                    {{lang 'products.current_stock'}}
+                    <span data-product-stock>{{product.stock_level}}</span>
+                </label>
             </div>
-            {{{region name="product_below_price"}}}
+            
+            {{!--
+            {{#if product.out_of_stock}}
+                {{#if product.out_of_stock_message}}
+                    {{> components/common/alert-error product.out_of_stock_message}}
+                {{else}}
+                    {{> components/common/alert-error (lang 'products.sold_out')}}
+                {{/if}}
+            {{/if}}
+            --}}
+
+            {{!--
             <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
                 {{#if settings.show_product_rating}}
                     {{#if product.num_reviews '>' 0}}
@@ -61,97 +92,8 @@
                     {{> components/products/modals/writeReview}}
                 {{/if}}
             </div>
-            {{product.detail_messages}}
-            <dl class="productView-info">
-                <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
-                <dd class="productView-info-value" data-product-sku{{#if schema}} itemprop="sku"{{/if}}>{{product.sku}}</dd>
-                <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
-                <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
-                {{#if schema}}
-                    {{#if product.mpn}}<meta itemprop="mpn" content="{{product.mpn}}" />{{/if}}
-                    {{#if product.gtin}}<meta itemprop="gtin" content="{{product.gtin}}" />{{/if}}
-                {{/if}}
-                {{#if product.condition}}
-                    <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
-                    <dd class="productView-info-value">{{product.condition}}</dd>
-                {{/if}}
-                {{#if product.availability}}
-                    <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
-                    <dd class="productView-info-value">{{product.availability}}</dd>
-                {{/if}}
-                {{#all product.weight theme_settings.show_product_weight}}
-                    <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
-                    <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
-                {{/all}}
-                {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
-                    <dt class="productView-info-name">{{lang 'products.width'}}</dt>
-                    <dd class="productView-info-value" data-product-width>
-                        {{product.width}}
-                        {{#if settings.measurements.length '==' 'Centimeters'}}
-                        ({{lang 'products.measurement.metric'}})
-                        {{else}}
-                        ({{lang 'products.measurement.imperial'}})
-                        {{/if}}
-                    </dd>
-                    <dt class="productView-info-name">{{lang 'products.height'}}</dt>
-                    <dd class="productView-info-value" data-product-height>
-                        {{product.height}}
-                        {{#if settings.measurements.length '==' 'Centimeters'}}
-                        ({{lang 'products.measurement.metric'}})
-                        {{else}}
-                        ({{lang 'products.measurement.imperial'}})
-                        {{/if}}
-                    </dd>
-                    <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
-                    <dd class="productView-info-value" data-product-depth>
-                        {{product.depth}}
-                        {{#if settings.measurements.length '==' 'Centimeters'}}
-                        ({{lang 'products.measurement.metric'}})
-                        {{else}}
-                        ({{lang 'products.measurement.imperial'}})
-                        {{/if}}
-                    </dd>
-                {{/all}}
-                {{#if product.min_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
-                {{/if}}
-                {{#if product.max_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
-                {{/if}}
-                {{#if product.gift_wrapping_available}}
-                    <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
-                {{/if}}
-                {{#if product.shipping}}
-                    {{#if product.shipping.calculated}}
-                        <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
-                    {{else}}
-                        {{#if product.shipping.price.value '===' 0}}
-                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
-                        {{else}}
-                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
-                        {{/if}}
-                    {{/if}}
-                {{/if}}
+            --}}
 
-                {{#if settings.bulk_discount_enabled}}
-                    <div class="productView-info-bulkPricing">
-                        {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
-                    </div>
-                {{/if}}
-
-                {{#if theme_settings.show_custom_fields_tabs '!==' true}}
-                    {{#each product.custom_fields}}
-                        <dt class="productView-info-name">{{name}}:</dt>
-                        <dd class="productView-info-value">{{{ sanitize value}}}</dd>
-                    {{/each}}
-                {{/if}}
-            </dl>
         </div>
     </section>
 
@@ -186,10 +128,10 @@
                 {{/if}}
             </div>
         </figure>
-        <ul class="productView-thumbnails"{{#gt product.images.length 5}} data-slick='{
+        <ul class="productView-thumbnails"{{#gt product.images.length 4}} data-slick='{
                 "infinite": false,
                 "mobileFirst": true,
-                "slidesToShow": 5,
+                "slidesToShow": 4,
                 "slidesToScroll": 1
             }'{{/gt}}>
             {{#each product.images}}
@@ -214,6 +156,136 @@
     </section>
 
     <section class="productView-details">
+
+        <dl class="productView-info">
+
+            {{#if theme_settings.show_custom_fields_tabs '!==' true}}
+                {{#each product.custom_fields}}
+                    {{!-- <dt class="productView-info-name">{{name}}:</dt> --}}
+                    <dd class="productView-info-value">{{{ sanitize value}}}</dd>
+                {{/each}}
+            {{/if}}
+
+            <dt class="productView-info-name sku-label u-hiddenVisually"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
+            <dd class="productView-info-value u-hiddenVisually" data-product-sku{{#if schema}} itemprop="sku"{{/if}}{{#unless product.sku}} style="display: none;"{{/unless}}>{{product.sku}}</dd>
+
+            <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
+            <dd class="productView-info-value" data-product-upc{{#unless product.upc}} style="display: none;"{{/unless}}>{{product.upc}}</dd>
+            {{#if schema}}
+                {{#if product.mpn}}<meta itemprop="mpn" content="{{product.mpn}}" />{{/if}}
+                {{#if product.gtin}}<meta itemprop="gtin" content="{{product.gtin}}" />{{/if}}
+            {{/if}}
+            {{#if product.condition}}
+                <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
+                <dd class="productView-info-value">{{product.condition}}</dd>
+            {{/if}}
+            {{#if product.availability}}
+                <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
+                <dd class="productView-info-value">{{product.availability}}</dd>
+            {{/if}}
+            {{#all product.weight theme_settings.show_product_weight}}
+                <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
+                <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
+            {{/all}}
+            {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
+                <dt class="productView-info-name">{{lang 'products.width'}}</dt>
+                <dd class="productView-info-value" data-product-width>
+                    {{product.width}}
+                    {{#if settings.measurements.length '==' 'Centimeters'}}
+                    ({{lang 'products.measurement.metric'}})
+                    {{else}}
+                    ({{lang 'products.measurement.imperial'}})
+                    {{/if}}
+                </dd>
+                <dt class="productView-info-name">{{lang 'products.height'}}</dt>
+                <dd class="productView-info-value" data-product-height>
+                    {{product.height}}
+                    {{#if settings.measurements.length '==' 'Centimeters'}}
+                    ({{lang 'products.measurement.metric'}})
+                    {{else}}
+                    ({{lang 'products.measurement.imperial'}})
+                    {{/if}}
+                </dd>
+                <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
+                <dd class="productView-info-value" data-product-depth>
+                    {{product.depth}}
+                    {{#if settings.measurements.length '==' 'Centimeters'}}
+                    ({{lang 'products.measurement.metric'}})
+                    {{else}}
+                    ({{lang 'products.measurement.imperial'}})
+                    {{/if}}
+                </dd>
+            {{/all}}
+            {{#if product.min_purchase_quantity}}
+                <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
+                <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
+            {{/if}}
+            {{#if product.max_purchase_quantity}}
+                <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
+                <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
+            {{/if}}
+            {{#if product.gift_wrapping_available}}
+                <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
+                <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
+            {{/if}}
+            {{#if product.shipping}}
+                {{#if product.shipping.calculated}}
+                    <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                    <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
+                {{else}}
+                    {{#if product.shipping.price.value '===' 0}}
+                        <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+                    {{else}}
+                        <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+
+            {{!--
+            {{#if settings.bulk_discount_enabled}}
+                <div class="productView-info-bulkPricing">
+                    {{!> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+                </div>
+            {{/if}}
+            --}}
+
+        </dl>
+
+        {{#if settings.bulk_discount_enabled}}
+            {{#if product.bulk_discount_rates}}
+                <div class="product_bulk_price">
+                    <ul class="qty_list">
+                        <li class="qty qty_label">QTY</li>
+                        {{#each product.bulk_discount_rates}}
+                            <li class="qty">{{min}}-{{max}}</li>
+                        {{/each}}
+                    </ul>
+                    <ul class="price_list">
+                        <li class="price price_label">Price/Ea</li>
+                        {{#each product.bulk_discount_rates}}
+                            <li class="price">{{discount.formatted}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+        {{/if}}
+
+        {{#if product.call_for_price}}
+            <p class="productView-price">
+                <span>{{product.call_for_price}}</span>
+            </p>
+        {{/if}}
+        <div class="productView-price">
+            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                {{> components/products/price price=product.price schema_org=schema}}
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+        {{{region name="product_below_price"}}}
+
         <div class="productView-options">
             {{#if product.release_date }}
                 <p>{{product.release_date}}</p>
@@ -227,30 +299,36 @@
                         {{{dynamicComponent 'components/products/options'}}}
                     {{/each}}
                 </div>
-                <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
-                    <label class="form-label form-label--alternate">
-                        {{lang 'products.current_stock'}}
-                        <span data-product-stock>{{product.stock_level}}</span>
-                    </label>
-                </div>
+
                 {{#if product.can_purchase}}
                     {{> components/products/add-to-cart}}
                 {{/if}}
-                {{#if product.out_of_stock}}
-                    {{#if product.out_of_stock_message}}
-                        {{> components/common/alert-error product.out_of_stock_message}}
-                    {{else}}
-                        {{> components/common/alert-error (lang 'products.sold_out')}}
-                    {{/if}}
-                {{/if}}
+
             </form>
             {{#if settings.show_wishlist}}
                 {{> components/common/wishlist-dropdown}}
             {{/if}}
         </div>
-        {{> components/common/share}}
+
+        {{!> components/common/share}}
+
     </section>
 
+    {{#if pages}}
+        {{#each pages}}
+            {{#if (lowercase name) '===' 'products menu static page'}}
+                <div class="products_links">
+                    <p class="links">
+                        {{#each children}}
+                            <a href="{{url}}" class="link">{{name}}</a>
+                        {{/each}}
+                    </p>
+                </div>
+            {{/if}}
+        {{/each}}
+    {{/if}}
+
+    {{!--
     {{#if product.description}}
         <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
             {{#if theme_settings.show_product_details_tabs}}
@@ -260,6 +338,7 @@
             {{/if}}
         </article>
     {{/if}}
+    --}}
 </div>
 
 <div id="previewModal" class="modal modal--large" data-reveal>

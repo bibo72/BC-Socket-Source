@@ -1,9 +1,10 @@
+{{#if products.length '>' 0}}
 <div class="products-table-container">
     <table class="products-table">
         <thead>
             <tr>
-                <th>{{lang 'Item ID'}}</th>
-                <th>{{lang 'Description'}}</th>
+                <th class="th_sku">{{lang 'Item ID'}}</th>
+                <th class="th_description">{{lang 'Description'}}</th>
                 <th class="th-stock">{{lang 'Stock'}}</th>
                 <th class="th-price">{{lang 'Price'}}</th>
                 <th class="th-actions">{{lang 'QTY'}}</th>
@@ -12,10 +13,10 @@
         <tbody>
             {{#each products}}
                 <tr class="table-product-item" data-product-id="{{id}}">
-                    <td>
+                    <td class="td_sku">
                         <div class="table-sku">{{sku}}</div>
                     </td>
-                    <td>
+                    <td class="td_description">
                         <div class="table-description">
                             {{#each custom_fields}}{{#if (lowercase name) '===' 'short description'}}{{value}}{{/if}}{{/each}}
                         </div>
@@ -42,6 +43,16 @@
                                     </span>
                                     {{lang 'products.choose_options'}}
                                 </a>
+                                <a href="{{url}}"
+                                    class="button button--icon" 
+                                    data-product-id="{{id}}" 
+                                    data-product-qty="0" 
+                                    data-product-sku="{{sku}}">
+                                    <span class="icon">
+                                        <svg><use xlink:href="#icon-clipboard" /></svg>
+                                    </span>
+                                    <span>{{lang 'account.wishlists.add_item'}}</span>
+                                </a>
                             {{/if}}
                             {{#if pre_order}}
                                 <button type="button" data-href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--primary js-table-add-to-cart">
@@ -58,13 +69,19 @@
                                     </span>
                                     {{lang 'products.add_to_cart'}}
                                 </button>
+                                <button type="button" 
+                                    class="button button--icon" 
+                                    data-product-id="{{id}}" 
+                                    data-shoppinglist-modal 
+                                    data-product-qty="0" 
+                                    data-product-sku="{{sku}}">
+                                    <span class="icon">
+                                        <svg><use xlink:href="#icon-clipboard" /></svg>
+                                    </span>
+                                    <span>{{lang 'account.wishlists.add_item'}}</span>
+                                </button>
                             {{/if}}
-                            <button class="button button--primary button--icon" data-product-id="{{id}}">
-                                <span class="icon">
-                                    <svg><use xlink:href="#icon-clipboard" /></svg>
-                                </span>
-                                <span>{{lang 'account.wishlists.add_item'}}</span>
-                            </button>
+                            
                         </div>
                     </td>
                 </tr>
@@ -72,3 +89,4 @@
         </tbody>
     </table>
 </div>
+{{/if}}

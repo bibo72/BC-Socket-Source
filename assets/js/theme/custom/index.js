@@ -13,7 +13,6 @@ export default function (context) {
         cartId,
         // customer,
     } = context;
-    console.log(context);
 
     addWebContentViaCMSpage('/footer-about-us-content/', $('#footer-about-us'));
     // backToTop();

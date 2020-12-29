@@ -61,6 +61,11 @@
         &:not(:first-child) {
             border-top: 1px solid #70706F;
         }
+
+        &:hover,
+        &:active {
+            background-color: #EDEDED;
+        }
     }
 
     .shopping_list_div {
@@ -70,9 +75,21 @@
         text-transform: uppercase;
         cursor: pointer;
 
-        &:hover,
-        &:active {
-            background-color: #EDEDED;
-        }
+        max-width: 80%;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.b2b-loading-overlay {
+    z-index: 1006 !important;
+}
+
+.modal--small {
+    max-width: remCalc(335px);
+
+    @include breakpoint("small") {
+        max-width: remCalc(500px);
     }
 }

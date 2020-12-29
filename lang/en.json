@@ -678,7 +678,7 @@
     },
     "products": {
         "current_stock": "Current Stock:",
-        "quantity": "Quantity:",
+        "quantity": " ",
         "quantity_decrease": "Decrease Quantity:",
         "quantity_increase": "Increase Quantity:",
         "purchase_units": "{quantity, plural, =0{0 units} one {# unit} other {# units}}",
@@ -744,7 +744,7 @@
         "filetypes": "file types are",
         "choose_an_option": "Please choose an option",
         "select_one": "Please select one",
-        "description": "Description",
+        "description": "Details",
         "price_with_tax": "(Inc. {tax_label})",
         "price_without_tax": "(Ex. {tax_label})",
         "including_tax": "Including Tax",
@@ -772,7 +772,9 @@
             "percent": "and get {discount} off",
             "price": "and get {discount} off",
             "fixed": "and pay only {discount} each"
-        }
+        },
+        "in_stock": "In Stock {stock_level}",
+        "out_of_stock": "Out Of Stock"
     },
     "invoice": {
         "for_order": "{name} Invoice for Order #{id}",
