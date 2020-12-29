@@ -180,19 +180,20 @@
         }
 
         .td_sku {
-            padding: remCalc(10px) 0 0;
+            padding-top: remCalc(10px);
         }
 
         .td_description {
-            padding: remCalc(5px) 0 0;
+            padding-top: remCalc(5px);
         }
 
         .td-stock {
-            padding: remCalc(5px) 0 0;
+            padding-top: remCalc(5px);
         }
 
         .td-price {
-            padding: remCalc(5px) 0 remCalc(15px);
+            padding-top: remCalc(5px);
+            padding-bottom: remCalc(15px);
         }
 
         .td-actions {
@@ -265,6 +266,15 @@
                 }
             }
 
+            .td_sku,
+            .td_description,
+            .td-stock,
+            .td-price {
+                padding: 0;
+                padding-top: remCalc(15px);
+                padding-bottom: remCalc(15px);
+            }
+
             .th_sku,
             .td_sku {
                 padding-left: remCalc(9px);
@@ -294,6 +304,11 @@
                 // width: remCalc(114px);
                 width: remCalc(125px);
             }
+
+            .td-price {
+                padding-top: remCalc(15px);
+                padding-bottom: remCalc(15px);
+            }
     
             .th-actions,
             .td-actions {
@@ -321,6 +336,14 @@
                 .button {
                     margin: 0;
                     margin-left: remCalc(5px);
+                }
+            }
+
+            a {
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
                 }
             }
         }
