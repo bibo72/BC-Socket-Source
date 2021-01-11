@@ -29,7 +29,7 @@
 
             {{#if product.stock_level}}
                 {{#if (toInt product.stock_level) '>' 0}}
-                    <p class="product_stock stock_in">{{lang 'products.in_stock' stock_level=product.stock_level}}</p>
+                    <p class="product_stock stock_in">In Stock{{#if product.stock_level}}<span class="stock-qty"> {{product.stock_level}}</span>{{/if}}{{!lang 'products.in_stock' stock_level=product.stock_level}}</p>
                 {{else}}
                     <p class="product_stock stock_out">{{lang 'products.out_of_stock'}}</p>
                 {{/if}}

@@ -75,7 +75,7 @@
             {{#if out_of_stock_message}}
                 <div class="card-stock red">{{out_of_stock_message}}</div>
             {{else}}
-                <div class="card-stock js-card-stock green" data-product-id="{{id}}">In Stock{{#if stock_level}}[{{stock_level}}]{{/if}}</div>
+                <div class="card-stock js-card-stock green" data-product-id="{{id}}">In Stock{{#if stock_level}}<span class="stock-qty">[{{stock_level}}]</span>{{/if}}</div>
             {{/if}}
 
             <div class="card-price" data-test-info-type="price">
