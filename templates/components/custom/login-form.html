@@ -23,17 +23,5 @@
             <a class="forgot-password" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password' }}</a>
         </div>
     </form>
-    <div class="custom-registration">
-        <p class="registration-tips">Register for an Account</p>
-        <ul class="registration-list">
-            <li class="registration-item">
-                <h6>Existing Customers:</h6>
-                <a href="{{urls.auth.login}}">Complete Registration</a>
-            </li>
-            <li class="registration-item">
-                <h6>New Customers:</h6>
-                <a href="{{urls.auth.create_account}}">Request an Account</a>
-            </li>
-        </ul>
-    </div>
+    {{> components/auth/register-account }}
 </div>

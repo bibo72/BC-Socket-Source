@@ -27,7 +27,8 @@
         </form>
         {{#if settings.account_creation_enabled}}
             <div class="new-customer">
-                <div class="panel">
+                {{> components/auth/register-account }}
+                <!-- <div class="panel">
                     <div class="panel-header">
                         <h2 class="panel-title">{{lang 'login.new_customer.heading' }}</h2>
                     </div>
@@ -42,7 +43,7 @@
                         </ul>
                         <a href="{{urls.auth.create_account}}"><button class="button button--primary">{{lang 'login.new_customer.create_account' }}</button></a>
                     </div>
-                </div>
+                </div> -->
             </div>
         {{/if}}
     </div>
