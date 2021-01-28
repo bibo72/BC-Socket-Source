@@ -1,0 +1,14 @@
+.navUser-action[href="/login.php?action=create_account&show_tpa"] {
+    display: none;
+}
+.form-row-wrap {
+    @include breakpoint('small') {
+        display: flex;
+        justify-content: space-between;
+    
+        .form-row {
+            width: 48%;
+    
+        }
+    }
+}
