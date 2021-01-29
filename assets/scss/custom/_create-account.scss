@@ -8,7 +8,22 @@
     
         .form-row {
             width: 48%;
-    
+        }
+    }
+}
+.create-account-addresses {
+    h4 {
+        padding: 0 0.75rem;
+    }
+    .use-billing-checkbox {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 400;
+        margin-left: 20px;
+
+        .form-checkbox + .form-label {
+            font-size: 14px;
+            padding-left: 1.5rem;
         }
     }
 }

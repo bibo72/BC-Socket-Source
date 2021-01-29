@@ -191,6 +191,22 @@ export default class Auth extends PageManager {
 
         if ($createAccountForm.length) {
             this.registerCreateAccountValidator($createAccountForm);
+            this.setSameAddress();
         }
+    }
+
+    setSameAddress() {
+        $('body').on('click', '#use-billing', event => {
+            const $checkbox = $(event.target);
+            if ($checkbox.prop('checked')) {
+                $('[data-field-type="s-AddressLine1"]').val($('[data-field-type="AddressLine1"]').val() || '');
+                $('[data-field-type="s-AddressLine2"]').val($('[data-field-type="AddressLine2"]').val() || '');
+                $('[data-field-type="s-City"]').val($('[data-field-type="City"]').val() || '');
+                $('[data-field-type="s-Zip"]').val($('[data-field-type="Zip"]').val() || '');
+                $('[data-field-type="s-Country"]').val($('[data-field-type="Country"]').val() || '');
+                $('[data-field-type="s-Country"]').trigger('change');
+                $('[data-field-type="s-State"]').val($('[data-field-type="State"]').val() || '');
+            }
+        });
     }
 }

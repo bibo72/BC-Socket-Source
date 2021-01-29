@@ -24,7 +24,8 @@ function makeStateRequired(stateElement, context) {
 
     stateElement.replaceWith($('<select></select>', replacementAttributes));
 
-    const $newElement = $('[data-field-type="State"]');
+    // const $newElement = $('[data-field-type="State"]');
+    const $newElement = $(`[data-field-type="${attrs['data-field-type']}"]`);
     const $hiddenInput = $('[name*="FormFieldIsText"]');
 
     if ($hiddenInput.length !== 0) {
@@ -64,7 +65,8 @@ function makeStateOptional(stateElement) {
 
     stateElement.replaceWith($('<input />', replacementAttributes));
 
-    const $newElement = $('[data-field-type="State"]');
+    // const $newElement = $('[data-field-type="State"]');
+    const $newElement = $(`[data-field-type="${attrs['data-field-type']}"]`);
 
     if ($newElement.length !== 0) {
         insertStateHiddenField($newElement);
@@ -134,12 +136,44 @@ export default function (stateElement, context = {}, options, callback) {
             }
 
             const $currentInput = $('[data-field-type="State"]');
+            const oldValue = $currentInput.val();
 
             if (!_.isEmpty(response.data.states)) {
                 // The element may have been replaced with a select, reselect it
                 const $selectElement = makeStateRequired($currentInput, context);
 
                 addOptions(response.data, $selectElement, options);
+                $selectElement.val(oldValue);
+                callback(null, $selectElement);
+            } else {
+                const newElement = makeStateOptional($currentInput, context);
+
+                callback(null, newElement);
+            }
+        });
+    });
+    $('select[data-field-type="s-Country"]').on('change', event => {
+        const countryName = $(event.currentTarget).val();
+
+        if (countryName === '') {
+            return;
+        }
+
+        utils.api.country.getByName(countryName, (err, response) => {
+            if (err) {
+                showAlertModal(context.state_error);
+                return callback(err);
+            }
+
+            const $currentInput = $('[data-field-type="s-State"]');
+            const oldValue = $currentInput.val();
+
+            if (!_.isEmpty(response.data.states)) {
+                // The element may have been replaced with a select, reselect it
+                const $selectElement = makeStateRequired($currentInput, context);
+
+                addOptions(response.data, $selectElement, options);
+                $selectElement.val(oldValue);
                 callback(null, $selectElement);
             } else {
                 const newElement = makeStateOptional($currentInput, context);
