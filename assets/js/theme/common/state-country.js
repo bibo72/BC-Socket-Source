@@ -26,7 +26,9 @@ function makeStateRequired(stateElement, context) {
 
     // const $newElement = $('[data-field-type="State"]');
     const $newElement = $(`[data-field-type="${attrs['data-field-type']}"]`);
-    const $hiddenInput = $('[name*="FormFieldIsText"]');
+
+    const extra = (attrs['data-field-type'] || '').indexOf('s-') !== -1 ? 's-' : '';
+    const $hiddenInput = $(`${extra}[name*="FormFieldIsText"]`);
 
     if ($hiddenInput.length !== 0) {
         $hiddenInput.remove();

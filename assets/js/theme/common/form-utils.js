@@ -99,10 +99,11 @@ function getFieldId($field) {
  * @param {object} $stateField JQuery field object
  */
 function insertStateHiddenField($stateField) {
+    const extra = ($stateField.attr('data-field-type') || '').indexOf('s-') !== -1 ? 's-' : '';
     const fieldId = getFieldId($stateField);
     const stateFieldAttrs = {
         type: 'hidden',
-        name: `FormFieldIsText${fieldId}`,
+        name: `${extra}FormFieldIsText${fieldId}`,
         value: '1',
     };
 
