@@ -1,0 +1,14 @@
+.custom_page {
+
+    [data-content-region="page_builder_content"] {
+
+        [data-layout-id] {
+    
+            [data-sub-layout-container][data-layout-name] {
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: none !important;
+            }
+        }
+    }
+}
