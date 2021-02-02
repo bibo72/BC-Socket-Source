@@ -1,13 +1,111 @@
 .custom_page {
 
+    &.page {
+        margin: 0 !important;
+    }
+
     [data-content-region="page_builder_content"] {
 
         [data-layout-id] {
     
+            // layout
             [data-sub-layout-container][data-layout-name] {
                 margin: 0 !important;
                 padding: 0 !important;
                 max-width: none !important;
+
+                // column
+                [data-sub-layout] {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+            }
+        }
+    }
+
+    // top section
+    .custom_top_section {
+        background-color: #EDEDED;
+        padding: remCalc(50px) 0;
+        
+        .container.container_custom_top_section {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
+
+            @include breakpoint('small') {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .custom_section_text,
+        .custom_section_image {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: stretch;
+
+            @include breakpoint('small') {
+                width: 50%;
+            }
+        }
+
+        .custom_section_text {
+            padding: 0 0 remCalc(25px);
+
+            h3,
+            h6 {
+                font-family: stencilFontFamily('headings-font'), Arial, Helvetica, sans-serif;
+                word-wrap: break-word;
+                padding: 0;
+                text-transform: none;
+            }
+
+            h3 {
+                font-size: 20px;
+                line-height: 32px;
+                font-weight: 400;
+                margin: 0 0 remCalc(10px);
+                margin-bottom: remCalc(30px);
+            }
+
+            h6 {
+                font-size: 14px;
+                line-height: 22px;
+                font-weight: bold;
+                margin: 0 0 remCalc(7px);
+            }
+
+            p {
+                font-family: stencilFontFamily('body-font'), Arial, Helvetica, sans-serif;
+                font-size: 13px;
+                line-height: 21px;
+                font-weight: 400;
+                word-wrap: break-word;
+                padding: 0;
+                margin: 0 0 remCalc(20px);
+            }
+
+            a {
+                font-family: stencilFontFamily('body-font'), Arial, Helvetica, sans-serif;
+                font-size: 12px;
+                line-height: 20px;
+                font-weight: 400;
+                text-decoration: underline;
+                padding: 0;
+                margin: 0;
+            }
+        }
+
+        .custom_section_image {
+
+            img {
+                width: 100%;
             }
         }
     }

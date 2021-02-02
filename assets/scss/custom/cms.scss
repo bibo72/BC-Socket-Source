@@ -310,4 +310,33 @@
             }
         }
     }
+
+    // ul
+    .custom_template_ul {
+        list-style: none;
+        margin: 0;
+
+        li {
+            position: relative;
+            margin: 0 0 6px 0;
+            padding: 0 0 0 21px;
+            line-height: 24px !important;
+
+            .mk-svg-icon {
+                position: absolute;
+                top: 4px;
+                left: 0;
+                fill: #004f91;
+            }
+        }
+    }
+
+    // img
+    [data-layout-name="Full-3 Left"],
+    [data-layout-name="Full-3 Right"] {
+
+        img {
+            width: 100% !important;
+        }
+    }
 }

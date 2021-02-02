@@ -1,20 +1,35 @@
 {{#partial "full-page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<div class="container container_breadcrumbs">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{!-- custom mobile breadcrumbs --}}
+    <a class="breadcrumbs-back-link">
+        <span class="icon" aria-hidden="true">
+            <svg><use xlink:href="#icon-chevron-left"/></svg>
+        </span>
+        Back to {{#each breadcrumbs}}{{#if @index '===' (subtract  ../breadcrumbs.length 2)}}{{name}}{{/if}}{{/each}}
+    </a>
+
+</div>
 
 <main class="page custom_page">
     {{#unless theme_settings.hide_page_heading }}
-        <h1 class="page-heading">{{ page.title }}</h1>
+        <div class="container container_page_heading">
+            <h1 class="page-heading">{{ page.title }}</h1>
+        </div>
     {{/unless}}
 
     {{#if page.sub_pages}}
-    <nav class="navBar navBar--sub">
-        <ul class="navBar-section account-navigation">
-        {{#each page.sub_pages}}
-            <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
-        {{/each}}
-        </ul>
-    </nav>
+    <div class="container container_nav_bar">
+        <nav class="navBar navBar--sub">
+            <ul class="navBar-section account-navigation">
+            {{#each page.sub_pages}}
+                <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+            {{/each}}
+            </ul>
+        </nav>
+    </div>
     {{/if}}
 
     {{{region name="page_builder_content"}}}
@@ -28,14 +43,16 @@
     </div>
 
     {{#if page.feed}}
-        <ul>
-            {{#each page.feed}}
-                <li>
-                    <h6><a href="{{url}}" target="_blank">{{title}}</a></h6>
-                    <p>{{content}}</p>
-                </li>
-            {{/each}}
-        </ul>
+        <div class="container container_page_feed">
+            <ul>
+                {{#each page.feed}}
+                    <li>
+                        <h6><a href="{{url}}" target="_blank">{{title}}</a></h6>
+                        <p>{{content}}</p>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
     {{/if}}
 </main>
 
