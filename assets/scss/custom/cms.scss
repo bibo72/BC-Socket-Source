@@ -44,7 +44,7 @@
                 margin-right: auto;
 
                 > div[data-sub-layout] {
-                    @media (max-width: 991px) {
+                    @media (max-width: 767px) {
                         flex-basis: 100%;
                         max-width: 100%;
                         padding: 0;
@@ -77,20 +77,20 @@
                     padding-right: 0;
 
                     >div[data-sub-layout] {
-                        @include breakpoint("medium") {
+                        @include breakpoint("small") {
                             max-width: layout("max") / 2;
                         }
 
                         &:nth-of-type(1) {
                             padding: 0 1.5rem;
-                            @include breakpoint("medium") {
+                            @include breakpoint("small") {
                                 padding: 0;
                             }
                         }
 
                         &:nth-of-type(2) {
                             padding: 35px 1.5rem 0;
-                            @include breakpoint("medium") {
+                            @include breakpoint("small") {
                                 padding: 0;
                             }
 
@@ -108,26 +108,48 @@
                 }
                 &[data-layout-name="Full-2 Left"] {
                     >div[data-sub-layout] {
-                        @include breakpoint("medium") {
+                        @include breakpoint("small") {
                             &:nth-of-type(1) {
                                 padding-right: 1rem;
+                                padding-left: 1.5rem;
                             }
                             &:nth-of-type(2) {
                                 padding-left: 1rem;
+                                padding-right: 1.5rem;
+                            }
+                        }
+
+                        @include breakpoint(1200px) {
+                            &:nth-of-type(1) {
+                                padding-left: 0;
+                            }
+                            &:nth-of-type(2) {
+                                padding-right: 0;
                             }
                         }
                     }
                 }
                 &[data-layout-name="Full-2 Right"] {
                     >div[data-sub-layout] {
-                        @include breakpoint("medium") {
+                        @include breakpoint("small") {
                             &:nth-of-type(1) {
                                 order: 2;
                                 padding-left: 1rem;
+                                padding-right: 1.5rem;
                             }
                             &:nth-of-type(2) {
                                 order: 1;
                                 padding-right: 1rem;
+                                padding-left: 1.5rem;
+                            }
+                        }
+
+                        @include breakpoint(1200px) {
+                            &:nth-of-type(1) {
+                                padding-right: 0;
+                            }
+                            &:nth-of-type(2) {
+                                padding-left: 0;
                             }
                         }
                     }
@@ -140,10 +162,11 @@
                     padding-right: 0;
                     >div[data-sub-layout] {
                         &:nth-of-type(1) {
-                            padding: 0 1.5rem;
-                            @include breakpoint("medium") {
+                            // padding: 0 1.5rem;
+                            padding: 0;
+                            /* @include breakpoint("medium") {
                                 padding: 0;
-                            }
+                            } */
                         }
 
                         &:nth-of-type(2) {
@@ -152,7 +175,7 @@
                                 padding: 0 1.5rem;
                                 display: flex;
                                 align-items: flex-start;
-                                @include breakpoint("medium") {
+                                @include breakpoint("small") {
                                     width: layout("max") / 2;
                                     max-width: 100%;
                                 }
@@ -162,11 +185,12 @@
                 }
                 &[data-layout-name="Full-3 Left"] {
                     >div[data-sub-layout] {
-                        @include breakpoint("medium") {
+                        @include breakpoint("small") {
                             &:nth-of-type(2) {
                                 align-items: flex-start;
                                 >div[data-widget-id] {
-                                    padding: 0 0 0 2rem;
+                                    // padding: 0 0 0 2rem;
+                                    padding: 0 2rem;
                                 }
                             }
                         }
@@ -174,7 +198,7 @@
                 }
                 &[data-layout-name="Full-3 Right"] {
                     >div[data-sub-layout] {
-                        @include breakpoint("medium") {
+                        @include breakpoint("small") {
                             &:nth-of-type(1) {
                                 order: 2;
                             }
@@ -182,7 +206,8 @@
                                 order: 1;
                                 align-items: flex-end;
                                 >div[data-widget-id] {
-                                    padding: 0 2rem 0 0;
+                                    // padding: 0 2rem 0 0;
+                                    padding: 0 2rem;
                                 }
                             }
                         }
@@ -326,17 +351,45 @@
                 position: absolute;
                 top: 4px;
                 left: 0;
-                fill: #004f91;
+                fill: #004f91; // theme color
             }
         }
     }
 
-    // img
+    // Full half view
     [data-layout-name="Full-3 Left"],
     [data-layout-name="Full-3 Right"] {
+        align-items: stretch !important;
 
+        // img
         img {
             width: 100% !important;
+        }
+
+        // column
+        > div[data-sub-layout] {
+
+            // img column
+            &:nth-of-type(1) {
+                padding: 0 !important;
+
+                div {
+                    height: 100% !important;
+                }
+            }
+        }
+    }
+
+    // button group
+    [data-layout-name="Burton Group"] {
+
+        // column
+        > div[data-sub-layout] {
+
+            // row direction since ipad view
+            @include breakpoint(767px) {
+                flex-wrap: nowrap !important;
+            }
         }
     }
 }
