@@ -24,16 +24,27 @@
                         {{inject 'state_error' (lang 'errors.state_error')}}
                     </div>
 
-                    <div class="create-account-addresses">
+                    <div class="form-row-wrap create-account-addresses">
                         <!-- billing to address, using account default address field -->
-                        <h4>Company Information</h4>
-                        <div class="form-row form-row--half">
+                        <div class="form-row form-row--full" data-billing-fields>
+                            <h4>Billing To Information</h4>
                             {{#each (last forms.create_account.address_fields 6) }}
                                 {{{dynamicComponent 'components/common/forms'}}}
                             {{/each}}
                         </div>
     
                         <!-- shipping to address: using account custom fields -->
+                        <div class="form-row form-row--full" data-shipping-fields>
+                            <h4>Shipping To Information
+                                <span class="use-billing-checkbox">
+                                    <input class="form-checkbox" type="checkbox" name="use-billing" id="use-billing">
+                                    <label class="form-label" for="use-billing">Use Billing Information</label>
+                                </span>
+                            </h4>
+                            {{#each (last forms.create_account.address_fields 6) }}
+                                {{{dynamicComponent 'components/common/forms-shipping'}}}
+                            {{/each}}
+                        </div>
                     </div>
 
                     {{{ forms.create_account.recaptcha.markup}}}

@@ -35,102 +35,102 @@ export default function (context) {
     window.b3themeConfig.useJavaScript = {
         tpa: {
             callback() {
-                $('#tpa_submit_btn').on('click', (event) => {
-                    event.preventDefault();
-                    const billingAddress = {
-                        firstName: $('[data-field-type="FirstName"]').val() || '',
-                        lastName: $('[data-field-type="LastName"]').val() || '',
-                        phoneNumber: $('[data-field-type="Phone"]').val() || '',
-                        addressLine1: $('[data-field-type="AddressLine1"]').val() || '',
-                        addressLine2: $('[data-field-type="AddressLine2"]').val() || '',
-                        city: $('[data-field-type="City"]').val() || '',
-                        state: {
-                            stateName: $('[data-field-type="State"]').val() || '',
-                            stateCode: '',
-                        },
-                        zipCode: $('[data-field-type="Zip"]').val() || '',
-                        country: {
-                            countryName: $('[data-field-type="Country"]').val() || '',
-                            countryCode: '',
-                        },
-                        isBilling: '1',
-                        isDefaultBilling: '1',
-                        isDefaultShipping: '0',
-                        isShipping: '0',
-                        label: '',
-                    };
-                    const shippingAddress = {
-                        firstName: $('[data-field-type="FirstName"]').val() || '',
-                        lastName: $('[data-field-type="LastName"]').val() || '',
-                        phoneNumber: $('[data-field-type="Phone"]').val() || '',
-                        addressLine1: $('[data-field-type="s-AddressLine1"]').val() || '',
-                        addressLine2: $('[data-field-type="s-AddressLine2"]').val() || '',
-                        city: $('[data-field-type="s-City"]').val() || '',
-                        state: {
-                            stateName: $('[data-field-type="s-State"]').val() || '',
-                            stateCode: '',
-                        },
-                        zipCode: $('[data-field-type="s-Zip"]').val() || '',
-                        country: {
-                            countryName: $('[data-field-type="s-Country"]').val() || '',
-                            countryCode: '',
-                        },
-                        isBilling: '0',
-                        isDefaultBilling: '0',
-                        isDefaultShipping: '1',
-                        isShipping: '1',
-                        label: '',
-                    };
-                    const addresses = {
-                        billing: billingAddress,
-                        shipping: shippingAddress,
-                    };
-                    sessionStorage.setItem(
-                        'bundleCompanyAddress',
-                        JSON.stringify(addresses),
-                    );
-                });
+                // $('#tpa_submit_btn').on('click', (event) => {
+                //     event.preventDefault();
+                //     const billingAddress = {
+                //         firstName: $('[data-field-type="FirstName"]').val() || '',
+                //         lastName: $('[data-field-type="LastName"]').val() || '',
+                //         phoneNumber: $('[data-field-type="Phone"]').val() || '',
+                //         addressLine1: $('[data-field-type="AddressLine1"]').val() || '',
+                //         addressLine2: $('[data-field-type="AddressLine2"]').val() || '',
+                //         city: $('[data-field-type="City"]').val() || '',
+                //         state: {
+                //             stateName: $('[data-field-type="State"]').val() || '',
+                //             stateCode: '',
+                //         },
+                //         zipCode: $('[data-field-type="Zip"]').val() || '',
+                //         country: {
+                //             countryName: $('[data-field-type="Country"]').val() || '',
+                //             countryCode: '',
+                //         },
+                //         isBilling: '1',
+                //         isDefaultBilling: '1',
+                //         isDefaultShipping: '0',
+                //         isShipping: '0',
+                //         label: '',
+                //     };
+                //     const shippingAddress = {
+                //         firstName: $('[data-field-type="FirstName"]').val() || '',
+                //         lastName: $('[data-field-type="LastName"]').val() || '',
+                //         phoneNumber: $('[data-field-type="Phone"]').val() || '',
+                //         addressLine1: $('[data-field-type="s-AddressLine1"]').val() || '',
+                //         addressLine2: $('[data-field-type="s-AddressLine2"]').val() || '',
+                //         city: $('[data-field-type="s-City"]').val() || '',
+                //         state: {
+                //             stateName: $('[data-field-type="s-State"]').val() || '',
+                //             stateCode: '',
+                //         },
+                //         zipCode: $('[data-field-type="s-Zip"]').val() || '',
+                //         country: {
+                //             countryName: $('[data-field-type="s-Country"]').val() || '',
+                //             countryCode: '',
+                //         },
+                //         isBilling: '0',
+                //         isDefaultBilling: '0',
+                //         isDefaultShipping: '1',
+                //         isShipping: '1',
+                //         label: '',
+                //     };
+                //     const addresses = {
+                //         billing: billingAddress,
+                //         shipping: shippingAddress,
+                //     };
+                //     sessionStorage.setItem(
+                //         'bundleCompanyAddress',
+                //         JSON.stringify(addresses),
+                //     );
+                // });
             },
         },
         login: {
             overwrite: false,
             callback(SS) {
-                const companyId = sessionStorage.getItem('B3CompanyId');
-                const companyAddress = sessionStorage.getItem('bundleCompanyAddress');
-                if (companyAddress) {
-                    const addresses = JSON.parse(companyAddress);
-                    console.log('set company address');
-                    if (companyId) {
-                        SS.api.getCountries().then((data) => {
-                            if (!data || !data.list) return;
+                // const companyId = sessionStorage.getItem('B3CompanyId');
+                // const companyAddress = sessionStorage.getItem('bundleCompanyAddress');
+                // if (companyAddress) {
+                //     const addresses = JSON.parse(companyAddress);
+                //     console.log('set company address');
+                //     if (companyId) {
+                //         SS.api.getCountries().then((data) => {
+                //             if (!data || !data.list) return;
 
-                            const matched = data.list.filter(country => country.countryName === addresses.shipping.country.countryName);
-                            if (matched.length) {
-                                addresses.shipping.country.countryCode = matched[0].countryCode;
-                                // state
-                                const matchedState = matched[0].states.filter(state => state.stateName === addresses.shipping.state.stateName);
-                                if (matchedState.length) {
-                                    addresses.shipping.state.stateCode = matchedState[0].stateCode;
-                                }
-                            }
-                            const matchedBilling = data.list.filter(country => country.countryName === addresses.billing.country.countryName);
-                            if (matchedBilling.length) {
-                                addresses.billing.country.countryCode = matchedBilling[0].countryCode;
-                                // state
-                                const matchedBillingState = matchedBilling[0].states.filter(state => state.stateName === addresses.billing.state.stateName);
-                                if (matchedBillingState.length) {
-                                    addresses.billing.state.stateCode = matchedBillingState[0].stateCode;
-                                }
-                            }
+                //             const matched = data.list.filter(country => country.countryName === addresses.shipping.country.countryName);
+                //             if (matched.length) {
+                //                 addresses.shipping.country.countryCode = matched[0].countryCode;
+                //                 // state
+                //                 const matchedState = matched[0].states.filter(state => state.stateName === addresses.shipping.state.stateName);
+                //                 if (matchedState.length) {
+                //                     addresses.shipping.state.stateCode = matchedState[0].stateCode;
+                //                 }
+                //             }
+                //             const matchedBilling = data.list.filter(country => country.countryName === addresses.billing.country.countryName);
+                //             if (matchedBilling.length) {
+                //                 addresses.billing.country.countryCode = matchedBilling[0].countryCode;
+                //                 // state
+                //                 const matchedBillingState = matchedBilling[0].states.filter(state => state.stateName === addresses.billing.state.stateName);
+                //                 if (matchedBillingState.length) {
+                //                     addresses.billing.state.stateCode = matchedBillingState[0].stateCode;
+                //                 }
+                //             }
 
-                            SS.api.createAddressBook(companyId, addresses.shipping)
-                                .then(() => SS.api.createAddressBook(companyId, addresses.billing))
-                                .then(() => {
-                                    sessionStorage.removeItem('bundleCompanyAddress');
-                                });
-                        });
-                    }
-                }
+                //             SS.api.createAddressBook(companyId, addresses.shipping)
+                //                 .then(() => SS.api.createAddressBook(companyId, addresses.billing))
+                //                 .then(() => {
+                //                     sessionStorage.removeItem('bundleCompanyAddress');
+                //                 });
+                //         });
+                //     }
+                // }
                 const getModalShoppingList = async (qty, sku, id) => {
                     const shoppingList = await SS.api.getShoppingLists();
                     let html = `
