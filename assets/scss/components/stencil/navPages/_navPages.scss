@@ -130,13 +130,13 @@
         }
     }
 
-    .navPages-item-page {
-        display: none;
+    // .navPages-item-page {
+    //     display: none;
 
-        @include breakpoint("medium") {
-            display: inline-block;
-        }
-    }
+    //     @include breakpoint("medium") {
+    //         display: inline-block;
+    //     }
+    // }
 }
 
 .navPages-action-depth-max.has-subMenu.is-root.is-open {

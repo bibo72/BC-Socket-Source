@@ -19,12 +19,7 @@
                 {{#if (lowercase name) '===' 'header top'}}
                     {{#each children}}
                         <li class="navPages-item navPages-item-page" data-toggle-item>
-                            <a class="navPages-action{{#if name '==' ../../page.title}} activePage{{/if}}"
-                            href="{{url}}"
-                            aria-label="{{name}}"
-                            >
-                                <span class="navPages-label">{{name}}</span>
-                            </a>
+                            {{> components/custom/navigation-page-list}}
                         </li>
                     {{/each}}
                 {{/if}}

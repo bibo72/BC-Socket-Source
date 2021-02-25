@@ -1,0 +1,20 @@
+{{#if children}}
+    <a class="navPages-action navPages-action-depth-max has-subMenu is-root{{#if name '==' ../../page.title}} activePage{{/if}}"
+       href="{{url}}"
+       data-collapsible="navPages-{{dashcase (lowercase (sanitize name))}}"
+       aria-label="{{name}}"
+    >
+        <span class="navPages-label">{{name}}</span>
+        <span class="icon navPages-action-moreIcon" aria-hidden="true">
+            <svg><use xlink:href="#icon-chevron-down" /></svg>
+        </span>
+    </a>
+    {{> components/custom/navigation-page-dropdown}}
+{{else}}
+    <a class="navPages-action{{#if name '==' ../../page.title}} activePage{{/if}}"
+       href="{{url}}"
+       aria-label="{{name}}"
+    >
+        <span class="navPages-label">{{name}}</span>
+    </a>
+{{/if}}
