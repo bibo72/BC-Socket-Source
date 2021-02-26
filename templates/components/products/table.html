@@ -14,11 +14,17 @@
             {{#each products}}
                 <tr class="table-product-item" data-product-id="{{id}}">
                     <td class="td_sku">
-                        <div class="table-sku"><a href="{{url}}">{{sku}}</a></div>
+                        <div class="table-sku"><a href="{{url}}">{{sku}}==</a></div>
                     </td>
                     <td class="td_description">
                         <div class="table-description">
-                            <a href="{{url}}">{{#each custom_fields}}{{#if (lowercase name) '===' 'short description'}}{{value}}{{/if}}{{/each}}</a>
+                            <a href="{{url}}">
+                                {{#any custom_fields name='Short Description'}}
+                                    {{#each custom_fields}}{{#if (lowercase name) '===' 'short description'}}{{value}}{{/if}}{{/each}}
+                                {{else}}
+                                    {{summary}}
+                                {{/any}}
+                            </a>
                         </div>
                     </td>
                     <td class="td-stock">
@@ -44,9 +50,9 @@
                                     {{lang 'products.choose_options'}}
                                 </a>
                                 <a href="{{url}}"
-                                    class="button button--icon" 
-                                    data-product-id="{{id}}" 
-                                    data-product-qty="0" 
+                                    class="button button--icon"
+                                    data-product-id="{{id}}"
+                                    data-product-qty="0"
                                     data-product-sku="{{sku}}">
                                     <span class="icon">
                                         <svg><use xlink:href="#icon-clipboard" /></svg>
@@ -69,11 +75,11 @@
                                     </span>
                                     {{lang 'products.add_to_cart'}}
                                 </button>
-                                <button type="button" 
-                                    class="button button--icon" 
-                                    data-product-id="{{id}}" 
-                                    data-shoppinglist-modal 
-                                    data-product-qty="0" 
+                                <button type="button"
+                                    class="button button--icon"
+                                    data-product-id="{{id}}"
+                                    data-shoppinglist-modal
+                                    data-product-qty="0"
                                     data-product-sku="{{sku}}">
                                     <span class="icon">
                                         <svg><use xlink:href="#icon-clipboard" /></svg>
@@ -81,7 +87,7 @@
                                     <span>{{lang 'account.wishlists.add_item'}}</span>
                                 </button>
                             {{/if}}
-                            
+
                         </div>
                     </td>
                 </tr>
