@@ -1,0 +1,56 @@
+{{#partial "page"}}
+    <div class="account">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h2 class="page-heading">{{ page.title }}</h2>
+
+        <div class="account-columns">
+            <div class="account-column">
+                <form action="{{urls.auth.send_password_email}}" data-complete-registration-form class="form" method="post">
+                    {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
+                    <div class="form-field">
+                        <label class="form-label" for="complete_firstname">
+                            First Name
+                            <small>{{lang 'common.required' }}</small></label>
+                        <input class="form-input" name="complete_firstname" id="complete_firstname" type="text">
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="complete_lastname">
+                            Last Name
+                            <small>{{lang 'common.required' }}</small>
+                        </label>
+                        <input class="form-input" name="complete_lastname" id="complete_lastname" type="text">
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="complete_email">
+                            Email
+                            <small>{{lang 'common.required' }}</small>
+                        </label>
+                        <input class="form-input" name="complete_email" id="complete_email" type="email">
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="complete_customerid">
+                            Customer ID
+                            <small>{{lang 'common.required' }}</small>
+                        </label>
+                        <input class="form-input" id="complete_customerid" name="complete_customerid" type="input">
+                    </div>
+                    <div class="form-actions">
+                        <input type="submit" class="button button--primary" value="Submit">
+                    </div>
+                </form>
+                <form data-forgot-password-form action="{{urls.auth.send_password_email}}" class="form" method="post" style="display:none;">
+                    <input class="form-input" name="email" id="email" type="email">
+                </form>
+            </div>
+            <div class="account-column">
+                <div class="account-new-customer">
+                    <h4>NEW CUSTOMERS</h4>
+                    <div>
+                        If you would like to become a customer at The Socket Source, please complete our easy registration form <a href="{{urls.auth.create_account}}&show_tpa">HERE</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/partial}}
+{{> layout/base}}

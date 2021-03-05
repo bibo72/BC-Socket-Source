@@ -5,6 +5,7 @@
 
     <div class="account account--fixed">
         <div class="account-body">
+            <div class="account-content">
             {{#if forms.create_account.error}}
                 {{> components/common/alert-error forms.create_account.error}}
             {{/if}}
@@ -42,6 +43,7 @@
                     </div>
                 </form>
             {{/if}}
+            </div>
         </div>
     </div>
 {{/partial}}

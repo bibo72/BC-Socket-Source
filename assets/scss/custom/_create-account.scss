@@ -27,3 +27,41 @@
         }
     }
 }
+
+// complete regitration
+.account-columns {
+
+    @include breakpoint("medium") {
+        display: flex;
+        align-items: center;
+
+        &.middle {
+            align-items: center;
+        }
+    }
+    .account-column {
+        @include breakpoint("medium") {
+            width: 60%;
+
+            &:nth-child(2) {
+                width: 40%;
+                display: flex;
+                align-items: center;
+            }
+            
+        }
+    }
+}
+.account-new-customer {
+    @include breakpoint("medium") {
+        max-width: 300px;
+        margin: 0 auto;
+        margin-bottom: 80px;
+    }
+
+    h4 {
+        @include breakpoint("medium") {
+            margin-top: 0;
+        }
+    }
+}
