@@ -35,6 +35,16 @@ export default function (context) {
     window.b3themeConfig.useJavaScript = {
         tpa: {
             callback() {
+                // hide extra field on frontend
+                const $customerId = $('input[name="customerId"]');
+                const $contactId = $('input[name="mainContactId"]');
+                if ($customerId.length) {
+                    $customerId.parents('.form-field').hide();
+                }
+                if ($contactId.length) {
+                    $contactId.parents('.form-field').hide();
+                }
+
                 // $('#tpa_submit_btn').on('click', (event) => {
                 //     event.preventDefault();
                 //     const billingAddress = {
