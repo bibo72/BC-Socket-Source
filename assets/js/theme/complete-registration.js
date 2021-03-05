@@ -87,7 +87,7 @@ export default class CompleteRegistration extends PageManager {
                     } else {
                         $submitButton.prop('disabled', false);
                         swal.fire({
-                            text: data.message,
+                            text: 'User does not exist.',
                             icon: 'error',
                         });
                     }
