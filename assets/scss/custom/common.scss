@@ -153,7 +153,7 @@ textarea:focus {
         display: none!important;
     }
 
-    // pdp 
+    // pdp
     .productView-price,
     [data-cart-item-add],
     [data-wishlist-add],
@@ -163,9 +163,19 @@ textarea:focus {
     }
 
     // plp
-    .table-stock,
-    .table-price,
-    .table-actions {
-        display: none!important;
+    .products-table {
+        .th-stock,
+        .th-price,
+        .th-actions,
+        .td-stock,
+        .td-price,
+        .td-actions {
+            display: none!important;
+        }
+        // .table-stock,
+        // .table-price,
+        // .table-actions {
+        //     display: none!important;
+        // }
     }
 }
