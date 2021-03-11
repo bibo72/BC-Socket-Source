@@ -5,7 +5,7 @@
     @include breakpoint('small') {
         display: flex;
         justify-content: space-between;
-    
+
         .form-row {
             width: 48%;
         }
@@ -48,7 +48,7 @@
                 display: flex;
                 align-items: center;
             }
-            
+
         }
     }
 }
@@ -62,6 +62,32 @@
     h4 {
         @include breakpoint("medium") {
             margin-top: 0;
+        }
+    }
+}
+
+.form-flex-box {
+    display: flex;
+    flex-wrap: wrap;
+
+    .form-field {
+        &[data-type="AddressLine1"] {
+            order: 1;
+        }
+        &[data-type="AddressLine2"] {
+            order: 2;
+        }
+        &[data-type="City"] {
+            order: 3;
+        }
+        &[data-type="Country"] {
+            order: 4;
+        }
+        &[data-type="State"] {
+            order: 5;
+        }
+        &[data-type="Zip"] {
+            order: 6;
         }
     }
 }

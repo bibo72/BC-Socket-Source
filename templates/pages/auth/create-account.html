@@ -20,7 +20,7 @@
                                 {{{dynamicComponent 'components/common/forms'}}}
                             {{/if}}
                         {{/each}}
-                        
+
                         {{inject 'required' (lang 'common.required')}}
                         {{inject 'state_error' (lang 'errors.state_error')}}
                     </div>
@@ -28,12 +28,12 @@
                     <div class="create-account-addresses">
                         <!-- billing to address, using account default address field -->
                         <h4>Company Information</h4>
-                        <div class="form-row form-row--half">
+                        <div class="form-row form-row--half form-flex-box">
                             {{#each (last forms.create_account.address_fields 6) }}
                                 {{{dynamicComponent 'components/common/forms'}}}
                             {{/each}}
                         </div>
-    
+
                         <!-- shipping to address: using account custom fields -->
                     </div>
 
