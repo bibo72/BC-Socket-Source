@@ -205,7 +205,6 @@ header.header {
                         display: none;
                     }
 
-
                     .container {
                         padding: 0;
                     }
@@ -220,7 +219,7 @@ header.header {
                     align-items: center;
                     justify-content: flex-end;
 
-                    >.navPages-item {
+                    >.navPages-item:not(.navPages-item-page) {
                         >.navPages-action {
                             line-height: 24px;
                             text-decoration: none;
@@ -365,6 +364,46 @@ header.header {
                                             color: stencilColor("color-blue");
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+
+                    >.navPages-item-page {
+                        >.navPage-subMenu {
+                            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.13);
+
+                            &.is-open {
+                                &:before {
+                                    @include css-triangle(
+                                        $triangle-direction: "bottom",
+                                        $triangle-size: 10px,
+                                        $triangle-color: stencilColor("navUser-dropdown-borderColor")
+                                    );
+                                    bottom: 100%;
+                                    left: spacing("double");
+                                    position: absolute;
+                                }
+
+                                &:after {
+                                    @include css-triangle(
+                                        $triangle-direction: "bottom",
+                                        $triangle-size: 8px,
+                                        $triangle-color: stencilColor("navUser-dropdown-backgroundColor")
+                                    );
+                                    bottom: 100%;
+                                    left: spacing("double") + remCalc(2px);
+                                    position: absolute;
+                                }
+                            }
+
+                            >.container {
+                                padding: spacing("half") spacing("single");
+
+                                .navPages-action {
+                                    font-weight: normal;
+                                    text-transform: none;
+                                    padding: 8px 0;
                                 }
                             }
                         }

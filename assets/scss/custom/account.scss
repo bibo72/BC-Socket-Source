@@ -1,8 +1,10 @@
 .navUser-item--account {
     @include breakpoint("medium") {
         #account-dropdown {
+            position: absolute !important;
             width: 218px;
             max-width: 218px;
+            top: 40px !important;
             left: auto !important;
             right: 80px !important;
             border: none;
@@ -12,7 +14,12 @@
                 &::before,
                 &::after {
                     left: auto;
+                }
+                &::before {
                     right: 100px;
+                }
+                &::after {
+                    right: 102px;
                 }
             }
 
@@ -26,7 +33,12 @@
                     &::before,
                     &::after {
                         left: auto;
+                    }
+                    &::before {
                         right: 180px;
+                    }
+                    &::after {
+                        right: 182px;
                     }
                 }
             }
