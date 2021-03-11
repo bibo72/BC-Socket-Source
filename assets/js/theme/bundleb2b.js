@@ -17,11 +17,36 @@ function fnCheckBeforeShoppinglistModal(context) {
         }
     });
 }
+function removeAccountNav() {
+    // add the following code
+    const inPages = () => {
+        const urlArray = [
+            '/account.php',
+            '/buy-again/',
+            '/address-book/',
+            '/create-quote/',
+            '/quote-detail/',
+            '/quote-edit/',
+            '/quote-list/',
+            '/dashboard/',
+            '/order-detail/',
+            '/quick-order-pad/',
+            '/shopping-list/',
+            '/shopping-lists/',
+            '/user-management/',
+        ];
+        const current = window.location.pathname;
+        return urlArray.includes(current);
+    };
+    if (!inPages()) {
+        $('body').addClass('non-b2b');
+    }
+}
 export default function (context) {
+    removeAccountNav();
     fnCheckBeforeShoppinglistModal(context);
 
     const url = 'https://cdn.bundleb2b.net/bundleb2b.2.10.0.js';
-    // const url = 'http://127.0.0.1:8080/bundleb2b.2.10.0.js';
     const el = document.createElement('script');
     el.setAttribute('src', url);
     document.querySelector('body').append(el);
@@ -35,6 +60,16 @@ export default function (context) {
     window.b3themeConfig.useJavaScript = {
         tpa: {
             callback() {
+                // hide extra field on frontend
+                const $customerId = $('input[name="customerId"]');
+                const $contactId = $('input[name="mainContactId"]');
+                if ($customerId.length) {
+                    $customerId.parents('.form-field').hide();
+                }
+                if ($contactId.length) {
+                    $contactId.parents('.form-field').hide();
+                }
+
                 // $('#tpa_submit_btn').on('click', (event) => {
                 //     event.preventDefault();
                 //     const billingAddress = {
